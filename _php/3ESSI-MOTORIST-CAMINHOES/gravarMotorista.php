@@ -17,7 +17,7 @@
         print("<script>alert('Dados inseridos com sucesso no banco de dados!');location.href='../motoristas_caminhoes.php';</script>");
     } catch(PDOException $err) {
         $pdo = null;
-        print("<script>alert('Erro: Problemas na inserção de Motorista_Usuario. Erro gerado: " . $err->getMessage(). ");location.href='../motoristas_caminhoes.php';history.back(-1);</script>");
+        print("<script>alert('Erro: Problemas na inserção de Motorista_Usuario. Erro gerado: " . $err->getMessage(). ");history.back(-1);</script>");
     }
     // header("Location: ../motoristas_caminhoes.php");
 ?>
