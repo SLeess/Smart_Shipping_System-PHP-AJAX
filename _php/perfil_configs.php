@@ -35,12 +35,12 @@
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="dash col-lg-4 offset-lg-4 bg-white">
-            <div class="p-5">
+            <div class="p-3">
                 <?php 
                     $title = "- Alterar informações de Perfil";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>
-                <div class="container rounded bg-white mb-1">
+                <div class="container bg-white mb-1">
                     <form action="CRUD/alterRow.php" method="POST">
                         <div class="row">
                             <div class="col-md-4 border-right">

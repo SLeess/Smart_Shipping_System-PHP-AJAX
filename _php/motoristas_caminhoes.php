@@ -26,20 +26,19 @@
 
         .dash{
             width: 60vw;
+            height: 100%;
             margin: 40px auto;
             max-width: 920px;
-            min-height: 420px;
-            min-width: 400px;
+            /* min-height: 420px; */
+            /* min-width: 400px; */
             max-height: 5200px;
             border-radius: 3px;
             box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         }
         
-        @media (max-width: 995px) {
-            .dash {
-                min-height: 720px;
-                height: 1800px;
-                margin-bottom: 35px;
+        @media (max-width: 780px) {
+            form h3{
+                margin-top: 40px;
             }
         }
     </style>
@@ -52,71 +51,71 @@
     
     <div class="container d-flex justify-content-center align-items-center">
         <div class="dash col-lg-4 offset-lg-4 bg-white p-3">
-            <div class="row p-3">
+            <div class="p-3">
                 <?php 
                     $title = "- Motoristas e Caminhões";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>
-                <div class="container px-2 py-2" style="margin-bottom: 35px;">
-                    <div class="row g-4 py-2 row-cols-lg-12">
-                        <form action="3ESSI-MOTORIST-CAMINHOES/gravarMotorista.php" method="POST" class="d-flex">
-                            <div class="col-6">
-                                <h3>Cadastrar Motorista</h3>
-                                <div class="col-md-8">
-                                    <label for="inputText4" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Nome do Motorista">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputText4" class="form-label">CPF</label>
-                                    <!-- <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="CPF do Motorista"> -->
-                                    <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required pattern="\d{11}\" title="000.000.000-00">
-                                </div>
-                                <div class="col-md-9 mt-4">
-                                    <label for="inputText4" class="form-label">N° de Habilitação</label>
-                                    <input type="text" class="form-control" id="inputNumHabilitacao" name="inputNumHabilitacao" placeholder="Número de Habilitação" maxlength="8">
-                                </div>
-                                <div class="col-md-9 mt-3">
-                                    <label for="inputAddress2" class="form-label">Data de Vencimento da Habilitação</label>
-                                    <input type="date" class="form-control" id="inputData" name="inputData" placeholder="01/01/2023">
-                                </div>
-                            </div>
-                            
-                            <div class="col-6">
-                                <h3>Cadastrar Caminhão</h3>
-                                <div class="col-md-5">
-                                    <label for="inputPlaca" class="form-label">Inscrição da Placa</label>
-                                    <input type="text" class="form-control" name="inscricaoPlaca" id="inputPlaca" placeholder="Valor da Placa" required>
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputModelo" class="form-label">Modelo de Veículo</label>
-                                    <select id="inputModelo" name="Modelo" class="form-select" value="Modelo" required>
-                                        <option>Selecione o Modelo</option>
-                                        <option selected value="T">Toco</option>
-                                        <option value="B">Truco</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="col-md-5 mt-3">
-                                    <label for="inputZip" class="form-label">Senha do Adm</label>
-                                    <input type="password" class="form-control" id="inputSenha" required>
-                                </div>
-
-                                <div class="col-12 mt-3">
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                                    <p class="form-check-label" for="gridCheck">
-                                        Confirmar veracidade dos dados acima
-                                    </p>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" onclick="removerMascaraCPF(document.getElementById('inputCPF'));formatData(document.getElementById('inputData'));">
-                                        Inserir Motorista-Caminhão
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                <!-- <div class="container px-2 py-2" style="margin-bottom: 35px;"> -->
+                <!-- <div class="row g-4 py-2 row-cols-lg-12"> -->
+                <form action="3ESSI-MOTORIST-CAMINHOES/gravarMotorista.php" method="POST" class="row">
+                    <div class="column col-md-6">
+                        <h3>Cadastrar Motorista</h3>
+                        <div class="row-md-8">
+                            <label for="inputText4" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Nome do Motorista">
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label for="inputText4" class="form-label">CPF</label>
+                            <!-- <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="CPF do Motorista"> -->
+                            <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required pattern="\d{11}\" title="000.000.000-00">
+                        </div>
+                        <div class="col-md-9 mt-4">
+                            <label for="inputText4" class="form-label">N° de Habilitação</label>
+                            <input type="text" class="form-control" id="inputNumHabilitacao" name="inputNumHabilitacao" placeholder="Número de Habilitação" maxlength="8">
+                        </div>
+                        <div class="col-md-9 mt-3">
+                            <label for="inputAddress2" class="form-label">Data de Vencimento da Habilitação</label>
+                            <input type="date" class="form-control" id="inputData" name="inputData" placeholder="01/01/2023">
+                        </div>
                     </div>
-                </div>
+                    
+                    <div class="column col-md-6">
+                        <h3>Cadastrar Caminhão</h3>
+                        <div class="col-md-5">
+                            <label for="inputPlaca" class="form-label">Inscrição da Placa</label>
+                            <input type="text" class="form-control" name="inscricaoPlaca" id="inputPlaca" placeholder="Valor da Placa" required>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label for="inputModelo" class="form-label">Modelo de Veículo</label>
+                            <select id="inputModelo" name="Modelo" class="form-select" value="Modelo" required>
+                                <option>Selecione o Modelo</option>
+                                <option selected value="T">Toco</option>
+                                <option value="B">Truco</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-5 mt-3">
+                            <label for="inputZip" class="form-label">Senha do Adm</label>
+                            <input type="password" class="form-control" id="inputSenha" required>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <p class="form-check-label" for="gridCheck">
+                                Confirmar veracidade dos dados acima
+                            </p>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="removerMascaraCPF(document.getElementById('inputCPF'));formatData(document.getElementById('inputData'));">
+                                Inserir Motorista-Caminhão
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                    <!-- </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
