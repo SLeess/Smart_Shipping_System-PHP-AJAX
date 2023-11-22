@@ -50,23 +50,15 @@
         require_once("elements/navbar.php");
     ?>
     
-    <div class="dash container d-flex justify-content-center align-items-center">
-        <div class="row">
-            <div class="col-lg-4 offset-lg-4 bg-white">
-                <h2 style="text-align: center; font-size: 3.5em;">
-                    <span class="fs-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                        3ESSI - Cadastro de Motoristas e Caminhões
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                    </span>
-                </h2>
-                <hr>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="dash col-lg-4 offset-lg-4 bg-white p-3">
+            <div class="row p-3">
+                <?php 
+                    $title = "- Motoristas e Caminhões";
+                    require_once("elements/tituloProjetoMainSection.php");
+                ?>
                 <div class="container px-2 py-2" style="margin-bottom: 35px;">
-                    <div class="row g-4 py-2 row-cols-1 row-cols-lg-12">
+                    <div class="row g-4 py-2 row-cols-lg-12">
                         <form action="3ESSI-MOTORIST-CAMINHOES/gravarMotorista.php" method="POST" class="d-flex">
                             <div class="col-6">
                                 <h3>Cadastrar Motorista</h3>

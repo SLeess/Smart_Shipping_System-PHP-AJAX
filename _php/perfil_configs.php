@@ -21,6 +21,10 @@
         .buttons{
             margin-top: -200px;
         }
+        .dash{
+            min-width: 300px;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -30,25 +34,18 @@
     ?>
 
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="p-5 mb-3">
-            <div class="dash col-lg-4 offset-lg-4 bg-white">
-                <h2 style="text-align: center; font-size: 3.5em;">
-                    <span class="fs-2">Sistema
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                    </span>
-                </h2>
-                <hr>
-                
-                <!-- mt-1: margin-top: 1em; mb-2: margin-bottom: 2em; -->
+        <div class="dash col-lg-4 offset-lg-4 bg-white">
+            <div class="p-5">
+                <?php 
+                    $title = "- Alterar informações de Perfil";
+                    require_once("elements/tituloProjetoMainSection.php");
+                ?>
                 <div class="container rounded bg-white mb-1">
                     <form action="CRUD/alterRow.php" method="POST">
                         <div class="row">
-                            <div class="col-md-3 border-right">
-                                <div class="d-flex flex-column align-items-center text-center p-3 py-0">
-                                    <!--<img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">-->
-                                    <img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="150px" class="rounded-circle mt-5">
+                            <div class="col-md-4 border-right">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="225px" class="rounded-circle mt-4">
                                     <span class="font-weight-bold">
                                         <?php
                                             echo $_SESSION['nome'];
@@ -56,7 +53,7 @@
                                     </span>
                                     <span class="text-black-50">
                                         <?php
-                                            echo $_SESSION["email"];
+                                            echo $_SESSION["email"]. "<br>";
                                             $nome = ""; $sobrenome = "";
                                             $i = 0;
                                             for(;$i < strlen($_SESSION['nome']); $i++){
@@ -73,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8 border-right">
-                                <div class="p-3 py-4">
+                                <div class="p-2 py-3">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4 class="text-right">Configurações de Perfil</h4>
                                     </div>
@@ -92,18 +89,18 @@
                                             <label class="labels">Nome de usuário</label>
                                             <input type="text" id="newUser" name="usuario" class="form-control" placeholder="Username" value="<?php echo $_SESSION['usuario'];?>" required pattern="[A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+" onblur="buscarUser(this.value);" oninput="this.value = this.value.replace(/[^A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+/, ''); var element = document.querySelector('#userValidation'); element.classList.add('hide');">
                                         </div>
-                                        <div class="col-md-12"><label class="labels">Cep</label><input type="text" class="form-control" placeholder="Digite seu cep" value="" disabled></div>
-                                        <div class="col-md-12"><label class="labels">Estado</label><input type="text" class="form-control" placeholder="Nome do estado" value="" disabled></div>
+                                        <div class="col-md-6"><label class="labels">Cep</label><input type="text" class="form-control" placeholder="Digite seu cep" value="" disabled></div>
+                                        <div class="col-md-6"><label class="labels">Estado</label><input type="text" class="form-control" placeholder="Nome do estado" value="" disabled></div>
                                         <div class="col-md-12"><label class="labels">Bairro</label><input type="text" class="form-control" placeholder="Nome do bairro" value="" disabled></div>
                                         <div class="col-md-12"><label class="labels">Cidade</label><input type="text" class="form-control" placeholder="Nome da cidade" value="" disabled></div>
                                         <div class="col-md-12"><label class="labels">Referência</label><input type="text" class="form-control" placeholder="Referência" value="" disabled></div>
                                         <div class="col-md-12"><label class="labels">Escolaridade</label><input type="text" class="form-control" placeholder="Nível de Escolaridade" value="" disabled></div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-6">
                                         <div class="col-md-6"><label class="labels">País</label><input type="text" class="form-control" placeholder="Nome do país" value="" disabled></div>
                                         <div class="col-md-6"><label class="labels">Região</label><input type="text" class="form-control" value="" placeholder="Nome da região" disabled></div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-6">
                                     <div class="col-md-6"><label class="labels">Data de Cadastro</label><input type="text" class="form-control" value="<?php echo $_SESSION['data'];?>" placeholder="Nome da região" disabled></div>
                                     </div>
                                     <div class="buttons mt-5 text-center">

@@ -64,31 +64,13 @@
     ?>
     
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="row">
-            <div class="dash col-lg-4 offset-lg-4 bg-white">
-                <h1 style="text-align: center; font-size: 3.5em;">
-                    <span class="fs-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                        3ESSI - Scanner de Notas Fiscais
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                    </span>
-                </h1>
-                <hr>
-                <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button" onclick="Exibir();">Selecionar</button>
-                    <select class="form-select" id="inputGroupSelect03" aria-label="button addon">
-                        <option selected>Escolha</option>
-                        <option value="Aurora">Aurora - XML / Excel</option>
-                        <option value="Cruzeiro">Cruzeiro - XML</option>
-                        <option value="Suinco">Suinco - XML</option>
-                        <option value="Plena">Plena - Excel</option>
-                        <!-- <option value="5">Total</option> -->
-                    </select>
-                </div>
+        <div class="dash col-lg-4 offset-lg-4 bg-white">
+            <div class="row p-3">
+                <?php 
+                    $title = "- Escaner de Notas Fiscais";
+                    require_once("../elements/tituloProjetoMainSection.php");
+                    require_once("../elements/selecionadorDeFornecedor.php");
+                ?>
                 <hr>
                 <div class="Notas">
                     <div id="Aurora" class="hide container px-2 py-2 text-center">
