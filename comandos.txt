@@ -284,3 +284,12 @@
    DELIMITER ;
    ```
    CALL Test_LimparNotas();
+
+
+n_carga int(10)
+tipo_dev char(1) {p (parcial) - t (total) - r (reentrega)}
+motivo_Dev varchar(45)   {}
+obs text
+recolhimento bit(1) {sim ou não}
+N_nota_devolucao int(8)
+id_monitoramento {criado na hora via sistema}
