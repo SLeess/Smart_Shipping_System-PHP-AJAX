@@ -51,17 +51,17 @@
     
     <div class="container d-flex justify-content-center align-items-center">
         <div class="dash col-lg-4 offset-lg-4 bg-white p-3">
-            <div class="p-3">
+            <div class="mb-4">
                 <?php 
                     $title = "- Motoristas e Caminhões";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>
                 <!-- <div class="container px-2 py-2" style="margin-bottom: 35px;"> -->
                 <!-- <div class="row g-4 py-2 row-cols-lg-12"> -->
-                <form action="3ESSI-MOTORIST-CAMINHOES/gravarMotorista.php" method="POST" class="row">
+                <form action="3ESSI-MOTORIST-CAMINHOES/gravarMotorista.php" method="POST" class="row p-3">
                     <div class="column col-md-6">
                         <h3>Cadastrar Motorista</h3>
-                        <div class="row-md-8">
+                        <div class="col-md-8">
                             <label for="inputText4" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Nome do Motorista">
                         </div>
