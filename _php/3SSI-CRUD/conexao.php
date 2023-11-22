@@ -1,7 +1,7 @@
 <?php
 // Desabilitar exibição de erros no HTML
-error_reporting(0);
-ini_set('display_errors', 0);
+// error_reporting(0);
+// ini_set('display_errors', 0);
 
 //Inicio da conexão com o banco de dados utilizando PDO
 $host = 'localhost';
