@@ -1,5 +1,5 @@
 <?php
-    require_once("../3ESSICRUD/conexao.php");
+    require_once("conexao.php");
     $costume = isset($_POST['where']) ? $_POST['where'] : null;
 
     $sql = "SELECT * from notas where id_monitoramento is null";
