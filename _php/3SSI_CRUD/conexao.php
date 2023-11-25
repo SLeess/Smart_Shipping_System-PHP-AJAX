@@ -3,7 +3,6 @@
 // error_reporting(0);
 // ini_set('display_errors', 0);
 
-//Inicio da conexão com o banco de dados utilizando PDO
 $host = 'localhost';
 $user = 'root'; 
 $password = ''; 

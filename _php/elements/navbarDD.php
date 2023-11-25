@@ -12,7 +12,10 @@ echo "<ul class='nav nav-tabs nav-pills flex-column flex-sm-row' id='myTab' role
     "<a class='nav-link' id='home-tab' data-toggle='tab' href='".$relative."home.php' role='tab' aria-controls='home' aria-selected='false' style='height: 100%'>Home</a>".
   "</li>
   <li class='nav-item'>
-    <a class='nav-link' id='notas-tab' data-toggle='tab' href='".$relative."3SSI-CRUD/notas.php' role='tab' aria-controls='notas fiscais' aria-selected='false' style='height: 100%'>Notas Fiscais</a>
+    <a class='nav-link' id='lista-notas-tab' data-toggle='tab' href='".$relative."3ESSI_NOTAS_MONITORAMENTO/notas.php' role='tab' aria-controls='Clientes' aria-selected='false' style='height: 100%'>Buscar Notas</a>
+  </li>
+  <li class='nav-item'>
+    <a class='nav-link' id='notas-tab' data-toggle='tab' href='".$relative."3SSI_CRUD/notas.php' role='tab' aria-controls='notas fiscais' aria-selected='false' style='height: 100%'>Inserir Notas</a>
   </li>"."
   <li class='nav-item'>
     <a class='nav-link' id='motoristas-tab' data-toggle='tab' href='".$relative."motoristas_caminhoes.php' role='tab' aria-controls='Motoristas e Caminhoes' aria-selected='false' style='height: 100%'>Motoristas & Caminhões</a>

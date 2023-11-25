@@ -58,7 +58,7 @@
                 ?>
                 <!-- <div class="container px-2 py-2" style="margin-bottom: 35px;"> -->
                 <!-- <div class="row g-4 py-2 row-cols-lg-12"> -->
-                <form action="3ESSI-MOTORIST-CAMINHOES/gravarMotorista.php" method="POST" class="row p-3">
+                <form action="3ESSI_MOTORIST_CAMINHOES/gravarMotorista.php" method="POST" class="row p-3">
                     <div class="column col-md-6">
                         <h3>Cadastrar Motorista</h3>
                         <div class="col-md-8">
@@ -66,12 +66,12 @@
                             <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Nome do Motorista">
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="inputText4" class="form-label">CPF</label>
+                            <label for="inputText3" class="form-label">CPF</label>
                             <!-- <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="CPF do Motorista"> -->
                             <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required pattern="\d{11}\" title="000.000.000-00">
                         </div>
                         <div class="col-md-9 mt-4">
-                            <label for="inputText4" class="form-label">N° de Habilitação</label>
+                            <label for="inputText2" class="form-label">N° de Habilitação</label>
                             <input type="text" class="form-control" id="inputNumHabilitacao" name="inputNumHabilitacao" placeholder="Número de Habilitação" maxlength="8">
                         </div>
                         <div class="col-md-9 mt-3">
