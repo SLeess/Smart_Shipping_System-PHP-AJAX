@@ -1,5 +1,10 @@
 <p>
     Digite algo no campo de entrada para pesquisar na tabela por nomes, sobrenomes ou e-mails:
 </p>
-<input class="form-control" id="myInput" type="text" placeholder="Procurar..">
+<div>
+    <input id="pesquisar" class="form-control" id="myInput" type="text" placeholder="Procurar.." style="width: 45%;margin-right: 15px;">
+    <span>Qtd de notas selecionadas:</span>
+    <input id="qtdLinhas" class="form-control" type="text" name="" id="" value="0" disabled style="width: 40px;">
+    <p id="selectAll">Selecionar todas as linhas abaixo</p>
+</div>
 <br>
