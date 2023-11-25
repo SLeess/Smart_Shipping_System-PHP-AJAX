@@ -108,6 +108,7 @@
                                     </div>
                                     <div class="buttons mt-5 text-center">
                                         <button class="btn btn-outline-primary profile-button" type="submit">Salvar alterações</button>
+                                        <button class="btn btn-outline-secondary profile-button" type="button" onclick="location.href='CRUD/logout.php';">Sair da conta</button>
                                         <button class="btn btn-outline-danger profile-button" type="button" onclick="location.href='CRUD/deleteUser.php';">Apagar conta</button>
                                     </div>
                                 </div>
@@ -132,7 +133,6 @@
                     relative: '' // Passe o ID desejado aqui
                 },
                 success: (result) => {
-                    console.log(result);
                     $("#navbarSt").html(result);
 
                     // Adicione a classe "active" ao elemento desejado

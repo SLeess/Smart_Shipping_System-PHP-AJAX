@@ -42,7 +42,6 @@
             height: 87vh;
             margin: auto;
             max-width: 920px;
-            min-height: 420px;
             min-width: 400px;
             max-height: 1200px;
         }
@@ -185,7 +184,6 @@
                     relative: '../' // Passe o ID desejado aqui
                 },
                 success: (result) => {
-                    console.log(result);
                     $("#navbarSt").html(result);
 
                     // Adicione a classe "active" ao elemento desejado

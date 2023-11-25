@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Login</title>
+    <title>Lista de notas</title>
     <link rel="shortcut icon" href="../_assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../_style/style.css">
     <!-- <link rel="stylesheet" href="../_style/navbar.css"> -->
@@ -30,19 +30,10 @@
             <div class="row p-3">
                 <?php
                     $relative = "";
-                    $title = "- Página Inicial";
+                    $title = "- Tabelas de Notas";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>
-                <p>
-                    Bem vindo a página inicial do sistema! <br><Br>Aqui pode ser feito o controle de dados fiscais a cerca dos serviços prestados pela empresa de entregas. Além disso, contamos com um sistema de controle de Motoristas, de Caminhões sendo utilizados.
-                </p>
-                <hr>
-                <p>
-                    Visualize a barra lateral para ver as opções de menus a serem trabalhados.
-                </p>
-                <hr>
-                <br style="margin-bottom: 20px;">
-                <h4 style="text-align: center;">Novidades</h4>
+                <div id="table"></div>
             </div>
         </div>
     </div>
@@ -53,16 +44,30 @@
     <script>
         $(document).ready(() => {
             $.ajax({
-                url: 'elements/navbarDD.php',
+                url: '3ESSI-CRUD/consultaNotas.php',
                 type: 'POST',
                 data: {
-                    relative: '' // Passe o ID desejado aqui
+                    
                 },
                 success: (result) => {
-                    $("#navbarSt").html(result);
+                    console.log(result);
+                    var confirm = "<table class='table'><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th></tr></thead><tbody>";
+                    for(i = 0; i < nomes.length; i++){
+                        confirm+= "<tr>";
+                        confirm += ("<td>"+nomes[i]+"</td>"); 
+                        confirm += ("<td>"+(i+1)+"</td>"); 
+                        confirm += ("<td>"+reverseString(nomes[i])+"</td>"); 
+                        confirm+= "</tr>";
+                    }
 
-                    // Adicione a classe "active" ao elemento desejado
-                    $('#home-tab').addClass('active');
+                    // <td>{$row['n_nota']}</td>
+                    // <td>{$row['Cliente']}</td>
+                    // <td>{$row['municipio']}</td>
+                    // <td>{$row['fornecedor']}</td>
+                    // <td>{$row['peso_bruto']}</td>
+                
+                    confirm += "</tbody></table>";
+                    $("#table").html(confirm);
                 }
             });
         });

@@ -134,7 +134,6 @@
                     relative: '' // Passe o ID desejado aqui
                 },
                 success: (result) => {
-                    console.log(result);
                     $("#navbarSt").html(result);
 
                     // Adicione a classe "active" ao elemento desejado
