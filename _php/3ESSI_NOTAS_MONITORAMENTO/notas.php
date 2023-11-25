@@ -66,18 +66,23 @@
                 },
                 success: (result) => {
                     dados = JSON.parse(result);
-                    var confirm = "<table class='table'><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th></tr></thead><tbody>";
-                    for(i = 0; i < dados.length; i++){
-                        confirm+= "<tr>";
-                        confirm += "<th scope='row'>"+ (parseInt(i) + 1) +"</th>";
-                        confirm += ("<td>"+dados[i]['n_nota']+"</td>"); 
-                        confirm += ("<td>"+dados[i]['Cliente']+"</td>"); 
-                        confirm += ("<td>"+dados[i]['municipio']+"</td>"); 
-                        confirm += ("<td>"+dados[i]['fornecedor']+"</td>"); 
-                        confirm += ("<td>"+dados[i]['peso_bruto']+"</td>"); 
-                        confirm+= "</tr>";
+                    var confirm;
+                    if(dados.length === 0){
+                        confirm = "<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>";
+                    } else{
+                        confirm = "<table class='table'><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th></tr></thead><tbody>";
+                        for(i = 0; i < dados.length; i++){
+                            confirm+= "<tr>";
+                            confirm += "<th scope='row'>"+ (parseInt(i) + 1) +"</th>";
+                            confirm += ("<td>"+dados[i]['n_nota']+"</td>"); 
+                            confirm += ("<td>"+dados[i]['Cliente']+"</td>"); 
+                            confirm += ("<td>"+dados[i]['municipio']+"</td>"); 
+                            confirm += ("<td>"+dados[i]['fornecedor']+"</td>"); 
+                            confirm += ("<td>"+dados[i]['peso_bruto']+"</td>"); 
+                            confirm+= "</tr>";
+                        }
+                        confirm += "</tbody></table>";
                     }
-                    confirm += "</tbody></table>";
                     $("#table").html(confirm);
                 }
             });
