@@ -7,8 +7,9 @@ body{
     height: 100vh;
     background-image: url("_assets/background.png");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     margin-top: 35px;
 }
 img{
@@ -105,6 +106,7 @@ img{
     height: 35px; 
     background: white; 
     border-radius: 20px;
+    text-indent: 8px;
     /* margin: 0px 5px; */
 }
 
@@ -112,4 +114,8 @@ img{
     width: 276px; 
     display: inline-block; 
     margin-top: 15px;
+}
+
+.hide{
+    display: none;
 }
