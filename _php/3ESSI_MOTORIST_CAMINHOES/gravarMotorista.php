@@ -1,6 +1,5 @@
 <?php
     require_once("../3SSI-CRUD/conexao.php");
-
     $placa = $_POST['inscricaoPlaca']; 
     $modelo = $_POST['Modelo'];
     $nome = $_POST['inputNome'];
@@ -9,7 +8,7 @@
     $data = $_POST['inputData'];
 
     $sqlMotoristas_Caminhoes = "CALL UpMotoristas_Caminhoes('$placa', '$modelo', '$nome', '$cpf', '$habilitacao', '$data')";
-
+    echo "Tewste3<br>";
     $stmt = $pdo->prepare($sqlMotoristas_Caminhoes);
     try{
         $stmt->execute();

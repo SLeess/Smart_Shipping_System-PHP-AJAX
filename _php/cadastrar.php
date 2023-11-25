@@ -48,7 +48,7 @@
                                     <label for="usernameaemail" class="form-label">Username e Email</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">@</span>
-                                        <input type="text" class="form-control" placeholder="Nome de usuário" aria-label="Username" aria-describedby="basic-addon1" name="usuario" id="usuario" required pattern="[A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+" onblur="buscarUser(this.value)" oninput="this.value = this.value.replace(/[^A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+/, ''); var element = document.querySelector('#userValidation'); element.classList.add('hide');">
+                                        <input type="text" class="form-control" placeholder="Nome de usuário" aria-label="Username" aria-describedby="basic-addon1" name="usuario" id="usuario" required pattern="[A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+" onblur="buscarUser(this.value)" oninput="this.value = this.value.replace(/[^A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+/, ''); var element = document.querySelector('#userValidation'); element.classList.add('hide');" maxlength="20">
                                     </div>
                                 </div>
                                 <div>
@@ -73,7 +73,7 @@
                                         &nbsp; Sua senha deve ter entre 8 e 20 caracteres, os quais devem ser letras e números, sem espaços, caracteres especiais ou emojis.
                                     </small>
                                     <div class="input-group mb-3">
-                                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Insira a Senha" aria-described="basic-addon2" required pattern="[A-Za-z0-9]+" required minlength="8" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]+/, '');verificado(document.querySelector('#passwordHelpBlock'), this.value, 2);verificaSenha(document.getElementById('confirmarSenha').value);" onblur="verificado(this, this.value, 1);verificaSenha(document.getElementById('confirmarSenha').value);">
+                                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Insira a Senha" aria-described="basic-addon2" required pattern="[A-Za-z0-9]+" required minlength="8" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]+/, '');verificado(document.querySelector('#passwordHelpBlock'), this.value, 2);verificaSenha(document.getElementById('confirmarSenha').value);" onblur="verificado(this, this.value, 1);verificaSenha(document.getElementById('confirmarSenha').value);" maxlength="20">
                                     </div>
                                 </div>
                                 <div>
