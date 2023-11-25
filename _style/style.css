@@ -43,7 +43,7 @@ body{
 .dash{
     width: 85vw;
     max-width: 880px;
-    height: 90vh;
+    min-height: 90vh;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 40px;
