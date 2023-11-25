@@ -4,7 +4,7 @@
     box-sizing: unset;
 }
 body{
-    height: 100vh;
+    height: 95vh;
     background-image: url("_assets/background.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -118,4 +118,10 @@ img{
 
 .hide{
     display: none;
+}
+
+@media (max-width: 1860px) {
+    body{
+        background-image: url('../_assets/background-1360-760.png');
+    }
 }

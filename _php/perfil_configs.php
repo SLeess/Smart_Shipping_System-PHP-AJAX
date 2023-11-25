@@ -25,13 +25,16 @@
             min-width: 300px;
             height: 100%;
         }
+        .nav-pills .nav-link.active{
+            background-color: #042ba3;
+        }
     </style>
 </head>
 <body>
     <?php
         $relative = "";
-        require_once("elements/navbar.php");
     ?>
+    <div id="navbarSt"></div>
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="dash col-lg-4 offset-lg-4 bg-white">
@@ -119,7 +122,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../_scriptjs/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        $(document).ready(() => {
+            $.ajax({
+                url: 'elements/navbarDD.php',
+                type: 'POST',
+                data: {
+                    relative: '' // Passe o ID desejado aqui
+                },
+                success: (result) => {
+                    console.log(result);
+                    $("#navbarSt").html(result);
+
+                    // Adicione a classe "active" ao elemento desejado
+                    $('#profile-tab').addClass('active');
+                }
+            });
+        });
+
         function buscarUser(usuario){
             var validador = document.querySelector("#userValidation");
             $.ajax({

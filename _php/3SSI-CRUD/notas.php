@@ -20,7 +20,9 @@
         input[type=data], input[type=date]{
             margin: 5px 0;
         }
-
+        .nav-pills .nav-link.active{
+            background-color: #042ba3;
+        }
         .btns{
             margin-top: 35px;
             margin-bottom: 10px;
@@ -39,13 +41,10 @@
             width: 60vw;
             height: 87vh;
             margin: auto;
-            margin-top: 40px;
             max-width: 920px;
             min-height: 420px;
             min-width: 400px;
             max-height: 1200px;
-            border-radius: 3px;
-            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         }
         
         @media (max-width: 995px) {
@@ -60,10 +59,10 @@
 <body>
     <?php
         $relative = "../";
-        require_once("../elements/navbar.php");
     ?>
+    <div id="navbarSt"></div>
     
-    <div class="container d-flex justify-content-center align-items-center">
+    <div class="container d-flex justify-content-center align-items-center" style="margin-top: 10px;">
         <div class="dash col-lg-4 offset-lg-4 bg-white">
             <div class="row p-3">
                 <?php 
@@ -176,5 +175,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="../../_scriptjs/script.js"></script>
     <script src="../../_scriptjs/notas.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $.ajax({
+                url: '../elements/navbarDD.php',
+                type: 'POST',
+                data: {
+                    relative: '../' // Passe o ID desejado aqui
+                },
+                success: (result) => {
+                    console.log(result);
+                    $("#navbarSt").html(result);
+
+                    // Adicione a classe "active" ao elemento desejado
+                    $('#notas-tab').addClass('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
