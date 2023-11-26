@@ -1,5 +1,4 @@
 var dados;
-var tabelaNotas;
 var linhasSelecionadas = [];
 function toggleSelecao(idNota) {
     var index = linhasSelecionadas.indexOf(idNota);
@@ -14,7 +13,7 @@ function toggleSelecao(idNota) {
 // Função para lidar com o clique em uma linha
 function handleCliqueLinha(idNota) {
     toggleSelecao(idNota);
-
+    // console.log(idNota+"\n");
     // Adicione ou remova a classe de seleção à linha clicada
     $('#' + idNota).toggleClass('table-primary');
     atualizarQtdLinhas();
@@ -62,7 +61,7 @@ $(document).ready(() => {
 
                 // Inicialize a tabela como uma DataTable
                 
-                tabelaNotas = $('#tabelaNotas').DataTable({
+                $('#tabelaNotas').DataTable({
                     "language": {
                         "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
                     },
@@ -74,18 +73,33 @@ $(document).ready(() => {
     });
 
     $('#btnSelecionarTodas').on('click', () => {
-        selecionarTodasLinhasVisiveis(tabelaNotas);
+        selecionarTodasLinhasVisiveis();
     });
 
     // Função para selecionar todas as linhas visíveis
-    function selecionarTodasLinhasVisiveis(dataTable) {
-        var linhas = dataTable.rows({ 'search': 'applied' }).nodes(); // Obtém todas as linhas visíveis
+    function selecionarTodasLinhasVisiveis() {
+        var tabela = $("#tabelaNotas").DataTable();
+        var linhas = tabela.rows({ 'search': 'applied' }).nodes(); // Obtém todas as linhas visíveis da tabela no HTML
+        var qtd = 0;
 
-        if(linhas.lenght === $('.table-primary').length){
-            $(linhas).removeClass('table-primary');
-        } else{
-            $(linhas).addClass('table-primary'); // Adiciona a classe 'selecionada' a todas as linhas visíveis
+        var ArrayLinhas = Array.from(linhas);
+        ArrayLinhas.forEach(element => {
+            var idNota = $(element).find('td:eq(0)').text();
+            if (!linhasSelecionadas.includes(idNota)) {
+                handleCliqueLinha(idNota);
+                qtd++;
+            }
+        });
+
+        if (qtd === 0) {
+            // Todas as linhas já estão selecionadas, então desselecione todas
+            ArrayLinhas.forEach(element => {
+                var idNota = $(element).find('td:eq(0)').text();
+                handleCliqueLinha(idNota);
+            });
         }
+
+        console.log(qtd + " linhas atualizadas\n");
         atualizarQtdLinhas(); // Atualiza a quantidade de linhas selecionadas
     }
 
