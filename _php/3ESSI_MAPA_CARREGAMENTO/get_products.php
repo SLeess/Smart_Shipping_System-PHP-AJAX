@@ -76,7 +76,7 @@ $pdo = null;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Em seguida, inclua os outros scripts -->
     <script src="../../_scriptjs/mapa.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
         .nav-pills .nav-link.active{
             background-color: #042ba3;
