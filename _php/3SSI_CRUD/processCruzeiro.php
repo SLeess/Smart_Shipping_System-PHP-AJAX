@@ -80,10 +80,10 @@ if (!empty($_FILES['xmlCruzeiroFilesInput']['tmp_name'])) {
                 $qTrib = (string) $det->prod->qTrib;
                 
                 // Extrair o conteúdo de <infAdProd>
-                $infAdProd = (string) $det->infAdProd;
+                $infAdProd = (string) $det->prod-> xProd;
 
                 // Use uma expressão regular para encontrar o número após 'Qtde:'
-                if (preg_match('/Qtde:\s*([\d.]+)\s*/', $infAdProd, $matches)) {
+                if (preg_match('/-\s*([\d.]+)\s*/', $infAdProd, $matches)) {
                     $numero = $matches[1];
                 } else {
                     // Defina um valor padrão se não encontrar o número
