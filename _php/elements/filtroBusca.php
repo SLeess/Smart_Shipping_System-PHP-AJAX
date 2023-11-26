@@ -5,6 +5,7 @@
     <input id="pesquisar" class="form-control" id="myInput" type="text" placeholder="Procurar.." style="width: 45%;margin-right: 15px;">
     <span>Qtd de notas selecionadas:</span>
     <input id="qtdLinhas" class="form-control" type="text" name="" id="" value="0" disabled style="width: 50px;">
-    <p id="btnSelecionarTodas">Selecionar todas as linhas abaixo</p>
+    <!-- <p>Selecionar todas as linhas abaixo</p> -->
+    <button id="btnSelecionarTodas" class="btn btn-outline-primary mt-2">Selecionar todas as linhas abaixo</button>
 </div>
 <br>

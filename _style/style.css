@@ -51,12 +51,12 @@ body{
 }
 
 /*===============================VISUALIZAR NOTAS.PHP ================================== */
-#btnSelecionarTodas:hover{
+/* #btnSelecionarTodas:hover{
     cursor: pointer;
 }
 #btnSelecionarTodas{
     color: blue;
     text-decoration: underline;
     margin-top: 5px;
-}
+} */
 /* ======================================================================================== */

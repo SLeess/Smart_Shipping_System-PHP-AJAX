@@ -8,6 +8,18 @@ function toggleSelecao(idNota) {
     } else {
         linhasSelecionadas.splice(index, 1);
     }
+    // =================APAGAR ISSO==============================
+    qtd = 0;
+    if (linhasSelecionadas.length > 0) {
+        linhasSelecionadas.forEach(element => {
+            qtd++;
+        });
+        console.log("Quantidade de linhas no array: "+ qtd);
+    } else {
+        console.log("Nenhuma linha selecionada.");
+    }    
+    // ===============================================
+    atualizarQtdLinhas();
 }
 
 // Função para lidar com o clique em uma linha
@@ -20,7 +32,7 @@ function handleCliqueLinha(idNota) {
 }
 
 function atualizarQtdLinhas() {
-    var qtdLinhasSelecionadas = $('.table-primary').length;
+    var qtdLinhasSelecionadas = linhasSelecionadas.length;
     $('#qtdLinhas').val(qtdLinhasSelecionadas);
 }
 
@@ -76,10 +88,10 @@ $(document).ready(() => {
         selecionarTodasLinhasVisiveis();
     });
 
-    // Função para selecionar todas as linhas visíveis
+    // função para selecionar todas as linhas visíveis nessa page
     function selecionarTodasLinhasVisiveis() {
         var tabela = $("#tabelaNotas").DataTable();
-        var linhas = tabela.rows({ 'search': 'applied' }).nodes(); // Obtém todas as linhas visíveis da tabela no HTML
+        var linhas = tabela.rows({ 'search': 'applied', 'page': 'current' }).nodes(); //Comando pra obter as linhas visíveis da tabela no HTML
         var qtd = 0;
 
         var ArrayLinhas = Array.from(linhas);
@@ -92,15 +104,13 @@ $(document).ready(() => {
         });
 
         if (qtd === 0) {
-            // Todas as linhas já estão selecionadas, então desselecione todas
+            // Todas as linhas já estão selecionadas - desselecione todas
             ArrayLinhas.forEach(element => {
                 var idNota = $(element).find('td:eq(0)').text();
                 handleCliqueLinha(idNota);
             });
         }
-
-        console.log(qtd + " linhas atualizadas\n");
-        atualizarQtdLinhas(); // Atualiza a quantidade de linhas selecionadas
+        // console.log(qtd + " linhas atualizadas\n");
     }
 
     // Função para enviar IDs das linhas selecionadas para outro arquivo PHP
