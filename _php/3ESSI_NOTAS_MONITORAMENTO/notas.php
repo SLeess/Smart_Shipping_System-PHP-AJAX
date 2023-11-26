@@ -43,11 +43,15 @@
                     $relative = "";
                     $title = "- Tabelas de Notas sem Monitoramento";
                     require_once("../elements/tituloProjetoMainSection.php");
+                ?>
+                <p class="" style="font-size: 1.5em;text-align: center;">Selecione as notas desejadas para um novo monitoramento</p>
+                    <button class="btn btn-outline-primary col-lg-4 offset-lg-4 mt-3 mb-3">Gerar monitoramento</button>
+                <?php
                     require_once("../elements/filtroBusca.php");
                 ?>
             </div>
             <div class="row" style="padding: 0px 1em 1em 1em;">
-                <div id="table" class="table-responsive p-2" style="max-width: 70%;">
+                <div id="table" class="table-responsive p-2" style="max-width: 100%;">
                 </div>
             </div>
         </div>

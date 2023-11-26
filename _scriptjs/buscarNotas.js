@@ -8,24 +8,12 @@ function toggleSelecao(idNota) {
     } else {
         linhasSelecionadas.splice(index, 1);
     }
-    // =================APAGAR ISSO==============================
-    qtd = 0;
-    if (linhasSelecionadas.length > 0) {
-        linhasSelecionadas.forEach(element => {
-            qtd++;
-        });
-        console.log("Quantidade de linhas no array: "+ qtd);
-    } else {
-        console.log("Nenhuma linha selecionada.");
-    }    
-    // ===============================================
     atualizarQtdLinhas();
 }
 
-// Função para lidar com o clique em uma linha
 function handleCliqueLinha(idNota) {
     toggleSelecao(idNota);
-    // console.log(idNota+"\n");
+
     // Adicione ou remova a classe de seleção à linha clicada
     $('#' + idNota).toggleClass('table-primary');
     atualizarQtdLinhas();
@@ -66,7 +54,7 @@ $(document).ready(() => {
                 confirm += "</tbody></table>";
                 $("#table").html(confirm);
                 
-                // Css básico para elementos do html a partir de ID com Ajax
+                // Css para elementos do html a partir de ID com Ajax
                 $("#tabelaNotas").css({
                     "box-shadow": "rgb(14 30 37 / 6%) 0px 2px 4px 0px, rgb(5 11 14 / 11%) 0px 2px 16px 0px"
                 });
@@ -78,8 +66,13 @@ $(document).ready(() => {
                         "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
                     },
                     "pageLength": 10, // Defina o número de linhas por página
-                    "searching": false // Desabilita a barra de pesquisa
+                    // "searching": false 
+                    // Desabilita a barra de pesquisa
                 });
+
+                $('#tabelaNotas_filter label input').attr('id', 'meuId');
+                // $('#tabelaNotas_filter input').attr('id', 'pesquisar');
+                // $('#tabelaNotas_filter input').addClass("form-control");
             }
         }
     });
@@ -89,52 +82,6 @@ $(document).ready(() => {
     });
 
     // função para selecionar todas as linhas visíveis nessa page
-    function selecionarTodasLinhasVisiveis() {
-        var tabela = $("#tabelaNotas").DataTable();
-        var linhas = tabela.rows({ 'search': 'applied', 'page': 'current' }).nodes(); //Comando pra obter as linhas visíveis da tabela no HTML
-        var qtd = 0;
-
-        var ArrayLinhas = Array.from(linhas);
-        ArrayLinhas.forEach(element => {
-            var idNota = $(element).find('td:eq(0)').text();
-            if (!linhasSelecionadas.includes(idNota)) {
-                handleCliqueLinha(idNota);
-                qtd++;
-            }
-        });
-
-        if (qtd === 0) {
-            // Todas as linhas já estão selecionadas - desselecione todas
-            ArrayLinhas.forEach(element => {
-                var idNota = $(element).find('td:eq(0)').text();
-                handleCliqueLinha(idNota);
-            });
-        }
-        // console.log(qtd + " linhas atualizadas\n");
-    }
-
-    // Função para enviar IDs das linhas selecionadas para outro arquivo PHP
-    function enviarIdsSelecionados() {
-        if (linhasSelecionadas.length > 0) {
-            // Aqui você pode fazer uma requisição AJAX para enviar os IDs para outro arquivo PHP
-            // Exemplo:
-            // $.ajax({
-            //     url: 'outroArquivo.php',
-            //     type: 'POST',
-            //     data: {
-            //         ids: linhasSelecionadas.join(',')
-            //     },
-            //     success: function(response) {
-            //         console.log(response);
-            //     }
-            // });
-
-            // Para este exemplo, mostraremos os IDs no console
-            console.log("IDs das linhas selecionadas: " + linhasSelecionadas.join(','));
-        } else {
-            console.log("Nenhuma linha selecionada.");
-        }
-    }
 
     $("#pesquisar").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -142,6 +89,7 @@ $(document).ready(() => {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+
     $.ajax({
         url: '../elements/navbarDD.php',
         type: 'POST',
@@ -157,3 +105,50 @@ $(document).ready(() => {
     });
     
 });
+
+function selecionarTodasLinhasVisiveis() {
+    var tabela = $("#tabelaNotas").DataTable();
+    var linhas = tabela.rows({ 'search': 'applied', 'page': 'current' }).nodes(); //Comando pra obter as linhas visíveis da tabela no HTML
+    var qtd = 0;
+
+    var ArrayLinhas = Array.from(linhas);
+    ArrayLinhas.forEach(element => {
+        var idNota = $(element).find('td:eq(0)').text();
+        if (!linhasSelecionadas.includes(idNota)) {
+            handleCliqueLinha(idNota);
+            qtd++;
+        }
+    });
+
+    if (qtd === 0) {
+        // Todas as linhas já estão selecionadas - desselecione todas
+        ArrayLinhas.forEach(element => {
+            var idNota = $(element).find('td:eq(0)').text();
+            handleCliqueLinha(idNota);
+        });
+    }
+    // console.log(qtd + " linhas atualizadas\n");
+}
+
+// Função para enviar IDs das linhas selecionadas para outro arquivo PHP
+function enviarIdsSelecionados() {
+    if (linhasSelecionadas.length > 0) {
+        // Aqui você pode fazer uma requisição AJAX para enviar os IDs para outro arquivo PHP
+        // Exemplo:
+        // $.ajax({
+        //     url: 'outroArquivo.php',
+        //     type: 'POST',
+        //     data: {
+        //         ids: linhasSelecionadas.join(',')
+        //     },
+        //     success: function(response) {
+        //         console.log(response);
+        //     }
+        // });
+
+        // Para este exemplo, mostraremos os IDs no console
+        console.log("IDs das linhas selecionadas: " + linhasSelecionadas.join(','));
+    } else {
+        console.log("Nenhuma linha selecionada.");
+    }
+}
