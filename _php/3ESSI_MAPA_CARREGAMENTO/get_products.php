@@ -89,7 +89,7 @@ $pdo = null;
         }
 
         .dash{
-            width: 60vw;
+            /* min-width: 60vw; */
             height: 100%;
             margin: 10px auto;
             border-radius: 3px;
@@ -109,8 +109,8 @@ $pdo = null;
     ?>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="row">
-            <div class="dash col-lg-4 offset-lg-4 bg-white">
+        <div>
+            <div class="row dash col-lg-4 offset-lg-4 bg-white">
                 <h2 style="text-align: center; font-size: 3.5em;">
                     <span class="fs-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
@@ -134,10 +134,9 @@ $pdo = null;
                             <div class="btns">
                                 <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
                             </div>
-                            <div id="resultado"></div>
-
                         </div>
                     </form>
+                    <div id="resultado"></div>
                 </div>
                 <!-- </div> -->
             </div>
