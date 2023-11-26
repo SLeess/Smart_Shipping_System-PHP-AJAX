@@ -51,21 +51,10 @@ body{
 }
 
 /*===============================VISUALIZAR NOTAS.PHP ================================== */
-.selecionada td,
-.selecionada th{
-    background-color: #04185536; /* Cor de fundo para linhas selecionadas */
-}
-.selecionada{
-    border: 0.1px solid #0000003b;
-}
-tr:hover{
-    cursor: pointer;
-    background-color: lightgray;
-}
-#selectAll:hover{
+#btnSelecionarTodas:hover{
     cursor: pointer;
 }
-#selectAll{
+#btnSelecionarTodas{
     color: blue;
     text-decoration: underline;
     margin-top: 5px;
