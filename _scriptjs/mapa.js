@@ -16,12 +16,12 @@ function buscarProdutos() {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
-            console.log('Status da Requisição:', xhr.status);
-            console.log('Resposta do Servidor:', xhr.responseText);
+            // console.log('Status da Requisição:', xhr.status);
+            // console.log('Resposta do Servidor:', xhr.responseText);
 
             try {
                 const dados = JSON.parse(xhr.responseText);
-                console.log('Dados:', dados);
+                // console.log('Dados:', dados);
 
                 var idMonitoramentos = []; // Array para armazenar os id_monitoramento
 

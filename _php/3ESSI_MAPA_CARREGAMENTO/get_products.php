@@ -104,9 +104,6 @@ $pdo = null;
     </style>
 </head>
 <body>
-    <?php
-        $relative = "";
-    ?>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
         <div class="dash bg-white">
@@ -141,13 +138,13 @@ $pdo = null;
                 url: '../elements/navbarDD.php',
                 type: 'POST',
                 data: {
-                    relative: '' // Passe o ID desejado aqui
+                    relative: '../' // Passe o ID desejado aqui
                 },
                 success: (result) => {
                     $("#navbarSt").html(result);
 
                     // Adicione a classe "active" ao elemento desejado
-                    $('#motoristas-tab').addClass('active');
+                    $('#mapa-tab').addClass('active');
                 }
             });
         });
