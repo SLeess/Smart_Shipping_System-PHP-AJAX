@@ -302,5 +302,163 @@ ALTER TABLE `produtos`
 --
 -- Restrições para tabelas `redes`
 --
+DROP VIEW IF EXISTS Visao_Monitoramento;
+   CREATE VIEW Visao_Monitoramento AS
+   SELECT m.Id, m.controle, m.largada, m.lead_time, m.status, m.data_entrega, m.placa_caminhao, m.cpf_motorista,
+       c.modelo AS modelo_caminhao, mt.nome AS nome_motorista
+   FROM monitoramento m, caminhoes c, motorista mt 
+   WHERE m.placa_caminhao = c.placa AND
+   m.cpf_motorista = mt.CPF_motorista;
+
+DROP VIEW IF EXISTS Visao_SimplificadaNotas
+   CREATE VIEW Visao_SimplificadaNotas AS
+   SELECT 
+       n.n_nota,
+       n.Cliente,
+       n.Endereco,
+       n.bairro,
+       n.municipio,
+       COUNT(p.cod) AS total_produtos
+   FROM 
+       notas n
+   JOIN 
+       produtos p ON n.n_nota = p.nf
+   GROUP BY 
+       n.n_nota, n.Cliente, n.Endereco, n.bairro, n.municipio;
+
+   DROP VIEW IF EXISTS Visao_PesoPorMunicipFornecSimples;
+   CREATE VIEW Visao_PesoPorMunicipFornecSimples AS
+   SELECT n.municipio, SUM(n.peso_bruto) as 'Soma de Pesos'
+   FROM notas n
+      LEFT JOIN redes r ON n.n_nota = r.fk_notas_n_nota
+      LEFT JOIN aurora_notas a ON n.n_nota = a.fk_notas_n_nota
+      LEFT JOIN cruzeiro_notas c ON n.n_nota = c.fk_notas_n_nota
+      LEFT JOIN plena_notas p ON n.n_nota = p.fk_notas_n_nota
+      LEFT JOIN suinco_notas s ON n.n_nota = s.fk_notas_n_nota
+   GROUP BY n.municipio
+   ORDER BY n.municipio;
+
+DROP VIEW IF EXISTS Visao_PesoPorMunicipFornecCompleto;
+   CREATE VIEW Visao_PesoPorMunicipFornecCompleto AS
+   SELECT 
+       n.fornecedor, 
+       n.municipio, 
+       SUM(n.peso_bruto) as 'Soma de Pesos', 
+       n.cliente,
+       CASE WHEN r.fk_notas_n_nota IS NOT NULL THEN 'Valor para redes' ELSE NULL END AS ColunaRedes
+   FROM notas n
+      LEFT JOIN redes r ON n.n_nota = r.fk_notas_n_nota
+      LEFT JOIN aurora_notas a ON n.n_nota = a.fk_notas_n_nota
+      LEFT JOIN cruzeiro_notas c ON n.n_nota = c.fk_notas_n_nota
+      LEFT JOIN plena_notas p ON n.n_nota = p.fk_notas_n_nota
+      LEFT JOIN suinco_notas s ON n.n_nota = s.fk_notas_n_nota
+   GROUP BY n.fornecedor, n.cliente, n.municipio  
+   ORDER BY `ColunaRedes` DESC;
+
+DROP VIEW IF EXISTS Visao_DetalhamentoNotas;
+   CREATE VIEW Visao_GroupByMunicipFornecedores AS
+   SELECT n.fornecedor, n.cliente, n.n_nota as 'N° da Nota', n.endereco, n.numero, n.bairro, n.municipio, n.data_lancamento, n.id_monitoramento, n.valor_nota
+   FROM notas n
+      LEFT JOIN redes r ON n.n_nota = r.fk_notas_n_nota
+      LEFT JOIN aurora_notas a ON n.n_nota = a.fk_notas_n_nota
+      LEFT JOIN cruzeiro_notas c ON n.n_nota = c.fk_notas_n_nota
+      LEFT JOIN plena_notas p ON n.n_nota = p.fk_notas_n_nota
+      LEFT JOIN suinco_notas s ON n.n_nota = s.fk_notas_n_nota
+   ORDER BY n.fornecedor;
+
+
+   CREATE INDEX IndexMonitoramentoPlaca ON monitoramento (placa_caminhao);
+   CREATE INDEX IndexProdutosNota ON produtos (nf);
+   
+    DELIMITER //
+   DROP PROCEDURE IF EXISTS AlterarProdutoQuantidade//
+   CREATE PROCEDURE AlterarProdutoQuantidade(
+       IN p_cod VARCHAR(12),
+       IN p_nf INT,
+       IN p_nova_quantidade FLOAT
+   )
+   BEGIN
+       UPDATE produtos SET quantidade = p_nova_quantidade
+       WHERE cod = p_cod AND nf = p_nf;
+   END;
+   //
+   DELIMITER ;
+   DELIMITER //
+
+   DROP PROCEDURE IF EXISTS UpMotoristas_Caminhoes//
+   CREATE PROCEDURE UpMotoristas_Caminhoes(
+       IN p_placa CHAR(8),
+       IN p_modelo CHAR(1),
+       IN p_nome VARCHAR(20),
+       IN p_CPF_motorista CHAR(11),
+       IN p_num_habilitacao INT,
+       IN p_venci_habilitacao DATE
+   )
+   BEGIN
+       -- Verifica se a placa já existe na tabela
+       IF NOT EXISTS (SELECT 1 FROM caminhoes WHERE placa = p_placa) THEN
+           INSERT INTO caminhoes (placa, modelo) VALUES (p_placa, p_modelo);
+           SELECT 'Caminhão inserido com sucesso.' AS Mensagem;
+       ELSE
+           SELECT 'Placa já cadastrada. Não foi possível inserir o caminhão.' AS Mensagem_Caminhao;
+       END IF;
+
+       -- Verifica se o motorista já existe na tabela
+       IF NOT EXISTS (SELECT 1 FROM motorista WHERE cpf_motorista = p_CPF_motorista) THEN
+           INSERT INTO motorista (nome, CPF_motorista, num_habilitacao, venci_habilitacao) VALUES (p_nome, p_CPF_motorista, p_num_habilitacao, p_venci_habilitacao);
+           SELECT 'Motorista inserido com sucesso.' AS Mensagem;
+       ELSE
+           SELECT 'Motorista já cadastrado. Não foi possível inseri-lo.' AS Mensagem_Motorista;
+       END IF;
+
+       -- Atualiza a tabela motorista_caminhoes
+       IF NOT EXISTS (SELECT 1 FROM motorista_caminhoes WHERE fk_cpf_motorista = p_CPF_motorista AND fk_placa = p_placa) THEN
+           INSERT INTO motorista_caminhoes (fk_placa, fk_cpf_motorista) VALUES (p_placa, p_CPF_motorista);
+           SELECT 'Tabela motorista_caminhoes atualizada com sucesso!' AS Info;
+       ELSE
+           SELECT 'Motorista já associado ao caminhão selecionado.' AS Info;
+       END IF;
+   END //
+
+   DELIMITER ;
+   DELIMITER //
+
+   DROP PROCEDURE IF EXISTS VerificarMonitoramentosAtivos//
+   CREATE PROCEDURE VerificarMonitoramentosAtivos()
+   BEGIN
+       SELECT *
+       FROM visao_monitoramento
+       WHERE largada >= CURDATE();
+   END //
+
+   DELIMITER ;
+    DELIMITER //
+
+   DROP PROCEDURE IF EXISTS AttrDataEntregaMonitor//
+   CREATE PROCEDURE AttrDataEntregaMonitor(
+       IN p_IdMonitoramento INT,
+       IN p_DataEntrega DATE
+   )
+   BEGIN
+       UPDATE monitoramento
+       SET data_entrega = p_DataEntrega
+       WHERE Id = p_IdMonitoramento;
+   END //
+
+   DELIMITER ;
+
+   DELIMITER //
+DROP TRIGGER IF EXISTS INSERE_REDES//
+CREATE TRIGGER INSERE_REDES
+AFTER INSERT ON notas FOR EACH ROW
+BEGIN
+    IF(NEW.cliente = 'CENCOSUD BRASIL COMERCIAL S A' OR NEW.cliente = 'COMERCIAL GALA LTDA' OR NEW.cliente = 'COMERCIAL GALA' OR NEW.cliente = 'MART MINAS DISTRIBUICAO LTDA' OR NEW.cliente ='SUPERMERCADOS BH COMERCIO DE ALIMENTOS S' OR NEW.cliente = 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS' OR NEW.cliente = 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S A' OR NEW.cliente = 'CEMA CENTRAL MINEIRA ATACADISTA LTDA') THEN 
+        INSERT INTO redes (fk_notas_n_nota, fornecedor) VALUES (NEW.n_nota, NEW.fornecedor);
+    END IF;
+END;
+
+//
+
+DELIMITER ;
 
 

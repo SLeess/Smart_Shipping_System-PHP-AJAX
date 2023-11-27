@@ -55,23 +55,7 @@
                 $stmtcarga->bindParam(':carga', $nCarga);
                 $stmtcarga->execute();
 
-                if (
-                    $xNome === 'CENCOSUD BRASIL COMERCIAL S A' ||
-                    $xNome === 'COMERCIAL GALA LTDA' ||
-                    $xNome === 'COMERCIAL GALA' ||
-                    $xNome === 'MART MINAS DISTRIBUICAO LTDA' ||
-                    $xNome === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S' ||
-                    $xNome === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS' ||
-                    $xNome === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S A' ||
-                    $xNome === 'CEMA CENTRAL MINEIRA ATACADISTA LTDA' 
-                ) {
-                     $sqlRede ="INSERT INTO redes(fk_notas_n_nota, fornecedor) VALUES (:nota, :operacao)";
-                     $stmtRede = $pdo->prepare($sqlRede);
-                     $stmtRede->bindParam(':nota', $nNF);
-                     $stmtRede->bindParam(':operacao', $operacao);
-                     $stmtRede->execute();
-                }
-
+                
                 // Extrair informações dos produtos e inserir na tabela "produtos"
                 foreach ($xml->NFe->infNFe->det as $det) {
                     $cProd = (string) $det->prod->cProd;
