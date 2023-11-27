@@ -26,11 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $stmt = $pdo->prepare($sqlAurora);
             // $stmt->execute($params);
-            $stmt->execute($stmt);
+            $stmt->execute($params);
+
         }
     }
     // Responda com uma mensagem de confirmação
-    echo "<p style='color: green;'>Dados da Aurora foram inseridos com sucesso no banco de dados!</p>";
+    print("<p style='color: green;'>Dados da Aurora foram inseridos com sucesso no banco de dados!</p>");
     $pdo = null;
 }
 ?>
