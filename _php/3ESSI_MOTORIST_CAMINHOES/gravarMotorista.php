@@ -8,7 +8,7 @@
     $data = $_POST['inputData'];
 
     $sqlMotoristas_Caminhoes = "CALL UpMotoristas_Caminhoes('$placa', '$modelo', '$nome', '$cpf', '$habilitacao', '$data')";
-    echo "Tewste3<br>";
+    // echo "Tewste3<br>";
     $stmt = $pdo->prepare($sqlMotoristas_Caminhoes);
     try{
         $stmt->execute();
