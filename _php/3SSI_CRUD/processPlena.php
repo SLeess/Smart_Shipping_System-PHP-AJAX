@@ -88,25 +88,7 @@ if (is_array($jsonData)) {
             ];
             $stmt->execute($params);
 
-            // Verifique a condição para inserção em redes
-            if (
-                $nota['descricaoCliente'] === 'CENCOSUD BRASIL COMERCIAL S A' ||
-                $nota['descricaoCliente'] === 'COMERCIAL GALA LTDA' ||
-                $nota['descricaoCliente'] === 'COMERCIAL GALA' ||
-                $nota['descricaoCliente'] === 'MART MINAS DISTRIBUICAO LTDA' ||
-                $nota['descricaoCliente'] === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S' ||
-                $nota['descricaoCliente'] === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS' ||
-                $nota['descricaoCliente'] === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S A' ||
-                $nota['descricaoCliente'] === 'CEMA CENTRAL MINEIRA ATACADISTA LTDA'
-            ) {
-                // Inserir em redes
-                $stmtRedes = $pdo->prepare($sqlRedes);
-                $paramsRedes = [
-                    $nota['numeroNota'],
-                    $operacao
-                ];
-                $stmtRedes->execute($paramsRedes);
-            }
+            
 
             // Inserir em plena_notas
             $stmtPlena = $pdo->prepare($sqlPlena);
