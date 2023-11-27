@@ -230,7 +230,6 @@ ALTER TABLE `plena_notas`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`cod`,`nf`),
-  ADD KEY `fk_id_monitoramento` (`id_monitoramento`);
 
 --
 -- Índices de tabela `redes`
