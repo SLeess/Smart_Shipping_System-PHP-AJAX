@@ -1,5 +1,5 @@
 <?php
-require_once("conexao.php");
+require_once("../3SSI_CRUD/conexao.php");
 
 try {
     // Verificar se o formulário foi enviado

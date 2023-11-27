@@ -1,5 +1,5 @@
 <?php
-    require_once("conexao.php");
+    require_once("../3SSI_CRUD/conexao.php");
     $placa = $_POST['inscricaoPlaca']; 
     $modelo = $_POST['Modelo'];
     $nome = $_POST['inputNome'];
