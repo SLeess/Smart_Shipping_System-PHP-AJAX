@@ -303,7 +303,7 @@ DROP VIEW IF EXISTS Visao_Monitoramento;
    WHERE m.placa_caminhao = c.placa AND
    m.cpf_motorista = mt.CPF_motorista;
 
-DROP VIEW IF EXISTS Visao_SimplificadaNotas
+DROP VIEW IF EXISTS Visao_SimplificadaNotas;
    CREATE VIEW Visao_SimplificadaNotas AS
    SELECT 
        n.n_nota,
