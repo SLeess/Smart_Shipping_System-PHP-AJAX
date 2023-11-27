@@ -22,7 +22,7 @@ echo "<ul class='nav nav-tabs nav-pills flex-column flex-sm-row' id='myTab' role
     <a class='nav-link' id='motoristas-tab' data-toggle='tab' href='".$relative."3ESSI_MOTORIST_CAMINHOES/motoristas_caminhoes.php' role='tab' aria-controls='Motoristas e Caminhoes' aria-selected='false' style='height: 100%'>Motoristas & Caminhões</a>
   </li>
   <li class='nav-item'>
-    <a class='nav-link' id='mapa-tab' data-toggle='tab' href='".$relative."3ESSI_MAPA_CARREGAMENTO/get_products.php' role='tab' aria-controls='Mapa de Carregamentos' aria-selected='false' style='height: 100%'>Mapa de Carregamento</a>
+    <a class='nav-link' id='mapa-tab' data-toggle='tab' href='".$relative."3ESSI_MAPA_CARREGAMENTO/view_get_products.php' role='tab' aria-controls='Mapa de Carregamentos' aria-selected='false' style='height: 100%'>Mapa de Carregamento</a>
   </li>
   <li class='flex-sm-fill nav-item'>
   </li>".
