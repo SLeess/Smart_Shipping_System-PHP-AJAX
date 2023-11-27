@@ -22,7 +22,7 @@
             margin-top: -200px;
         }
         .dash{
-            min-width: 300px;
+            min-width: 780px;
             height: 100%;
         }
         .nav-pills .nav-link.active{
