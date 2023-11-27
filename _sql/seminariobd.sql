@@ -229,8 +229,7 @@ ALTER TABLE `plena_notas`
 -- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD PRIMARY KEY (`cod`,`nf`),
-  ADD KEY `fk_id_monitoramento` (`id_monitoramento`);
+  ADD PRIMARY KEY (`cod`,`nf`);
 
 --
 -- Índices de tabela `redes`
@@ -292,12 +291,6 @@ ALTER TABLE `notas`
 --
 ALTER TABLE `plena_notas`
   ADD CONSTRAINT `plena_notas_ibfk_1` FOREIGN KEY (`fk_notas_n_nota`) REFERENCES `notas` (`n_nota`);
-
---
--- Restrições para tabelas `produtos`
---
-ALTER TABLE `produtos`
-  ADD CONSTRAINT `fk_id_monitoramento` FOREIGN KEY (`id_monitoramento`) REFERENCES `monitoramento` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Restrições para tabelas `redes`
