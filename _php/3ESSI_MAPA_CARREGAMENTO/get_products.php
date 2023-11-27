@@ -9,7 +9,7 @@ try {
 
         // Consulta SQL para buscar os dados necessários
         $sql = "SELECT
-        p.id_monitoramento,
+        n.id_monitoramento,
         p.cod,
         MAX(p.descricao) as descricao,
         MAX(p.nf) as nf,
@@ -23,12 +23,12 @@ try {
     LEFT JOIN
         notas n ON p.nf = n.n_nota
     WHERE
-        p.id_monitoramento IS NOT NULL
+        n.id_monitoramento IS NOT NULL
         AND n.Data_lancamento = :dataLancamento
     GROUP BY
-        p.cod, p.id_monitoramento
+        p.cod, n.id_monitoramento
     ORDER BY
-        p.id_monitoramento, p.cod";
+        n.id_monitoramento, p.cod";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':dataLancamento', $dataLancamento);
