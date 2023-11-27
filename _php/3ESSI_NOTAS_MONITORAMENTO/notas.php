@@ -45,7 +45,11 @@
                     require_once("../elements/tituloProjetoMainSection.php");
                 ?>
                 <p class="" style="font-size: 1.5em;text-align: center;">Selecione as notas desejadas para um novo monitoramento</p>
-                    <button class="btn btn-outline-primary col-lg-4 offset-lg-4 mt-3 mb-3">Gerar monitoramento</button>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <button class="col-md-auto btn btn-outline-primary mt-3 mb-3">Gerar monitoramento</button>
+                    </div>
+                </div>
                 <?php
                     require_once("../elements/filtroBusca.php");
                 ?>
