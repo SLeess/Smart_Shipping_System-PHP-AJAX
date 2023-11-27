@@ -92,7 +92,8 @@
                                         <option>Selecione o Modelo</option>
                                         <option selected value="T">Toco</option>
                                         <option value="B">Truco</option>
-                                        <option>...</option>
+                                        <option value="L">Leve</option>
+                                        <option value="3">3x4</option>
                                     </select>
                                 </div>
                                 

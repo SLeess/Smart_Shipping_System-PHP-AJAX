@@ -1,5 +1,5 @@
 <?php
-    require_once("../3SSI-CRUD/conexao.php");
+    require_once("conexao.php");
     $placa = $_POST['inscricaoPlaca']; 
     $modelo = $_POST['Modelo'];
     $nome = $_POST['inputNome'];
@@ -13,7 +13,7 @@
     try{
         $stmt->execute();
         $pdo = null;
-        print("<script>alert('Dados inseridos com sucesso no banco de dados!');location.href='../motoristas_caminhoes.php';</script>");
+        print("<script>alert('Dados inseridos com sucesso no banco de dados!');location.href='motoristas_caminhoes.php';</script>");
     } catch(PDOException $err) {
         $pdo = null;
         print("<script>alert('Erro: Problemas na inserção de Motorista_Usuario. Erro gerado: " . $err->getMessage(). ");history.back(-1);</script>");
