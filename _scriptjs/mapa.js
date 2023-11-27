@@ -23,14 +23,17 @@ function buscarProdutos() {
                 const dados = JSON.parse(xhr.responseText);
                 console.log('Dados:', dados);
 
+                var idMonitoramentos = []; // Array para armazenar os id_monitoramento
+
                 var confirm;
                 if (dados.message === "none") {
                     confirm = "<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>";
                 } else {
                     // Exemplo de iteração sobre o JSON agrupado
                     for (const id_monitoramento in dados) {
+                        idMonitoramentos.push(id_monitoramento);
                         confirm += `<h3>ID Monitoramento: ${id_monitoramento}</h3>`;
-                        confirm += "<table id='tabelaMapa' class='tablemapa table table-bordered table-hover table-sm'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>";
+                        confirm += "<table id='tabelaMapa" + id_monitoramento + "' class='tablemapa table table-bordered table-hover table-sm mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>";
 
                         for (let i = 0; i < dados[id_monitoramento].length; i++) {
                             confirm += "<tr>";
@@ -49,13 +52,14 @@ function buscarProdutos() {
                     }
                 }
                 $("#resultado").html(confirm);
-                $('#tabelaMapa').DataTable({
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
-                    },
-                    "pageLength": 10, // Defina o número de linhas por página
-                    // "searching": false 
-                    // Desabilita a barra de pesquisa
+                idMonitoramentos.forEach(id => {
+                    $('#tabelaMapa' + id).DataTable({
+                        "language": {
+                            "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
+                        },
+                        "pageLength": 5,
+                        // Outras opções se necessário
+                    });
                 });
             } catch (error) {
                 console.error('Erro ao analisar JSON:', error);
