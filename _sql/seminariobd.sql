@@ -58,24 +58,7 @@ CREATE TABLE `cruzeiro_notas` (
 
 -- --------------------------------------------------------
 
---
--- Estrutura para tabela `devolucoes`
---
 
-CREATE TABLE `devolucoes` (
-  `Id` smallint(6) NOT NULL,
-  `n_carga` int(10) NOT NULL,
-  `tipo_dev` char(1) NOT NULL,
-  `motivo_dev` varchar(45) NOT NULL,
-  `obs` text DEFAULT NULL,
-  `recolhimento` bit(1) DEFAULT NULL,
-  `N_nota_devolucao` int(8) DEFAULT NULL,
-  `Id_monitoramento` smallint(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `monitoramento`
 --
 
@@ -160,29 +143,12 @@ CREATE TABLE `produtos` (
   `quantidade` float NOT NULL,
   `unidade` varchar(4) NOT NULL,
   `QuantAux` int(4) DEFAULT NULL,
-  `id_monitoramento` smallint(6) DEFAULT NULL,
   `data_producao` date DEFAULT NULL,
   `data_validade` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
---
--- Estrutura para tabela `produtos_devolvidos`
---
-
-CREATE TABLE `produtos_devolvidos` (
-  `Id` smallint(6) NOT NULL,
-  `cod_produto` int(8) NOT NULL,
-  `Id_devolucao` smallint(6) DEFAULT NULL,
-  `descricao` varchar(100) NOT NULL,
-  `quantidade` decimal(9,2) NOT NULL,
-  `peso` decimal(9,2) NOT NULL,
-  `n_nota` varchar(14) DEFAULT NULL,
-  `tipo` char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `redes`
@@ -227,11 +193,6 @@ ALTER TABLE `cruzeiro_notas`
   ADD PRIMARY KEY (`fk_notas_n_nota`);
 
 --
--- Índices de tabela `devolucoes`
---
-ALTER TABLE `devolucoes`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `Id_monitoramento` (`Id_monitoramento`);
 
 --
 -- Índices de tabela `monitoramento`
@@ -271,20 +232,12 @@ ALTER TABLE `plena_notas`
 -- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD PRIMARY KEY (`cod`,`nf`),
-  ADD KEY `fk_id_monitoramento` (`id_monitoramento`);
-
---
--- Índices de tabela `produtos_devolvidos`
---
-ALTER TABLE `produtos_devolvidos`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `Id_devolucao` (`Id_devolucao`),
-  ADD KEY `n_nota` (`n_nota`);
+  ADD PRIMARY KEY (`cod`,`nf`);
 
 --
 -- Índices de tabela `redes`
 --
+
 ALTER TABLE `redes`
   ADD PRIMARY KEY (`fk_notas_n_nota`);
 
@@ -293,10 +246,6 @@ ALTER TABLE `redes`
 --
 
 --
--- AUTO_INCREMENT de tabela `devolucoes`
---
-ALTER TABLE `devolucoes`
-  MODIFY `Id` smallint(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `monitoramento`
@@ -305,10 +254,6 @@ ALTER TABLE `monitoramento`
   MODIFY `Id` smallint(6) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `produtos_devolvidos`
---
-ALTER TABLE `produtos_devolvidos`
-  MODIFY `Id` smallint(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
@@ -325,12 +270,6 @@ ALTER TABLE `aurora_notas`
 --
 ALTER TABLE `cruzeiro_notas`
   ADD CONSTRAINT `cruzeiro_notas_ibfk_1` FOREIGN KEY (`fk_notas_n_nota`) REFERENCES `notas` (`n_nota`);
-
---
--- Restrições para tabelas `devolucoes`
---
-ALTER TABLE `devolucoes`
-  ADD CONSTRAINT `devolucoes_ibfk_1` FOREIGN KEY (`Id_monitoramento`) REFERENCES `monitoramento` (`Id`);
 
 --
 -- Restrições para tabelas `monitoramento`
@@ -359,25 +298,7 @@ ALTER TABLE `plena_notas`
   ADD CONSTRAINT `plena_notas_ibfk_1` FOREIGN KEY (`fk_notas_n_nota`) REFERENCES `notas` (`n_nota`);
 
 --
--- Restrições para tabelas `produtos`
---
-ALTER TABLE `produtos`
-  ADD CONSTRAINT `fk_id_monitoramento` FOREIGN KEY (`id_monitoramento`) REFERENCES `monitoramento` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `produtos_devolvidos`
---
-ALTER TABLE `produtos_devolvidos`
-  ADD CONSTRAINT `produtos_devolvidos_ibfk_1` FOREIGN KEY (`Id_devolucao`) REFERENCES `devolucoes` (`Id`),
-  ADD CONSTRAINT `produtos_devolvidos_ibfk_2` FOREIGN KEY (`n_nota`) REFERENCES `notas` (`n_nota`);
-
---
 -- Restrições para tabelas `redes`
 --
-ALTER TABLE `redes`
-  ADD CONSTRAINT `redes_ibfk_1` FOREIGN KEY (`fk_notas_n_nota`) REFERENCES `notas` (`n_nota`);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
