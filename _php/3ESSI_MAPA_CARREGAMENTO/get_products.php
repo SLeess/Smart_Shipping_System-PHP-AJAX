@@ -109,42 +109,29 @@ $pdo = null;
     ?>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
-        <div>
-            <div class="row dash col-lg-4 offset-lg-4 bg-white">
-                <h2 style="text-align: center; font-size: 3.5em;">
-                    <span class="fs-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                        3ESSI - Mapa de carregamento
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alt" viewBox="0 0 16 16">
-                            <path d="M1 13.5a.5.5 0 0 0 .5.5h3.797a.5.5 0 0 0 .439-.26L11 3h3.5a.5.5 0 0 0 0-1h-3.797a.5.5 0 0 0-.439.26L5 13H1.5a.5.5 0 0 0-.5.5zm10 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/>
-                        </svg>
-                    </span>
-                </h2>
-                <hr>
-                <div class="container px-2 py-2" style="margin-bottom: 35px;">
-                    <form method="POST" action="">
-                        <div class="row g-4 py-2 row-cols-1 row-cols-lg-12">
-                            <div class="col-md-12">
-                                <label for="dataLancamento" class="form-label">Data de Lançamento:</label>
-                                <input type="date" class="form-control" id="dataLancamento" name="dataLancamento" required>
-                            </div>
-                            <!-- Adicione outros campos conforme necessário -->
-                            <div class="btns">
-                                <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
-                            </div>
+        <div class="dash bg-white">
+            <div class="row p-3">
+                <?php
+                    $title = "- Mapa de carregamento";
+                    require_once("../elements/tituloProjetoMainSection.php");
+                ?>
+                <form method="POST" action="">
+                    <div class="row g-4 py-2 row-cols-1 row-cols-lg-12">
+                        <div class="col-md-12">
+                            <label for="dataLancamento" class="form-label">Data de Lançamento:</label>
+                            <input type="date" class="form-control" id="dataLancamento" name="dataLancamento" required>
                         </div>
-                    </form>
-                    <div id="resultado"></div>
-                </div>
-                <!-- </div> -->
+                        <!-- Adicione outros campos conforme necessário -->
+                        <div class="btns">
+                            <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="resultado"></div>
             </div>
         </div>
     </div>
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script src="../../_scriptjs/mapa.js"></script>
