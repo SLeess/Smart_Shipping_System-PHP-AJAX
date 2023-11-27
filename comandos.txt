@@ -116,10 +116,10 @@
     CREATE TRIGGER ALTERA_ID_MONITORAMENTO_PRODUTOS
     AFTER UPDATE ON notas FOR EACH ROW
     BEGIN
-        IF NEW.id_monitoramento != OLD.id_monitoramento THEN
+        IF OLD.id_monitoramento IS NULL OR NEW.id_monitoramento != OLD.id_monitoramento THEN
             UPDATE produtos
             SET produtos.id_monitoramento = NEW.id_monitoramento
-            WHERE nf = OLD.n_nota;
+            WHERE nf = NEW.n_nota;
         END IF;
     END;
     //
