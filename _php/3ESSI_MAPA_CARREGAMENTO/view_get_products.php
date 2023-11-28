@@ -84,8 +84,8 @@
             </div>
             <p class="row" style="font-size: 1.3em;text-align: center;">Data de Lançamento</p>
             <div class="row justify-content-center">                    
-                <input class="col-md-auto btn-outline-primary" type="date" id="dataLancamento">
-                <button class="col-md-auto btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
+                <input class="col-md-auto col-auto btn-outline-primary" type="date" id="dataLancamento">
+                <button class="col-md-auto col-auto btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
             </div>
             <div id="resultado"></div>
         </div>

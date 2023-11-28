@@ -7,7 +7,7 @@ if (empty($_SESSION)){
 <?php
 $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
 
-echo "<ul class='nav nav-tabs nav-pills flex-column flex-sm-row' id='myTab' role='tablist' >".
+echo "<ul class='nav nav-tabs nav-pills flex-col flex-sm-row flex-md-row' id='myTab' role='tablist' >".
   "<li class='nav-item'>".
     "<a class='nav-link' id='home-tab' data-toggle='tab' href='".$relative."home.php' role='tab' aria-controls='home' aria-selected='false' style='height: 100%'>Home</a>".
   "</li>
