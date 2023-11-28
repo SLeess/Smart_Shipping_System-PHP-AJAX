@@ -37,7 +37,7 @@ body{
 }
 
 .dash{
-    max-width: 880px;
+    /* max-width: 880px; */
     min-height: 90vh;
     margin: auto;
     margin-top: 10px;
