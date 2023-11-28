@@ -80,10 +80,12 @@
                     $title = "- Tabelas de Notas sem Monitoramento";
                     require_once("../elements/tituloProjetoMainSection.php");
                 ?>
-                <p class="" style="font-size: 1.5em;text-align: center;">Selecione as notas desejadas para um novo monitoramento</p>
+                <div class="row">
+                    <p class="col-sm-8 offset-sm-2 col-md-11 offset-md-1" style="font-size: 1.5em;text-align: center;">Selecione as notas desejadas para um novo monitoramento</p>
+                </div>
                 <div class="container">
                     <div class="row justify-content-center">
-                        <button class="col-md-auto btn btn-outline-primary mt-3 mb-3">Gerar monitoramento</button>
+                        <button class="col-auto btn btn-outline-primary mt-3 mb-3">Gerar monitoramento</button>
                     </div>
                 </div>
                 <?php
@@ -91,7 +93,7 @@
                 ?>
             </div>
             <div class="row" style="padding: 0px 1em 1em 1em;">
-                <div id="table" class="table-responsive p-2" style="max-width: 100%;">
+                <div id="table" class="table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2" style="max-width: 100%;">
                 </div>
             </div>
         </div>
