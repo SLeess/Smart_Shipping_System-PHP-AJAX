@@ -2,12 +2,8 @@
 require_once("../3SSI_CRUD/conexao.php");
 
 try {
-    // Verificar se o formulário foi enviado
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Obter a data do POST
         $dataLancamento = isset($_POST['dataLancamento']) ? $_POST['dataLancamento'] : '';
-
-        // Consulta SQL para buscar os dados necessários
         $sql = "SELECT
         n.id_monitoramento,
         p.cod,

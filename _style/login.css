@@ -53,15 +53,12 @@ img{
 }
 #painelLogin{
     width: 294px; 
-    /* margin: auto; */
     margin-top: 30px;
 }
 
 #subPainel{
     width: 276px;
     height: 233px;
-    /* margin-left: 0px; */
-    /* padding-top: 0.1px; */
     margin-top: 8px;
     background: #D9D9D9;
     border-radius: 20px;
@@ -70,7 +67,6 @@ img{
 #subPainel2{
     width: 277px;
     height: 217px;
-    /* margin-left: 8px; */
     margin-top: 8px;
     background: #C6C6C6;
     border-radius: 20px;
@@ -106,7 +102,6 @@ img{
     background: white; 
     border-radius: 20px;
     text-indent: 8px;
-    /* margin: 0px 5px; */
 }
 
 #stlyLogin{
