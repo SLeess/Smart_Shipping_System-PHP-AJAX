@@ -13,25 +13,25 @@ $(document).ready(() => {
         }
     });
 
-    $("#btnBuscar").click(()=>{
+    $("#btnBuscar").click(() => {
         $.ajax({
             url: "control_get_products.php",
             type: 'POST',
             data: {
                 dataLancamento: $("#dataLancamento").val()
             },
-            success: (dados) =>{
-                try{
+            success: (dados) => {
+                try {
                     var idMonitoramentos = []; // Array para armazenar os id_monitoramento
 
                     var confirm;
                     if (dados['message'] === "none") {
                         confirm = "<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>";
-                    } else{
+                    } else {
                         for (const id_monitoramento in dados) {
                             idMonitoramentos.push(id_monitoramento);
-                            confirm += `<h3 class="m-2">ID Monitoramento: ${id_monitoramento}</h3>`;
-                            confirm += "<table id='tabelaMapa" + id_monitoramento + "' class='row tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>";
+                            confirm += `<h3 class="m-2 mt-3">ID Monitoramento: ${id_monitoramento}</h3>`;
+                            confirm += "<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><table id='tabelaMapa" + id_monitoramento + "' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>";
 
                             for (let i = 0; i < dados[id_monitoramento].length; i++) {
                                 confirm += "<tr>";
@@ -46,10 +46,10 @@ $(document).ready(() => {
 
                                 confirm += "</tr>";
                             }
-                            confirm += "</tbody></table>";
+                            confirm += "</tbody></table></div>";
                         }
                     }
-                    $("#resultado").html(confirm);
+                    $("#resultado").html(confirm.replace("undefined", ""));
                     idMonitoramentos.forEach(id => {
                         $('#tabelaMapa' + id).DataTable({
                             "language": {

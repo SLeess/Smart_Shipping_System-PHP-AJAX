@@ -75,17 +75,17 @@
 <body>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="dash bg-white p-4">
+        <div class="dash bg-white p-4 col-12">
             <div class="row">
                 <?php
                     $title = "- Mapa de carregamento";
                     require_once("../elements/tituloProjetoMainSection.php");
                 ?>
             </div>
-            <p class="row" style="font-size: 1.3em;text-align: center;">Data de Lançamento</p>
+            <p class="row justify-content-center" style="font-size: 1.3em;text-align: center;">Data de Lançamento</p>
             <div class="row justify-content-center">                    
                 <input class="col-md-auto col-auto btn-outline-primary" type="date" id="dataLancamento">
-                <button class="col-md-auto col-auto btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
+                <button class="col-md-auto col-auto offset-6 offset-md-6 btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
             </div>
             <div id="resultado"></div>
         </div>
