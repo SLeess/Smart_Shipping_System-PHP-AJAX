@@ -18,9 +18,6 @@
     <!-- Adicione a biblioteca DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
-        .nav-pills .nav-link.active{
-            background-color: #042ba3;
-        }
         .dash{
             min-height: 90vh;
             height: 100%;
@@ -31,6 +28,10 @@
         }
         .table-hover:hover{
             cursor: pointer;
+        }
+        .nav-pills .nav-link.active,
+        .dropdown-menu .active{
+            background-color: #042ba3;
         }
         <?php echo "nav{
             background-color: #333;

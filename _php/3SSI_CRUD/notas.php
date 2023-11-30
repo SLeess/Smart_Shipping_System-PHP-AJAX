@@ -20,9 +20,6 @@
         input[type=data], input[type=date]{
             margin: 5px 0;
         }
-        .nav-pills .nav-link.active{
-            background-color: #042ba3;
-        }
         .btns{
             margin-top: 35px;
             margin-bottom: 10px;
@@ -52,6 +49,10 @@
                 height: 900px;
                 margin-bottom: 35px;
             }
+        }
+        .nav-pills .nav-link.active,
+        .dropdown-menu .active{
+            background-color: #042ba3;
         }
         <?php echo "nav{
             background-color: #333;

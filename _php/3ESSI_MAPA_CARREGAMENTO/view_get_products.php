@@ -17,16 +17,13 @@
     <script src="../../_scriptjs/script_get_products.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
-        .nav-pills .nav-link.active{
-            background-color: #042ba3;
-        }
         .btns{
             display: block;
             margin: auto;
             margin-top: 15px;
             margin-bottom: 10px;
         }
-
+        
         .dash{
             height: 100%;
             min-height: 600px;
@@ -36,13 +33,12 @@
             border-radius: 3px;
             box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         }
-        
-        .inicial{
-            width: 720px;
-        }
         input,
         button{
             max-width: 180px;
+        }
+        .nav-pills .nav-link.active{
+            background-color: #042ba3;
         }
         <?php echo "nav{
             background-color: #333;

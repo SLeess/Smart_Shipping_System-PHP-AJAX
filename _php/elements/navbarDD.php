@@ -14,8 +14,8 @@ echo "<ul class='nav nav-tabs nav-pills flex-col flex-sm-row flex-md-row' id='my
 
 if($_SESSION['tipo'] == 1)
   echo "<li class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' id='notas-dropdown' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Notas</a>
-    <div class='dropdown-menu' style='background-color: white;'>
+    <a class='nav-link dropdown-toggle' style='padding-bottom: 15px;' id='notas-dropdown' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Notas</a>
+    <div class='dropdown-menu' style='background-color: white; padding: 5px 0;'>
       <a class='dropdown-item' id='notas-nmonit-tab' href='".$relative."3ESSI_NOTAS_MONITORAMENTO/notas.php'>Buscar Notas</a>
       <a class='dropdown-item' id='notas-tab' href='".$relative."3SSI_CRUD/notas.php'>Inserir Notas</a>
     </div>

@@ -21,7 +21,7 @@
         .dash{
             max-width: 990px;
         }
-        
+
         .buttons{
             margin-top: -200px;
         }
@@ -36,6 +36,9 @@
             #linha1 img{
                 width: 400px;
             }
+        }
+        .nav-pills .nav-link.active{
+            background-color: #042ba3;
         }
         <?php echo "nav{
             background-color: #333;
