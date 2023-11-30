@@ -84,3 +84,7 @@ nav li a:hover{
 .inicial{
     width: 720px;
 }
+
+#notas-dropdown .dropdown-toggle::after{
+    margin-left: 65%;
+}
