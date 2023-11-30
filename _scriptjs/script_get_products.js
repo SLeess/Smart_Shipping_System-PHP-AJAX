@@ -49,6 +49,10 @@ $(document).ready(() => {
                             confirm += "</tbody></table></div>";
                         }
                     }
+                    $("#dash").css({
+                        "width": "auto"
+                    });
+
                     $("#resultado").html(confirm.replace("undefined", ""));
                     idMonitoramentos.forEach(id => {
                         $('#tabelaMapa' + id).DataTable({

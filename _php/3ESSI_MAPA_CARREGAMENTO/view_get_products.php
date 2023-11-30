@@ -29,6 +29,7 @@
 
         .dash{
             height: 100%;
+            width: 720px;
             min-height: 600px;
             margin: 10px auto;
             border-radius: 3px;
@@ -76,7 +77,7 @@
 <body>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="dash bg-white p-4 col-12">
+        <div id="dash" class="inicial dash bg-white p-4 col-12">
             <div class="row">
                 <?php
                     $title = "- Mapa de carregamento";
