@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (empty($_SESSION)){
-    print("<script>location.href='../../index.html'</script>");
-}
+  session_start();
+  if (empty($_SESSION)){
+      print("<script>location.href='../../index.html'</script>");
+  }
 ?>
 <?php
 $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
@@ -49,7 +49,7 @@ echo
   <li class='flex-sm-fill nav-item'>
   </li>".
   "<li class='nav-item'>
-    <a class='nav-link' id='profile-tab' data-toggle='tab' href='".$relative."perfil_configs.php' role='tab' aria-controls='Clientes' aria-selected='false' style='height: 100%'>
+    <a class='nav-link' id='profile-tab' data-toggle='tab' href='".$relative."view_perfil_configs.php' role='tab' aria-controls='Clientes' aria-selected='false' style='height: 100%'>
         <img src='https://cdn-icons-png.flaticon.com/256/6596/6596121.png' alt='' width='32' height='32' class='rounded-circle me-2'>
         <strong>".$_SESSION['usuario']."
         </strong>

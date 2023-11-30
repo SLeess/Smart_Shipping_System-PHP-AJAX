@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(empty($_SESSION)){
-        print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
+        print("<script>location.href='../../index.html'</script>");
     }
 ?>
 <!DOCTYPE html>
