@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(empty($_SESSION) || $_SESSION["tipo"] != 1){
+    if(empty($_SESSION)){
         print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
     }
 ?>
@@ -13,8 +13,8 @@
     <link rel="shortcut icon" href="../../_assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../_style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="../../_scriptjs/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="../../_scriptjs/script.js"></script>
     <!-- Adicione a biblioteca DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
@@ -78,21 +78,21 @@
                     $relative = "";
                     $title = "- Tabelas de Notas sem Monitoramento";
                     require_once("../elements/tituloProjetoMainSection.php");
-                ?>
-                <div class="row">
-                    <p class="col-sm-8 offset-sm-2 col-md-11 offset-md-1" style="font-size: 1.5em;text-align: center;">Selecione as notas desejadas para um novo monitoramento</p>
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <button class="col-auto btn btn-outline-primary mt-3 mb-3">Gerar monitoramento</button>
-                    </div>
-                </div>
-                <?php
-                    // require_once("../elements/filtroBusca.php");
-                ?>
-                <div id="filtro">
 
-                </div>
+                    if($_SESSION['tipo'] == 1){
+                        echo "
+                        <div class='row'>
+                            <p class='col-sm-8 offset-sm-2 col-md-11 offset-md-1' style='font-size: 1.5em;text-align: center;'>Selecione as notas desejadas para um novo monitoramento</p>
+                        </div>
+                        <div class='container'>
+                            <div class='row justify-content-center'>
+                                <button class='col-auto btn btn-outline-primary mt-3 mb-3'>Gerar monitoramento</button>
+                            </div>
+                        </div>
+                        <div id='filtro'>
+                        </div>";
+                    }
+                ?>
             </div>
             <div class="row" style="padding: 0px 1em 1em 1em;">
                 <div id="table" class="table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2" style="max-width: 100%;">
@@ -102,9 +102,19 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="../../_scriptjs/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../_scriptjs/script.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="../../_scriptjs/script_get_notas.js"></script>
+    <?php 
+        if($_SESSION['tipo'] == 1){
+            echo '<script src="../../_scriptjs/script_prepara_monitoramentos.js"></script>';
+        }
+    ?>
+
+    <?php    
+        if($_SESSION['tipo'] != 1){
+            echo '<script src="../../_scriptjs/script_get_notas_user.js"></script>';
+        }
+    ?>
 </body>
 </html>

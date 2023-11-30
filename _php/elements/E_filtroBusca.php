@@ -6,7 +6,7 @@
                 <input id='qtdLinhas' class='form-control' type='text' name='' value='0' disabled='' style='width: 50px;'>
             </div>
             <div id='linh2'>
-                <button id='btnSelecionarTodas'>Selecionar todas as linhas abaixo</button>
+                <button id='btnSelecionarTodas' onclick='selecionarTodasLinhasVisiveis();'>Selecionar todas as linhas abaixo</button>
             </div>
         </div>
     </div>

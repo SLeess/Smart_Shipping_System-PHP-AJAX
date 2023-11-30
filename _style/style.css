@@ -88,3 +88,7 @@ nav li a:hover{
 #notas-dropdown .dropdown-toggle::after{
     margin-left: 65%;
 }
+
+.setBord{
+    border: 0.3px solid #04185519;
+}

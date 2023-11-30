@@ -7,8 +7,6 @@
     <link rel="shortcut icon" href="../_assets/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../_style/style.css">
-    <style>
-    </style>
 </head>
 <body>
     <div class="login">
@@ -98,47 +96,9 @@
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../_scriptjs/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        function buscarUser(usuario){
-            var validador = document.querySelector("#userValidation");
-            $.ajax({
-                type: "POST",
-                url: "CRUD/consulta.php", // Nome do arquivo PHP que irá processar a solicitação
-                data: { usuario: usuario }, // Envia o valor da variável "usuario" para o PHP
-                success: function(response) {
-                    var resposta = response; // A resposta do PHP será exibida no console
-                    //console.log(resposta);
-                    if(resposta === "false"){
-                        validador.classList.remove("hide");
-                        verificado(document.querySelector("#usuario"), "", 1);
-
-                    } else{
-                        validador.classList.add("hide");
-                        verificado(document.querySelector("#usuario"), usuario, 1);
-                    }
-                }
-            });
-        }
-        function validarForm() {
-            var nome = document.getElementById("nome").value;
-            var sobrenome = document.getElementById("sobrenome").value;
-            var usuario = document.getElementById("usuario").value;
-            var email = document.getElementById("email").value;
-            var senha = document.getElementById("senha").value;
-            var confirmSenha = document.getElementById("confirmarSenha").value;
-
-            if (nome.length < 1 || sobrenome.length < 4 || usuario.length < 4 || email.length < 1) {
-                alert("Por favor, preencha todos os campos corretamente.");
-                return false;
-            }
-            if(senha.length < 8 || senha != confirmSenha){
-                alert("Verique se a senha possui mais de 4 dígitos e se sua confirmação são iguais.");
-                return false;
-            }
-            return true;
-        }
-    </script>
+    <script src="../_scriptjs/script_format_forms.js"></script>
+    <script src="../_scriptjs/script.js"></script>
+    <script src="../_scriptjs/script_cadastrar_usuario.js"></script>
 </body>
 </html>
