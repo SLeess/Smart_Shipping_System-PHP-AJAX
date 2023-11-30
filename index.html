@@ -10,35 +10,41 @@
     <link rel="stylesheet" href="_style/login.css">
 </head>
 <body>
-    <div class="hide login" id="conteudo">
-        <img src="_assets/LOGO.png" alt="logo da 3S" />
-        <div id="painelLogin">
-        <div id="subPainel">
-            <div id="subPainel2">
-                <form method="POST" action="_php/CRUD/login.php">
-                    <div id="linhaUser" class="linhas">
-                        <span>Usuário:</span>
-                    
-                        <input type="text" name="usuario" id="usuario" placeholder="Nome de usuário" required pattern="[A-Za-z0-9._<>`´À-ÖØ-öø-ÿ ]+" oninput="this.value = this.value.replace(/[^A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+/, '');" maxlength="20">
+    <div class="login col-md-12 hide" id="conteudo">
+        <div class="container">
+            <div clas="row justify-content-center" style="margin-left: 15px">
+                <img src="_assets/LOGO.png" alt="logo da 3S" style="width: 400px;">
+            </div>
+            <div class="row" style="min-width: 458px;">
+                <div class="row justify-content-center">
+                    <div style="width: 400px;" class="row justify-content-center">
+                        <div id="subPainel">
+                            <div id="subPainel2">
+                                <form method="POST" action="_php/CRUD/login.php">
+                                    <div id="linhaUser" class="linhas">
+                                        <span>Usuário:</span>
+                                        <input type="text" name="usuario" id="usuario" placeholder="Nome de usuário" required="" pattern="[A-Za-z0-9._<>`´À-ÖØ-öø-ÿ ]+" oninput="this.value = this.value.replace(/[^A-Za-z0-9._`´À-ÖØ-öø-ÿ ]+/, '');" maxlength="20">
+                                    </div>
+                                    <div id="linhaSenha" class="linhas">
+                                        <span>Senha:</span>
+                                        <input type="password" name="senha" id="senha" placeholder="*******************" required="" pattern="[A-Za-z0-9]+" maxlength="20">
+                                    </div>
+                                    <div class="mb-1" id="stlyLogin">
+                                        <button id="btnLogin" class="btn btn-outline-primary m-auto">
+                                            Login
+                                        </button>
+                                    </div>
+                                </form>
+                                <div id="btnCadastrar">
+                                    <span>
+                                        <a href="_php/cadastrar.php" class="nav-link active">Cadastre-se aqui</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="linhaSenha" class="linhas">
-                        <span>Senha:</span>
-                    
-                        <input type="password" name="senha" id="senha" placeholder="*******************" required pattern="[A-Za-z0-9]+" maxlength="20">
-                    </div>
-                    <div class="mb-1" id="stlyLogin">
-                        <button id="btnLogin" class="btn btn-outline-primary m-auto">
-                            Login
-                        </button>
-                    </div>
-                </form>
-                <div id="btnCadastrar">
-                    <span>
-                        <a href="_php/cadastrar.php" class="nav-link active">Cadastre-se aqui</a>
-                    </span>
                 </div>
             </div>
-        </div>
         </div>
     </div>
     <!---------FUNÇÃO DE LOADER---------->

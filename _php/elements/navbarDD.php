@@ -1,27 +1,28 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }
+session_start();
+if (empty($_SESSION)){
+    print("<script>location.href='../../index.html'</script>");
+}
 ?>
 <?php
 $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
 
-echo "<ul class='nav nav-tabs nav-pills flex-column flex-sm-row' id='myTab' role='tablist'>".
+echo "<ul class='nav nav-tabs nav-pills flex-col flex-sm-row flex-md-row' id='myTab' role='tablist' >".
   "<li class='nav-item'>".
     "<a class='nav-link' id='home-tab' data-toggle='tab' href='".$relative."home.php' role='tab' aria-controls='home' aria-selected='false' style='height: 100%'>Home</a>".
   "</li>
-  <li class='nav-item'>
-    <a class='nav-link' id='notas-nmonit-tab' data-toggle='tab' href='".$relative."3ESSI_NOTAS_MONITORAMENTO/notas.php' role='tab' aria-controls='Clientes' aria-selected='false' style='height: 100%'>Buscar Notas</a>
-  </li>
-  <li class='nav-item'>
-    <a class='nav-link' id='notas-tab' data-toggle='tab' href='".$relative."3SSI_CRUD/notas.php' role='tab' aria-controls='notas fiscais' aria-selected='false' style='height: 100%'>Inserir Notas</a>
-  </li>"."
-  <li class='nav-item'>
+  <li class='nav-item dropdown'>
+    <a class='nav-link dropdown-toggle' id='notas-dropdown' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Notas</a>
+    <div class='dropdown-menu' style='background-color: white;'>
+      <a class='dropdown-item' id='notas-nmonit-tab' href='".$relative."3ESSI_NOTAS_MONITORAMENTO/notas.php'>Buscar Notas</a>
+      <a class='dropdown-item' id='notas-tab' href='".$relative."3SSI_CRUD/notas.php'>Inserir Notas</a>
+    </div>
+  </li>".
+  "<li class='nav-item'>
     <a class='nav-link' id='motoristas-tab' data-toggle='tab' href='".$relative."3ESSI_MOTORIST_CAMINHOES/motoristas_caminhoes.php' role='tab' aria-controls='Motoristas e Caminhoes' aria-selected='false' style='height: 100%'>Motoristas & Caminhões</a>
   </li>
   <li class='nav-item'>
-    <a class='nav-link' id='mapa-tab' data-toggle='tab' href='".$relative."3ESSI_MAPA_CARREGAMENTO/get_products.php' role='tab' aria-controls='Mapa de Carregamentos' aria-selected='false' style='height: 100%'>Mapa de Carregamento</a>
+    <a class='nav-link' id='mapa-tab' data-toggle='tab' href='".$relative."3ESSI_MAPA_CARREGAMENTO/view_get_products.php' role='tab' aria-controls='Mapa de Carregamentos' aria-selected='false' style='height: 100%'>Mapa de Carregamento</a>
   </li>
   <li class='flex-sm-fill nav-item'>
   </li>".
@@ -34,9 +35,3 @@ echo "<ul class='nav nav-tabs nav-pills flex-column flex-sm-row' id='myTab' role
   </li>
 </ul>";
 ?>
-<!-- <li class='nav-item'>
-  <a class='nav-link' id='produtos-tab' data-toggle='tab' href='#' role='tab' aria-controls='Produtos' aria-selected='false' style='height: 100%'>Produtos</a>
-</li>
-<li class='nav-item'>
-  <a class='nav-link' id='clientes-tab' data-toggle='tab' href='#' role='tab' aria-controls='Clientes' aria-selected='false' style='height: 100%'>Visualizar Clientes</a>
-</li> -->

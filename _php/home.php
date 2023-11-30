@@ -20,10 +20,47 @@
         .nav-pills .nav-link.active{
             background-color: #042ba3;
         }
+        <?php echo "nav{
+            background-color: #333;
+            margin-bottom: 2em;
+        }
+
+        nav li{
+            display: inline-block;
+        }
+
+        nav li a{
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+
+        nav li a:hover{
+            background-color: red;
+        }
+
+        .dropdown-menu{
+            position: absolute;
+            display: none;
+        }
+
+        .dropdown-menu a{
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-menu{
+            display: block;
+            margin-top: 2px;
+        }";
+        
+        ?>
     </style>
 </head>
 <body>    
     <div id="navbarSt"></div>
+    
     <div class="container d-flex justify-content-center align-items-center">
         <!-- col-lg-4 offset-lg-4 -->
         <div class="dash bg-white">
@@ -38,11 +75,33 @@
                 </p>
                 <hr>
                 <p>
-                    Visualize a barra lateral para ver as opções de menus a serem trabalhados.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo amet vel praesentium corrupti, fugit doloremque, delectus natus ratione assumenda aut porro quis unde error deserunt animi laudantium? Accusantium, dolore odio.
                 </p>
-                <hr>
                 <br style="margin-bottom: 20px;">
+                <br><br><br><br><br><br><br>
+                <hr>
                 <h4 style="text-align: center;">Novidades</h4>
+                <div id="carouselExampleAutoplaying" class="row carousel slide col-md-10 offset-md-1 col-lg-12 offset-lg-0 offset-0 col-12 mt-2" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img src="https://assets-global.website-files.com/5e1cab8214cecfc49d37df0a/5e2f16f45fd72a805f7121af_blog-caminhao-frigorifico-fretefy.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="https://assets-global.website-files.com/5e1cab8214cecfc49d37df0a/5e2f16f45fd72a805f7121af_blog-caminhao-frigorifico-fretefy.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="https://assets-global.website-files.com/5e1cab8214cecfc49d37df0a/5e2f16f45fd72a805f7121af_blog-caminhao-frigorifico-fretefy.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

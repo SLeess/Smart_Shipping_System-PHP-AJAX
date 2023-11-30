@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
+        print("<script>location.href='../index.html'</script>");
     }
 ?>
 <!DOCTYPE html>
@@ -42,6 +42,42 @@
                 margin-top: 40px;
             }
         }
+        <?php echo "nav{
+            background-color: #333;
+            margin-bottom: 2em;
+        }
+
+        nav li{
+            display: inline-block;
+        }
+
+        nav li a{
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+
+        nav li a:hover{
+            background-color: red;
+        }
+
+        .dropdown-menu{
+            position: absolute;
+            display: none;
+        }
+
+        .dropdown-menu a{
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-menu{
+            display: block;
+            margin-top: 2px;
+        }";
+        
+        ?>
     </style>
 </head>
 <body>
@@ -55,22 +91,30 @@
                 <?php
                     $title = "- Cadastro de Motoristas e Caminhões";
                     require_once("../elements/tituloProjetoMainSection.php");
-                ?>
-                <div class="container px-2 py-2" style="margin-bottom: 35px;">
-                    <div class="row g-4 py-2 row-cols-1 row-cols-lg-12">
+                ?><div class="row">
+                <div class="col-sm-5 col-md-5 col-lg-4 col-5">
+                    <span>Qtd de notas selecionadas:</span>
+                    <input id="qtdLinhas" class="form-control" type="text" name="" value="0" disabled="" style="width: 50px;">
+                </div>
+                <div class="col-sm-6 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-5 offset-lg-3">
+                    <button id="btnSelecionarTodas" class="btn btn-outline-primary col-md-auto">Selecionar todas as linhas abaixo</button>
+                </div>
+            </div>
+                <div class="px-2 py-2" style="margin-bottom: 35px;">
+                    <div class="row g-4 py-2 col-md-12">
                         <form action="gravarMotorista.php" method="POST" class="d-flex">
-                            <div class="col-6">
-                                <h3>Cadastrar Motorista</h3>
-                                <div class="col-md-8">
+                            <div class="row col-6 col-md-6 col-lg-8">
+                                <h3 style="margin-bottom: 0;">Cadastrar Motorista</h3>
+                                <div class="col-md-11 col-lg-10">
                                     <label for="inputText1" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Nome do Motorista">
                                 </div>
-                                <div class="col-md-6 mt-3">
+                                <div class="col-md-10 col-lg-6 mt-3">
                                     <label for="inputText2" class="form-label">CPF</label>
                                     <!-- <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="CPF do Motorista"> -->
-                                    <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required pattern="\d{11}\" title="000.000.000-00">
+                                    <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required="" pattern="\d{11}\" title="000.000.000-00">
                                 </div>
-                                <div class="col-md-9 mt-4">
+                                <div class="col-md-9 col-lg-7 mt-4">
                                     <label for="inputText3" class="form-label">N° de Habilitação</label>
                                     <input type="text" class="form-control" id="inputNumHabilitacao" name="inputNumHabilitacao" placeholder="Número de Habilitação" maxlength="8">
                                 </div>
@@ -80,42 +124,43 @@
                                 </div>
                             </div>
                             
-                            <div class="col-6">
+                            <div class="row col-6 col-md-6 col-lg-8">
                                 <h3>Cadastrar Caminhão</h3>
-                                <div class="col-md-5">
+                                <div class="col-md-12">
                                     <label for="inputPlaca" class="form-label">Inscrição da Placa</label>
-                                    <input type="text" class="form-control" name="inscricaoPlaca" id="inputPlaca" placeholder="Valor da Placa" required>
+                                    <input type="text" class="form-control" name="inscricaoPlaca" id="inputPlaca" placeholder="Valor da Placa" required="">
                                 </div>
-                                <div class="col-md-6 mt-3">
+                                <div class="col-md-12 mt-3">
                                     <label for="inputModelo" class="form-label">Modelo de Veículo</label>
-                                    <select id="inputModelo" name="Modelo" class="form-select" value="Modelo" required>
+                                    <select id="inputModelo" name="Modelo" class="form-select" value="Modelo" required="">
                                         <option>Selecione o Modelo</option>
-                                        <option selected value="T">Toco</option>
+                                        <option selected="" value="T">Toco</option>
                                         <option value="B">Truco</option>
-                                        <option>...</option>
+                                        <option value="L">Leve</option>
+                                        <option value="3">3x4</option>
                                     </select>
                                 </div>
                                 
                                 <div class="col-md-5 mt-3">
                                     <label for="inputZip" class="form-label">Senha do Adm</label>
-                                    <input type="password" class="form-control" id="inputSenha" required>
+                                    <input type="password" class="form-control" id="inputSenha" required="">
                                 </div>
 
-                        <div class="col-12 mt-3">
-                            <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                            <p class="form-check-label" for="gridCheck">
-                                Confirmar veracidade dos dados acima
-                            </p>
+                                <div class="col-12 mt-3">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" required="">
+                                    <p class="form-check-label" for="gridCheck">
+                                        Confirmar veracidade dos dados acima
+                                    </p>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" onclick="removerMascaraCPF(document.getElementById('inputCPF'));formatData(document.getElementById('inputData'));">
+                                        Inserir Motorista-Caminhão
+                                    </button>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" onclick="removerMascaraCPF(document.getElementById('inputCPF'));formatData(document.getElementById('inputData'));">
-                                Inserir Motorista-Caminhão
-                            </button>
-                        </div>
+                        </form>
                     </div>
-                </form>
-                    <!-- </div> -->
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     </div>
