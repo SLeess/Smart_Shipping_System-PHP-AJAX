@@ -18,11 +18,24 @@
             margin-bottom: 10px;
         }
 
+        .dash{
+            max-width: 990px;
+        }
+        
         .buttons{
             margin-top: -200px;
         }
         .nav-pills .nav-link.active{
             background-color: #042ba3;
+        }
+
+        @media (min-width: 992px) {
+            #linha1{
+                justify-content: center;
+            }
+            #linha1 img{
+                width: 400px;
+            }
         }
         <?php echo "nav{
             background-color: #333;
@@ -75,18 +88,18 @@
                     $title = "- Alterar informações de Perfil";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>
-                <div class="container col-lg-4 offset-lg-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-12 offset-0 bg-white mb-1">
+                <div class="container bg-white mb-1">
                     <form action="CRUD/alterRow.php" method="POST">
                         <div class="row">
-                            <div class="col-md-4 border-right">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="225px" class="rounded-circle mt-4">
-                                    <span class="font-weight-bold">
+                            <div id="linha1" class="col-md-4 col-lg-5 border-right d-flex flex-column align-items-center">
+                                <div class="text-center">
+                                    <img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="225px" class="rounded-circle mt-4 d-block">
+                                    <span class="font-weight-bold d-block">
                                         <?php
                                             echo $_SESSION['nome'];
                                         ?>
                                     </span>
-                                    <span class="text-black-50">
+                                    <span class="text-black-50 d-block">
                                         <?php
                                             echo $_SESSION["email"]. "<br>";
                                             $nome = ""; $sobrenome = "";
@@ -104,7 +117,7 @@
                                     <span>&nbsp;</span>
                                 </div>
                             </div>
-                            <div class="col-md-8 border-right">
+                            <div class="col-md-8 offset-lg-1 col-lg-6 border-right">
                                 <div class="p-2 py-3">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4 class="text-right">Configurações de Perfil</h4>

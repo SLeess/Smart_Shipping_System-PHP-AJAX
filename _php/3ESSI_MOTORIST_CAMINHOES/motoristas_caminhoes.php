@@ -28,13 +28,13 @@
         }
 
         .dash{
-            width: 60vw;
-            height: 100%;
-            margin: 10px auto;
+            /* width: 60vw; */
+            /* height: 100%; */
+            /* margin: 10px auto; */
             max-width: 920px;
             max-height: 5200px;
-            border-radius: 3px;
-            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            /* border-radius: 3px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
         }
         
         @media (max-width: 780px) {
@@ -94,9 +94,9 @@
                 ?><div class="row">
             </div>
                 <div class="px-2 py-2" style="margin-bottom: 35px;">
-                    <div class="row g-4 py-2 col-md-12">
+                    <div class="row g-4 py-2 px-2 col-md-12">
                         <form action="gravarMotorista.php" method="POST" class="d-flex">
-                            <div class="row col-6 col-md-6 col-lg-7">
+                            <div class="row col-6 col-md-6 col-lg-6">
                                 <h3 style="margin-bottom: 0;">Cadastrar Motorista</h3>
                                 <div class="col-md-11 col-lg-10">
                                     <label for="inputText1" class="form-label">Nome</label>
@@ -117,8 +117,8 @@
                                 </div>
                             </div>
                             
-                            <div class="row col-6 col-md-6 col-lg-6">
-                                <h3>Cadastrar Caminhão</h3>
+                            <div class="row offset-1 offset-md-0 offset-lg-2 col-6 col-md-6 col-lg-5">
+                                <h3 style="margin-bottom: 0;">Cadastrar Caminhão</h3>
                                 <div class="col-md-12">
                                     <label for="inputPlaca" class="form-label">Inscrição da Placa</label>
                                     <input type="text" class="form-control" name="inscricaoPlaca" id="inputPlaca" placeholder="Valor da Placa" required="">
