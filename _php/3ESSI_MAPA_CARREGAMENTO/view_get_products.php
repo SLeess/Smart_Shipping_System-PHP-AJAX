@@ -29,13 +29,21 @@
 
         .dash{
             height: 100%;
-            width: 720px;
             min-height: 600px;
+            min-width: 516px;
             margin: 10px auto;
+            max-width: 980px;
             border-radius: 3px;
             box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         }
         
+        .inicial{
+            width: 720px;
+        }
+        input,
+        button{
+            max-width: 180px;
+        }
         <?php echo "nav{
             background-color: #333;
             margin-bottom: 2em;
@@ -84,10 +92,12 @@
                     require_once("../elements/tituloProjetoMainSection.php");
                 ?>
             </div>
-            <p class="row justify-content-center" style="font-size: 1.3em;text-align: center;">Data de Lançamento</p>
-            <div class="row justify-content-center">                    
-                <input class="col-md-auto col-auto btn-outline-primary" type="date" id="dataLancamento">
-                <button class="col-md-auto col-auto offset-6 offset-md-6 btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
+            <div class="row">
+                <p class="col-6 col-md-4 p-0" style="margin-left: 15px; font-size: 1.3em;">Data de Lançamento</p>
+                <div id="col" class="offset-0 col-5 col-md-6 offset-md-1">
+                    <input class="col-md-6 col-auto btn-outline-primary" type="date" id="dataLancamento">
+                    <button class="col-md-5 col-auto btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
+                </div>
             </div>
             <div id="resultado"></div>
         </div>

@@ -49,9 +49,7 @@ $(document).ready(() => {
                             confirm += "</tbody></table></div>";
                         }
                     }
-                    $("#dash").css({
-                        "width": "auto"
-                    });
+                    $("#dash").toggleClass("inicial");
 
                     $("#resultado").html(confirm.replace("undefined", ""));
                     idMonitoramentos.forEach(id => {
