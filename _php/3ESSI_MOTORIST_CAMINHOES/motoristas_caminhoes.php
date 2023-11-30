@@ -92,18 +92,11 @@
                     $title = "- Cadastro de Motoristas e Caminhões";
                     require_once("../elements/tituloProjetoMainSection.php");
                 ?><div class="row">
-                <div class="col-sm-5 col-md-5 col-lg-4 col-5">
-                    <span>Qtd de notas selecionadas:</span>
-                    <input id="qtdLinhas" class="form-control" type="text" name="" value="0" disabled="" style="width: 50px;">
-                </div>
-                <div class="col-sm-6 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-5 offset-lg-3">
-                    <button id="btnSelecionarTodas" class="btn btn-outline-primary col-md-auto">Selecionar todas as linhas abaixo</button>
-                </div>
             </div>
                 <div class="px-2 py-2" style="margin-bottom: 35px;">
                     <div class="row g-4 py-2 col-md-12">
                         <form action="gravarMotorista.php" method="POST" class="d-flex">
-                            <div class="row col-6 col-md-6 col-lg-8">
+                            <div class="row col-6 col-md-6 col-lg-7">
                                 <h3 style="margin-bottom: 0;">Cadastrar Motorista</h3>
                                 <div class="col-md-11 col-lg-10">
                                     <label for="inputText1" class="form-label">Nome</label>
@@ -124,7 +117,7 @@
                                 </div>
                             </div>
                             
-                            <div class="row col-6 col-md-6 col-lg-8">
+                            <div class="row col-6 col-md-6 col-lg-6">
                                 <h3>Cadastrar Caminhão</h3>
                                 <div class="col-md-12">
                                     <label for="inputPlaca" class="form-label">Inscrição da Placa</label>
