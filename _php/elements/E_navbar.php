@@ -17,13 +17,13 @@ if($_SESSION['tipo'] == 1){
     <a class='nav-link dropdown-toggle' style='padding-bottom: 13px;' id='notas-dropdown' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Notas</a>
     <div class='dropdown-menu' style='background-color: white; padding: 5px 0;'>
       <a class='dropdown-item' id='notas-nmonit-tab' href='".$relative."3ESSI_NOTAS_MONITORAMENTO/notas.php'>Buscar</a>
-      <a class='dropdown-item' id='notas-tab' href='".$relative."3SSI_CRUD/notas.php'>Inserir</a>
+      <a class='dropdown-item' id='notas-tab' href='".$relative."3SSI_CRUD/view_set_notas.php'>Inserir</a>
     </div>
   </li>";
   echo "<li class='nav-item dropdown' style='width: 160px;'>
     <a class='nav-link dropdown-toggle' style='padding-bottom: 13px;' id='notas-dropdown' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Motoristas</a>
     <div class='dropdown-menu' style='background-color: white; padding: 5px 0;'>
-      <a class='dropdown-item' id='motoristas-tab' href='".$relative."3ESSI_MOTORIST_CAMINHOES/motoristas_caminhoes.php' role='tab' aria-controls='Inserir' aria-selected='false'>Cadastrar</a>
+      <a class='dropdown-item' id='motoristas-tab' href='".$relative."3ESSI_MOTORIST_CAMINHOES/view_set_motorista.php' role='tab' aria-controls='Inserir' aria-selected='false'>Cadastrar</a>
       <a class='dropdown-item' id='notas-tab' href='".$relative."#'>Visualizar</a>
     </div>
   </li>";

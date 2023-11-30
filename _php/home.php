@@ -112,7 +112,7 @@
     <script>
         $(document).ready(() => {
             $.ajax({
-                url: 'elements/navbarDD.php',
+                url: 'elements/E_navbar.php',
                 type: 'POST',
                 data: {
                     relative: '' // Passe o ID desejado aqui

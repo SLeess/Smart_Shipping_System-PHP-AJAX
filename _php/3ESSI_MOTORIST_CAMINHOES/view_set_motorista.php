@@ -95,7 +95,7 @@
             </div>
                 <div class="px-2 py-2" style="margin-bottom: 35px;">
                     <div class="row g-4 py-2 px-2 col-md-12">
-                        <form action="gravarMotorista.php" method="POST" class="d-flex">
+                        <form action="control_set_motorista.php" method="POST" class="d-flex">
                             <div class="row col-6 col-md-6 col-lg-6">
                                 <h3 style="margin-bottom: 0;">Cadastrar Motorista</h3>
                                 <div class="col-md-11 col-lg-10">
@@ -166,7 +166,7 @@
     <script>
         $(document).ready(() => {
             $.ajax({
-                url: '../elements/navbarDD.php',
+                url: '../elements/E_navbar.php',
                 type: 'POST',
                 data: {
                     relative: '../' // Passe o ID desejado aqui

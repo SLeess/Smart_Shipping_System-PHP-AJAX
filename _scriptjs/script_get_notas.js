@@ -25,6 +25,34 @@ function atualizarQtdLinhas() {
 }
 
 $(document).ready(() => {
+    $.ajax({
+        url: '../elements/E_navbar.php',
+        type: 'POST',
+        data: {
+            relative: '../' // Passe o ID desejado aqui
+        },
+        success: (result) => {
+            $("#navbarSt").html(result);
+
+            // Adicione a classe "active" ao elemento desejado
+            $('#notas-nmonit-tab').addClass('active');
+        }
+    });
+
+    $.ajax({
+        url: '../elements/E_filtroBusca.php',
+        type: 'GET',
+        data: {
+            
+        },
+        success: (result) => {
+            $("#filtro").html(result);
+            $("#linh1").addClass('col-sm-5 col-md-5 col-lg-4 col-5 col-xl-3');
+            $("#linh2").addClass('col-sm-6 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-5 offset-lg-3 col-xl-3 offset-xl-6');
+            $("#btnSelecionarTodas").addClass('btn btn-outline-primary col-md-auto');
+        }
+    });
+
     // Função para adicionar ou remover ID da lista de linhas selecionadas
     $.ajax({
         url: 'consultaNotas.php',
@@ -76,34 +104,19 @@ $(document).ready(() => {
             }
         }
     });
+});
 
-    $('#btnSelecionarTodas').on('click', () => {
-        selecionarTodasLinhasVisiveis();
+$('#btnSelecionarTodas').on('click', () => {
+    selecionarTodasLinhasVisiveis();
+});
+
+// função para selecionar todas as linhas visíveis nessa page
+
+$("#pesquisar").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#mytable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
-
-    // função para selecionar todas as linhas visíveis nessa page
-
-    $("#pesquisar").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#mytable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-
-    $.ajax({
-        url: '../elements/navbarDD.php',
-        type: 'POST',
-        data: {
-            relative: '../' // Passe o ID desejado aqui
-        },
-        success: (result) => {
-            $("#navbarSt").html(result);
-
-            // Adicione a classe "active" ao elemento desejado
-            $('#notas-nmonit-tab').addClass('active');
-        }
-    });
-    
 });
 
 function selecionarTodasLinhasVisiveis() {

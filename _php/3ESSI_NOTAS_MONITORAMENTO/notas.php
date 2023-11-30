@@ -33,7 +33,7 @@
         .dropdown-menu .active{
             background-color: #042ba3;
         }
-        <?php echo "nav{
+        nav{
             background-color: #333;
             margin-bottom: 2em;
         }
@@ -66,9 +66,7 @@
         .dropdown:hover .dropdown-menu{
             display: block;
             margin-top: 2px;
-        }";
-        
-        ?>
+        }
     </style>
 </head>
 <body>    
@@ -90,8 +88,11 @@
                     </div>
                 </div>
                 <?php
-                    require_once("../elements/filtroBusca.php");
+                    // require_once("../elements/filtroBusca.php");
                 ?>
+                <div id="filtro">
+
+                </div>
             </div>
             <div class="row" style="padding: 0px 1em 1em 1em;">
                 <div id="table" class="table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2" style="max-width: 100%;">
@@ -104,6 +105,6 @@
     <script src="../../_scriptjs/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="../../_scriptjs/buscarNotas.js"></script>
+    <script src="../../_scriptjs/script_get_notas.js"></script>
 </body>
 </html>
