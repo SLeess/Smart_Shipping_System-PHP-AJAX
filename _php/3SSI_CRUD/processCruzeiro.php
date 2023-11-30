@@ -1,12 +1,11 @@
 <?php
-require_once("conexao.php");
-
-echo "<p class='mt-3' style='color: green;'>Conexão com o banco de dados bem-sucedida!";
-
-if (!empty($_FILES['xmlSuincoFilesInput']['tmp_name'])) {
-    foreach ($_FILES['xmlSuincoFilesInput']['tmp_name'] as $key => $tmp_name) {
+require_once('conexao.php');
+    
+echo "<p class='mt-3' style='color: green;'>Conexão com o banco de dados bem-sucedida!</p>";
+if (!empty($_FILES['xmlCruzeiroFilesInput']['tmp_name'])) {
+    foreach ($_FILES['xmlCruzeiroFilesInput']['tmp_name'] as $key => $tmp_name) {
         if (!empty($tmp_name)) {
-            $xmlContent = file_get_contents($_FILES['xmlSuincoFilesInput']['tmp_name'][$key]);
+            $xmlContent = file_get_contents($_FILES['xmlCruzeiroFilesInput']['tmp_name'][$key]);
             $xml = new SimpleXMLElement($xmlContent);
 
             // Extrair dados do XML
@@ -25,14 +24,14 @@ if (!empty($_FILES['xmlSuincoFilesInput']['tmp_name'])) {
             if (preg_match('/SEQUENCIA ENTREGA:\s(\d+)/', $infCpl, $matches)) {
                 $nSequencia = $matches[1];
             } else {
-                $nSequencia = 'N/A'; // Defina um valor padrão se não encontrar o número da carga
+                $nSequencia = 'N/A'; 
             }
 
-            $operacao = 'Suinco';
+            $operacao = 'Cruzeiro';
             
             // Inserir dados do cliente no banco de dados (assumindo que já foi criada uma tabela "notas")
             $sqlCliente = "INSERT INTO notas (fornecedor, n_nota, Cliente, Endereco, bairro, numero, municipio, peso_bruto, valor_nota, Data_lancamento)
-                    VALUES (:operacao, :nota, :cliente, :endereco, :bairro, :numero, :cidade, :peso, :valor,:data_lancamento)";
+                    VALUES (:operacao,:nota, :cliente, :endereco, :bairro, :numero, :cidade, :peso, :valor, :data_lancamento )";
             
             $stmtCliente = $pdo->prepare($sqlCliente);
             $stmtCliente->bindParam(':operacao', $operacao);
@@ -44,34 +43,19 @@ if (!empty($_FILES['xmlSuincoFilesInput']['tmp_name'])) {
             $stmtCliente->bindParam(':cidade', $xMun);
             $stmtCliente->bindParam(':peso', $pBruto);
             $stmtCliente->bindParam(':valor', $vnota);
-            $stmtCliente->bindParam(':data_lancamento', $_POST['dataSuinco']);
+            $stmtCliente->bindParam(':data_lancamento', $_POST['dataCruzeiro']);
 
             $stmtCliente->execute();
-
             // Inserir o número da carga no banco de dados
-            $sqlcarga = "INSERT INTO suinco_notas(fk_notas_n_nota, Carga) VALUES (:nf, :carga )";
+            $sqlcarga = "INSERT INTO cruzeiro_notas(fk_notas_n_nota, peso_liquido, sequencia, Carga) VALUES (:nf, :peso, :seq, :carga )";
             $stmtcarga = $pdo->prepare($sqlcarga);
-            $stmtcarga->bindParam(':nf', $nNF);  
-            $stmtcarga->bindParam(':carga', $_POST['cargaSuinco']);
+            $stmtcarga->bindParam(':nf', $nNF);
+            $stmtcarga->bindParam(':peso', $pLiq);
+            $stmtcarga->bindParam(':seq', $nSequencia);
+            $stmtcarga->bindParam(':carga', $_POST['cargaCruzeiro']);
 
             $stmtcarga->execute();
 
-            if (
-                $xNome === 'CENCOSUD BRASIL COMERCIAL S A' ||
-                $xNome === 'COMERCIAL GALA LTDA' ||
-                $xNome === 'COMERCIAL GALA' ||
-                $xNome === 'MART MINAS DISTRIBUICAO LTDA' ||
-                $xNome === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S' ||
-                $xNome === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS' ||
-                $xNome === 'SUPERMERCADOS BH COMERCIO DE ALIMENTOS S A' ||
-                $xNome === 'CEMA CENTRAL MINEIRA ATACADISTA LTDA' 
-            ) {
-                    $sqlRede ="INSERT INTO redes(fk_notas_n_nota, fornecedor) VALUES (:nota, :operacao)";
-                    $stmtRede = $pdo->prepare($sqlRede);
-                    $stmtRede->bindParam(':nota', $nNF);
-                    $stmtRede->bindParam(':operacao', $operacao);
-                    $stmtRede->execute();
-            }
             
             // Extrair informações dos produtos e inserir na tabela "produtos"
             foreach ($xml->NFe->infNFe->det as $det) {
@@ -81,16 +65,16 @@ if (!empty($_FILES['xmlSuincoFilesInput']['tmp_name'])) {
                 $qTrib = (string) $det->prod->qTrib;
                 
                 // Extrair o conteúdo de <infAdProd>
-                $infAdProd = (string) $det->infAdProd;
+                $infAdProd = (string) $det->prod-> xProd;
 
                 // Use uma expressão regular para encontrar o número após 'Qtde:'
-                if (preg_match('/Qtde_aux=(\d+)/', $infAdProd, $matches)) {
+                if (preg_match('/-\s*([\d.]+)\s*/', $infAdProd, $matches)) {
                     $numero = $matches[1];
                 } else {
                     // Defina um valor padrão se não encontrar o número
                     $numero = 'N/A';
                 }
-                
+
                 $sqlProdutos = "INSERT INTO produtos (cod, nf, descricao, unidade, quantidade, QuantAux)
                         VALUES (:cod, :nf, :descricao, :unidade, :quantidade, :QuantAux)";
                 $stmtProdutos = $pdo->prepare($sqlProdutos);

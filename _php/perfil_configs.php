@@ -21,26 +21,61 @@
         .buttons{
             margin-top: -200px;
         }
-        .dash{
-            min-width: 300px;
-            height: 100%;
+        .nav-pills .nav-link.active{
+            background-color: #042ba3;
         }
+        <?php echo "nav{
+            background-color: #333;
+            margin-bottom: 2em;
+        }
+
+        nav li{
+            display: inline-block;
+        }
+
+        nav li a{
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+
+        nav li a:hover{
+            background-color: red;
+        }
+
+        .dropdown-menu{
+            position: absolute;
+            display: none;
+        }
+
+        .dropdown-menu a{
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-menu{
+            display: block;
+            margin-top: 2px;
+        }";
+        
+        ?>
     </style>
 </head>
 <body>
     <?php
         $relative = "";
-        require_once("elements/navbar.php");
     ?>
+    <div id="navbarSt"></div>
 
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="dash col-lg-4 offset-lg-4 bg-white">
+        <div class="dash bg-white">
             <div class="p-3">
                 <?php 
                     $title = "- Alterar informações de Perfil";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>
-                <div class="container bg-white mb-1">
+                <div class="container col-lg-4 offset-lg-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-12 offset-0 bg-white mb-1">
                     <form action="CRUD/alterRow.php" method="POST">
                         <div class="row">
                             <div class="col-md-4 border-right">
@@ -105,6 +140,7 @@
                                     </div>
                                     <div class="buttons mt-5 text-center">
                                         <button class="btn btn-outline-primary profile-button" type="submit">Salvar alterações</button>
+                                        <button class="btn btn-outline-secondary profile-button" type="button" onclick="location.href='CRUD/logout.php';">Sair da conta</button>
                                         <button class="btn btn-outline-danger profile-button" type="button" onclick="location.href='CRUD/deleteUser.php';">Apagar conta</button>
                                     </div>
                                 </div>
@@ -119,7 +155,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../_scriptjs/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        $(document).ready(() => {
+            $.ajax({
+                url: 'elements/navbarDD.php',
+                type: 'POST',
+                data: {
+                    relative: '' // Passe o ID desejado aqui
+                },
+                success: (result) => {
+                    $("#navbarSt").html(result);
+
+                    // Adicione a classe "active" ao elemento desejado
+                    $('#profile-tab').addClass('active');
+                }
+            });
+        });
+
         function buscarUser(usuario){
             var validador = document.querySelector("#userValidation");
             $.ajax({
