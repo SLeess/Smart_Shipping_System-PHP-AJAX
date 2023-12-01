@@ -16,21 +16,18 @@ $(document).ready(() => {
             
         },
         success: (result) => {
-            console.log(result);
-            // result = JSON.parse(result);
-
             var confirm = "<table id='lista-users' style='width: 100%;' class='table-hover display nowrap'><caption>Lista de usuários</caption><thead><tr><th></th><th scope='col'>ID</th><th scope='col'>Usuário</th><th scope='col'>Nome</th><th scope='col'>Email</th><th scope='col'>Nível de permissão</th><th scope='col'>Data de cadastro</th></tr></thead><tbody id='mytable'>";
             for (var i = 0; i < result.length; i++) {
                 var id = result[i]['id'];
 
-                confirm += "<tr id='" + id + "'>";
+                confirm += "<tr id='" + id + "' style='max-width: 90%;'>";
                 confirm += ("<td></td>");
                 confirm += ("<td>" + id + "</td>");
                 confirm += ("<td>" + result[i]['usuario'] + "</td>");
                 confirm += ("<td>" + result[i]['nome'] + "</td>");
                 confirm += ("<td>" + result[i]['email'] + "</td>");
-                // onblur='trocarUser("+ id+ ")
-                confirm += ("<td><select id='type_user' name='tipo' class='form-select''>");
+    
+                confirm += ("<td><select data-id='" + id + "' name='tipo' class='type_user form-select'>");
                 confirm += result[i]['tipo']==1?"<option selected value='1'>Administrador</option>":"<option value='1'>Administrador</option>";
                 confirm += result[i]['tipo']==0?"<option selected value='0'>Usuário</option>":"<option value='0'>Usuário</option>";
 
@@ -66,20 +63,20 @@ $(document).ready(() => {
         }
     });
 
-    $("tr #inputModel").click(() => {
-        id = $(this.id).val();
-        console.log(id);
-        debugger;
+    $(document).on('change', '.type_user', function () {
+        var id = $(this).data('id');
+        var tipo = $(this).val();
+        // console.log(id);
+        // debugger;
         $.ajax({
             url: 'CRUD/update_account.php',
             type: 'POST',
             data: {
-                // usuario: ,
-                tipo: $("#type_user").val()
+                tipo: tipo,
+                usuario: id
             },
-            success: (result) => {
-                // $("#navbarSt").html(result);
-            }
+            // success: (result) => {
+            // }
         });
     });
 });
