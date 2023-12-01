@@ -19,6 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="../../_scriptjs/script.js"></script>
+    <script src="../../_scriptjs/script_format_forms.js"></script>
     <script src="../../_scriptjs/script_set_notas.js"></script>
     <style>
         input[type=data], input[type=date]{

@@ -19,7 +19,7 @@ $(document).ready(() => {
             console.log(result);
             // result = JSON.parse(result);
 
-            var confirm = "<table id='lista-users' class=' table-hover display nowrap'><caption>Lista de usuários</caption><thead><tr><th></th><th scope='col'>ID</th><th scope='col'>Usuário</th><th scope='col'>Nome</th><th scope='col'>Email</th><th scope='col'>Nível de permissão</th><th scope='col'>Data de cadastro</th></tr></thead><tbody id='mytable'>";
+            var confirm = "<table id='lista-users' style='width: 100%;' class='table-hover display nowrap'><caption>Lista de usuários</caption><thead><tr><th></th><th scope='col'>ID</th><th scope='col'>Usuário</th><th scope='col'>Nome</th><th scope='col'>Email</th><th scope='col'>Nível de permissão</th><th scope='col'>Data de cadastro</th></tr></thead><tbody id='mytable'>";
             for (var i = 0; i < result.length; i++) {
                 var id = result[i]['id'];
 
@@ -29,8 +29,8 @@ $(document).ready(() => {
                 confirm += ("<td>" + result[i]['usuario'] + "</td>");
                 confirm += ("<td>" + result[i]['nome'] + "</td>");
                 confirm += ("<td>" + result[i]['email'] + "</td>");
-
-                confirm += ("<td><select id='type_user' name='tipo' class='form-select'>");
+                // onblur='trocarUser("+ id+ ")
+                confirm += ("<td><select id='type_user' name='tipo' class='form-select''>");
                 confirm += result[i]['tipo']==1?"<option selected value='1'>Administrador</option>":"<option value='1'>Administrador</option>";
                 confirm += result[i]['tipo']==0?"<option selected value='0'>Usuário</option>":"<option value='0'>Usuário</option>";
 
@@ -39,14 +39,6 @@ $(document).ready(() => {
                 confirm += ("<td>" + result[i]['data'] + "</td>");
                 confirm += "</tr>";
             }
-
-            //    <select id="inputModelo" name="Modelo" class="form-select" value="Modelo" required="">
-            //         <option>Selecione o Modelo</option>
-            //         <option selected="" value="T">Toco</option>
-            //         <option value="B">Truco</option>
-            //         <option value="L">Leve</option>
-            //         <option value="3">3x4</option>
-            //     </select>
 
             confirm += "<tfoot style='font-size: 10px;'><tr><th></th><th rowspan='1' colspan='1' scope='col'>ID</th><th rowspan='1' colspan='1' scope='col'>Usuário</th><th rowspan='1' colspan='1' scope='col'>Nome</th><th rowspan='1' colspan='1' scope='col'>Email</th><th rowspan='1' colspan='1' scope='col'>Nível de permissão</th><th rowspan='1' colspan='1' scope='col'>Data de cadastro</th></tr></tfoot>";
             confirm += "</tbody></table>";
@@ -72,5 +64,18 @@ $(document).ready(() => {
                 }
             });
         }
+    });
+
+    $("tr #inputModel").onblur(()=>{
+        $.ajax({
+            url: 'CRUD/update_account.php',
+            type: 'POST',
+            data: {
+                usuario: $("#type_user").val()
+            },
+            success: (result) => {
+                // $("#navbarSt").html(result);
+            }
+        });
     });
 });

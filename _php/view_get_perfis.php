@@ -26,8 +26,7 @@
         }
 
         .dash{
-            min-width: 70vw;
-            max-width: 1200px;
+            min-width: 80vw;
             /* min-height: 70vh; */
         }
         <?php echo "nav{
