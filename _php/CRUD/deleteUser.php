@@ -24,7 +24,7 @@
     }
 
     $sql = "UPDATE `usuarios` SET `usuario` = '#$usuario' WHERE `usuarios`.`usuario` = '$usuario'";
-
+    
     //header("Location: ../../index.html");
     executarExclusao($conn, $sql);
 ?>

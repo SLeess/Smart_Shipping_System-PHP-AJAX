@@ -45,15 +45,29 @@ if($_SESSION['tipo'] == 1){
 echo
   "<li class='setBord nav-item'>
     <a class='nav-link' id='mapa-tab' data-toggle='tab' href='".$relative."3ESSI_MAPA_CARREGAMENTO/view_get_products.php' role='tab' aria-controls='Mapa de Carregamentos' aria-selected='false' style='height: 100%'>Mapa de Carregamento</a>
-  </li>
-  <li class='flex-sm-fill nav-item'>
+  </li>";
+  
+if($_SESSION['tipo'] == 1){
+  echo 
+  "<li class='setBord nav-item'>".
+    "<a class='nav-link' id='perfis-tab' data-toggle='tab' href='".$relative."view_get_perfis.php' role='tab' aria-controls='home' aria-selected='false' style='height: 100%'>Perfis cadastros</a>
+  </li>";
+}
+  
+echo  "<li class='flex-sm-fill nav-item'>
   </li>".
   "<li class='nav-item'>
     <a class='nav-link' id='profile-tab' data-toggle='tab' href='".$relative."view_perfil_configs.php' role='tab' aria-controls='Clientes' aria-selected='false' style='height: 100%'>
-        <img src='https://cdn-icons-png.flaticon.com/256/6596/6596121.png' alt='' width='32' height='32' class='rounded-circle me-2'>
-        <strong>".$_SESSION['usuario']."
-        </strong>
-    </a>
-  </li>
-</ul>";
+        <img src='https://cdn-icons-png.flaticon.com/256/6596/6596121.png' alt='' width='32' height='32' class='rounded-circle me-2'>";
+  if($_SESSION["tipo"] == 1){
+    echo "<strong style='color: red;'>".$_SESSION['usuario']."
+        </strong>";
+  }
+  else{
+    echo $_SESSION['usuario'];
+  }
+  echo
+      "</a>
+    </li>
+  </ul>";
 ?>

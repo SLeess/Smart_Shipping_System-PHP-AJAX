@@ -42,7 +42,7 @@ try {
             echo json_encode(["message" => "none"]); // Se não houver dados, retorne um JSON indicando isso
         }
         
-        exit; // Adicione esta linha para evitar qualquer código adicional
+        // exit; // Adicione esta linha para evitar qualquer código adicional
     }
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]); // Se houver um erro, retorne um JSON com a mensagem de erro

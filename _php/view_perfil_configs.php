@@ -156,8 +156,16 @@
                                     </div>
                                     <div class="buttons mt-5 text-center">
                                         <button class="btn btn-outline-primary profile-button" type="submit">Salvar alterações</button>
-                                        <button class="btn btn-outline-secondary profile-button" type="button" onclick="location.href='CRUD/logout.php';">Sair da conta</button>
-                                        <button class="btn btn-outline-danger profile-button" type="button" onclick="location.href='CRUD/deleteUser.php';">Apagar conta</button>
+                                        <button class="btn btn-outline-danger profile-button" type="button" onclick="location.href='CRUD/deleteUser.php';">
+                                            <?php
+                                                if($_SESSION['tipo'] == 1){
+                                                    echo "Apagar conta";
+                                                } else{
+                                                    echo "Desativar conta";
+                                                }
+                                            ?>
+                                        </button>
+                                        <button class="btn btn-outline-secondary profile-button" type="button" onclick="location.href='CRUD/logout.php';">Sair</button>
                                     </div>
                                 </div>
                             </div>
