@@ -23,9 +23,9 @@ $(document).ready(() => {
                 confirm += "<tr id='" + id + "' style='max-width: 90%;'>";
                 confirm += ("<td></td>");
                 confirm += ("<td>" + id + "</td>");
-                confirm += ("<td>" + result[i]['usuario'] + "</td>");
-                confirm += ("<td>" + result[i]['nome'] + "</td>");
-                confirm += ("<td>" + result[i]['email'] + "</td>");
+                confirm += ("<td>" + '<input type="text" style="width: 77px;" class="type_usuario form-control" data-id="' + id + '" id="basic-url" value="'+result[i]['usuario']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
+                confirm += ("<td>" + '<input type="text" style="width: 205px;" class="type_nome form-control" data-id="' + id + '" id="basic-url" value="'+result[i]['nome']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
+                confirm += ("<td>" + '<input type="text" style="width: 250px;" class="type_email form-control" data-id="' + id + '" id="basic-url" value="'+result[i]['email']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
     
                 confirm += ("<td><select data-id='" + id + "' name='tipo' class='type_user form-select'>");
                 confirm += result[i]['tipo']==1?"<option selected value='1'>Administrador</option>":"<option value='1'>Administrador</option>";
@@ -73,10 +73,37 @@ $(document).ready(() => {
             type: 'POST',
             data: {
                 tipo: tipo,
-                usuario: id
+                id: id
             },
-            // success: (result) => {
-            // }
+            success: (result) => {
+                console.log(result);
+            }
         });
     });
+
+    $(document).on('change', '.type_usuario', function () {
+        var id = $(this).data('id');
+        var usuario = $(this).val();
+        console.log(id + ' '+ usuario);
+        // debugger;
+        $.ajax({
+            url: 'CRUD/update_account.php',
+            type: 'POST',
+            data: {
+                usuario: usuario,
+                id: id
+            },
+            dataType: 'json',
+            success: (result) => {
+                if(result.message == "exist"){
+                    alert("Erro! Nome de usuário já cadastrado no sistema!");
+                    location.reload();
+                } else if(result.message == "same"){
+                    alert("Erro! Nome de usuário mudado é o mesmo nome da sessão ativa!");
+                    location.reload();
+                }
+            }
+        });
+    });
+    
 });
