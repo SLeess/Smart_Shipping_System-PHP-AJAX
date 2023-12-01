@@ -63,9 +63,9 @@ nav li a{
     transition: all 0.5s;
 }
 
-nav li a:hover{
+/* nav li a:hover{
     background-color: red;
-}
+} */
 
 .dropdown-menu{
     position: absolute;
@@ -91,4 +91,5 @@ nav li a:hover{
 
 .setBord{
     border: 0.3px solid #04185519;
+    padding: 2px;
 }
