@@ -1,7 +1,7 @@
 <?php
     require_once("conexao.php");
 
-    $sql = "UPDATE `usuarios` SET `tipo`=". $_POST['usuario']."WHERE `id`=". $_POST['usuario'];
+    $sql = "UPDATE `usuarios` SET `tipo`=". $_POST['tipo']."WHERE `id`=". $_POST['usuario'];
     $conn = PDO_Criar();
     $stmt = $conn->prepare($sql);
 

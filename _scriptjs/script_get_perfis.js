@@ -66,12 +66,16 @@ $(document).ready(() => {
         }
     });
 
-    $("tr #inputModel").onblur(()=>{
+    $("tr #inputModel").click(() => {
+        id = $(this.id).val();
+        console.log(id);
+        debugger;
         $.ajax({
             url: 'CRUD/update_account.php',
             type: 'POST',
             data: {
-                usuario: $("#type_user").val()
+                // usuario: ,
+                tipo: $("#type_user").val()
             },
             success: (result) => {
                 // $("#navbarSt").html(result);

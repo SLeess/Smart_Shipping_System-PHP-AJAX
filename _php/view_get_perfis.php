@@ -81,7 +81,6 @@
             </div>
             <!-- table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2 -->
             <div class="row" id='users'>
-
             </div>
         </div>
     </div>
