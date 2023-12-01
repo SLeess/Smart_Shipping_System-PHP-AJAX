@@ -11,6 +11,7 @@
     $data = $_SESSION["data"];
     
     include("conexao.php");
+    $conn = mysqli_criar();
 ?>
 <?php
     function executarExclusao($conexao, $sentenca){

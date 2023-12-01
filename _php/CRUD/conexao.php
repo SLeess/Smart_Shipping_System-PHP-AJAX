@@ -1,12 +1,14 @@
 <?php
-    define("HOST", "localhost");
-    define("USER", "root");
-    define("PASS", "");
-    define("BASE", "sislogin");
+$HOST = "localhost";
+$USER = "root";
+$PASS = "";
+$BASE = "sislogin";
 
-    $conn = mysqli_connect(HOST, USER, PASS, BASE);
+function mysqli_criar(){
+    return mysqli_connect($GLOBALS['HOST'], $GLOBALS['USER'], $GLOBALS['PASS'], $GLOBALS['BASE']);
+}
 
-    if(!$conn){
-        die("Error on connection: ". mysqli_connect_error());
-    }
+function PDO_Criar(){
+    return new PDO("mysql:host=".$GLOBALS['HOST'].";dbname=".$GLOBALS['BASE'], $GLOBALS['USER'], $GLOBALS['PASS']);
+}
 ?>
