@@ -14,7 +14,7 @@ $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">';
+      <ul class="navbar-nav" style="width: 100%;">';
         
       '<li class=" nav-item">'.
       '<a class="nav-link" id="home-tab" data-toggle="tab" href="'.$relative.'home.php" role="tab" aria-controls="home" aria-selected="false" style="height: 100%">Home</a>
@@ -58,7 +58,7 @@ $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
     </li>';
   }
     
-  echo '<li class="nav-item">
+  echo '<li class="nav-item ms-auto">
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="'.$relative.'view_perfil_configs.php" role="tab" aria-controls="Clientes" aria-selected="false" style="height: 100%">
           <img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="32" height="32" class="rounded-circle me-2">';
     if($_SESSION['tipo'] == 1){
