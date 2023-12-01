@@ -116,9 +116,6 @@
                 },
                 success: (result) => {
                     $("#navbarSt").html(result);
-
-                    // Adicione a classe "active" ao elemento desejado
-                    $('#home-tab').addClass('active');
                 }
             });
         });

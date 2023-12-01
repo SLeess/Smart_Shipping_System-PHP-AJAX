@@ -7,9 +7,6 @@ $(document).ready(() => {
         },
         success: (result) => {
             $("#navbarSt").html(result);
-
-            // Adicione a classe "active" ao elemento desejado
-            $('#perfis-tab').addClass('active');
         }
     });
 });

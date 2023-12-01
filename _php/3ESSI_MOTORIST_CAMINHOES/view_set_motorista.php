@@ -172,9 +172,6 @@
                 },
                 success: (result) => {
                     $("#navbarSt").html(result);
-
-                    // Adicione a classe "active" ao elemento desejado
-                    $('#motoristas-tab').addClass('active');
                 }
             });
         });

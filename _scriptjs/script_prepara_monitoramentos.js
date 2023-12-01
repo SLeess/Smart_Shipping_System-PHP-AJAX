@@ -81,9 +81,6 @@ $(document).ready(() => {
         },
         success: (result) => {
             $("#navbarSt").html(result);
-
-            // Adicione a classe "active" ao elemento desejado
-            $('#notas-nmonit-tab').addClass('active');
         }
     });
 

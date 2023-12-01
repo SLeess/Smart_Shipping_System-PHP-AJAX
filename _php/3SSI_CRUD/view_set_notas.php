@@ -216,9 +216,6 @@
                 },
                 success: (result) => {
                     $("#navbarSt").html(result);
-
-                    // Adicione a classe "active" ao elemento desejado
-                    $('#notas-tab').addClass('active');
                 }
             });
         });

@@ -8,12 +8,12 @@
 $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
 
   echo '<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top: -7px;">
     <a class="navbar-brand" href="'.$relative.'home.php">3S</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse mt-0" id="navbarNav">
       <ul class="navbar-nav" style="width: 100%;">';
   
   if($_SESSION["tipo"] == 1){
