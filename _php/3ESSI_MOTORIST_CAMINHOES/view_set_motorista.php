@@ -137,8 +137,8 @@
                                 </div>
                                 
                                 <div class="col-md-5 mt-3">
-                                    <label for="inputZip" class="form-label">Senha do Adm</label>
-                                    <input type="password" class="form-control" id="inputSenha" required="">
+                                    <label for="inputZip" class="form-label">Senha da conta</label>
+                                    <input type="password" class="form-control" id="inputSenha" name='inputSenha' required="">
                                 </div>
 
                                 <div class="col-12 mt-3">
