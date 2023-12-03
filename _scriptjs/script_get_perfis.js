@@ -66,8 +66,7 @@ $(document).ready(() => {
     $(document).on('change', '.type_user', function () {
         var id = $(this).data('id');
         var tipo = $(this).val();
-        // console.log(id);
-        // debugger;
+
         $.ajax({
             url: 'CRUD/update_account.php',
             type: 'POST',
@@ -84,8 +83,7 @@ $(document).ready(() => {
     $(document).on('change', '.type_usuario', function () {
         var id = $(this).data('id');
         var usuario = $(this).val();
-        console.log(id + ' '+ usuario);
-        // debugger;
+        
         $.ajax({
             url: 'CRUD/update_account.php',
             type: 'POST',
@@ -100,6 +98,48 @@ $(document).ready(() => {
                     location.reload();
                 } else if(result.message == "same"){
                     alert("Erro! Nome de usuário mudado é o mesmo nome da sessão ativa!");
+                    location.reload();
+                }
+            }
+        });
+    });
+
+    $(document).on('change', '.type_nome', function () {
+        var id = $(this).data('id');
+        var nome = $(this).val();
+    
+        $.ajax({
+            url: 'CRUD/update_account.php',
+            type: 'POST',
+            data: {
+                nome: nome,
+                id: id
+            },
+            dataType: 'json',
+            success: (result) => {
+                if(result.erroSQL){
+                    alert("Erro na conexão com o banco de dados");
+                    location.reload();
+                }
+            }
+        });
+    });
+    
+    $(document).on('change', '.type_email', function () {
+        var id = $(this).data('id');
+        var email = $(this).val();
+    
+        $.ajax({
+            url: 'CRUD/update_account.php',
+            type: 'POST',
+            data: {
+                email: email,
+                id: id
+            },
+            dataType: 'json',
+            success: (result) => {
+                if(result.erroSQL){
+                    alert("Erro na conexão com o banco de dados");
                     location.reload();
                 }
             }

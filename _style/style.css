@@ -61,10 +61,6 @@ nav li a{
     transition: all 0.5s;
 }
 
-/* nav li a:hover{
-    background-color: red;
-} */
-
 .dropdown-menu{
     position: absolute;
     display: none;

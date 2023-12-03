@@ -44,7 +44,7 @@
             min-height: 87vh;
             margin: auto;
             max-width: 920px;
-            min-width: 400px;
+            min-width: 330px;
             max-height: 1200px;
         }
         
