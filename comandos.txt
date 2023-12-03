@@ -262,17 +262,17 @@
    DROP PROCEDURE IF EXISTS Test_LimparNotas//
    CREATE PROCEDURE Test_LimparNotas()
    BEGIN
-       DELETE FROM MONITORAMENTO WHERE 1;
-       delete from motorista_caminhoes where 1;
-       delete from motorista where 1;
-       delete from caminhoes where 1;
        DELETE FROM CRUZEIRO_NOTAS WHERE 1;
-       DELETE FROM PLENA_NOTAS WHERE 1;
-       DELETE FROM AURORA_NOTAS WHERE 1;
-       DELETE FROM REDES WHERE 1;
-       DELETE FROM SUINCO_NOTAS WHERE 1;
-       DELETE FROM PRODUTOS WHERE 1;
-       DELETE FROM NOTAS WHERE 1;
+        DELETE FROM PLENA_NOTAS WHERE 1;
+        DELETE FROM AURORA_NOTAS WHERE 1;
+        DELETE FROM REDES WHERE 1;
+        DELETE FROM SUINCO_NOTAS WHERE 1;
+        DELETE FROM PRODUTOS WHERE 1;
+        DELETE FROM NOTAS WHERE 1;
+        DELETE FROM MONITORAMENTO WHERE 1;
+        delete from motorista_caminhoes where 1;
+        delete from motorista where 1;
+        delete from caminhoes where 1;
    END //
    DELIMITER ;
    ```

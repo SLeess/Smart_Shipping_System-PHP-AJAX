@@ -17,7 +17,7 @@
     <script src="../../_scriptjs/script_get_products.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
-        // ... (estilos CSS)
+        /* ... (estilos CSS)*/
 
         <?php
             echo "nav {
@@ -75,7 +75,7 @@
                 $id_monitoramento = isset($_GET['id_monitoramento']) ? $_GET['id_monitoramento'] : null;
 
                 try {
-                    $sql = "SELECT * FROM caminhoes";
+                    $sql = "SELECT m.*, c.* FROM motorista_caminhoes mc, motorista m, caminhoes c WHERE mc.fk_placa =c.placa AND mc.fk_cpf_motorista = m.CPF_motorista;";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
                     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -84,7 +84,7 @@
                     if ($result) {
                         foreach ($result as $row) {
                             // Adicionar o ID da URL como um parâmetro na função selecionarCaminhao
-                            echo "<button class='btn btn-outline-primary' onclick='selecionarCaminhao(\"{$row['placa']}\", {$id_monitoramento})'>{$row['placa']}</button>";
+                            echo "<button class='btn btn-outline-primary' onclick='selecionarCaminhao(\"{$row['placa']}\", \"{$row['CPF_motorista']}\" , {$id_monitoramento})'>{$row['placa']}</button>";
                         }
                     } else {
                         echo "Nenhum caminhão encontrado.";
@@ -113,12 +113,13 @@
         // Capturar o id_monitoramento da URL usando a função getUrlParameter
         var id_monitoramento = getUrlParameter('id_monitoramento');
 
-        function selecionarCaminhao(placa, id_monitoramento) {
+        function selecionarCaminhao(placa, cpf, id_monitoramento) {
             $.ajax({
                 url: 'AlteraPlaca.php',
                 type: 'POST',
                 data: {
                     placa: placa,
+                    cpf: cpf,
                     id_monitoramento: id_monitoramento
                 },
                 success: function(response) {
