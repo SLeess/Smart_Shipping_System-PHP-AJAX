@@ -19,41 +19,8 @@
     <style>
         /* ... (estilos CSS)*/
 
-        <?php
-            echo "nav {
-                background-color: #333;
-                margin-bottom: 2em;
-            }
-
-            nav li {
-                display: inline-block;
-            }
-
-            nav li a {
-                color: #fff;
-                text-decoration: none;
-                padding: 15px;
-                display: inline-block;
-                transition: all 0.5s;
-            }
-
-            nav li a:hover {
-                background-color: red;
-            }
-
-            .dropdown-menu {
-                position: absolute;
-                display: none;
-            }
-
-            .dropdown-menu a {
-                display: block;
-            }
-
-            .dropdown:hover .dropdown-menu {
-                display: block;
-                margin-top: 2px;
-            }";
+        <?php 
+            require("../elements/cssNavbar.php");
         ?>
     </style>
 </head>
