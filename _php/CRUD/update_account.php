@@ -42,12 +42,10 @@
             $stmt->execute();
             $perfis = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            header('Content-Type: application/json'); // Defina o cabeçalho para JSON
-            // echo json_encode(['message' => $sql]);
+            header('Content-Type: application/json');
         }
     } catch (PDOException $e) {
         echo json_encode(["erroSQL" => $e->getMessage()]);
     }
     $pdo = null;
-    //alert('Erro, usuário já cadastrado no sistema!');location.reload();
 ?>

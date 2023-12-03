@@ -75,7 +75,8 @@ $(document).ready(() => {
                 id: id
             },
             success: (result) => {
-                console.log(result);
+                if(message == "index.html")
+                    location.href='CRUD/logout.php';
             }
         });
     });
@@ -100,6 +101,9 @@ $(document).ready(() => {
                     alert("Erro! Nome de usuário mudado é o mesmo nome da sessão ativa!");
                     location.reload();
                 }
+                
+                if(message == "index.html")
+                    location.href='CRUD/logout.php';
             }
         });
     });
@@ -121,6 +125,8 @@ $(document).ready(() => {
                     alert("Erro na conexão com o banco de dados");
                     location.reload();
                 }
+                if(message == "index.html")
+                    location.href='CRUD/logout.php';
             }
         });
     });
@@ -142,6 +148,8 @@ $(document).ready(() => {
                     alert("Erro na conexão com o banco de dados");
                     location.reload();
                 }
+                if(message == "index.html")
+                    location.href='CRUD/logout.php';
             }
         });
     });
