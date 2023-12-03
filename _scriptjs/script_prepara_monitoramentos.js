@@ -40,32 +40,32 @@ function selecionarTodasLinhasVisiveis() {
     });
 
     if (qtd === 0) {
-        // Todas as linhas já estão selecionadas - desselecione todas
         ArrayLinhas.forEach(element => {
             var idNota = $(element).find('td:eq(0)').text();
             handleCliqueLinha(idNota);
         });
     }
-    // console.log(qtd + " linhas atualizadas\n");
 }
 
 // Função para enviar IDs das linhas selecionadas para outro arquivo PHP
 function enviarIdsSelecionados() {
     if (linhasSelecionadas.length > 0) {
-        // Aqui você pode fazer uma requisição AJAX para enviar os IDs para outro arquivo PHP
-        // Exemplo:
-        // $.ajax({
-        //     url: 'outroArquivo.php',
-        //     type: 'POST',
-        //     data: {
-        //         ids: linhasSelecionadas.join(',')
-        //     },
-        //     success: function(response) {
-        //         console.log(response);
-        //     }
-        // });
-
-        // Para este exemplo, mostraremos os IDs no console
+        $.ajax({
+            url: 'gerarMonitoramento.php',
+            type: 'POST',
+            data: {
+                linhasSelecionadas: linhasSelecionadas
+            },
+            success: function(response) {
+                var jsonResponse = JSON.parse(response);
+                if (jsonResponse.success) {
+                    // Após a resposta bem-sucedida, redirecionar para a view_gerar_monitoramento.php com o id_monitoramento
+                    window.location.href = 'view_gerar_monitoramento.php?id_monitoramento=' + jsonResponse.id_monitoramento;
+                } else {
+                    console.log("Erro ao gerar monitoramento");
+                }
+            }
+        });
         console.log("IDs das linhas selecionadas: " + linhasSelecionadas.join(','));
     } else {
         console.log("Nenhuma linha selecionada.");
@@ -95,7 +95,7 @@ $(document).ready(() => {
                 $("#table").html("<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>");
             } else {
                 dados = JSON.parse(result);
-                var confirm = "<table id='tabelaNotas' class='table table-bordered table-hover table-sm'><caption>Lista de notas sem monitoramento ativo</caption><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th></tr></thead><tbody id='mytable'>";
+                var confirm = "<table id='tabelaNotas' class='table table-bordered table-hover table-sm'><caption>Lista de notas sem monitoramento ativo</caption><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th><th scope='col'>Rota</th></tr></thead><tbody id='mytable'>";
                 for (var i = 0; i < dados.length; i++) {
                     var idNota = dados[i]['n_nota'];
 
@@ -106,6 +106,7 @@ $(document).ready(() => {
                     confirm += ("<td>" + dados[i]['municipio'] + "</td>");
                     confirm += ("<td>" + dados[i]['fornecedor'] + "</td>");
                     confirm += ("<td>" + dados[i]['peso_bruto'] + "</td>");
+                    confirm += ("<td>" + dados[i]['rota'] + "</td>");
                     confirm += "</tr>";
                 }
 
@@ -129,6 +130,11 @@ $(document).ready(() => {
         }
     });
 
+    $('#btnGerarMonitoramento').on('click', function() {
+        console.log("Botão #btnGerarMonitoramento clicado.");
+        enviarIdsSelecionados();
+    });
+
     $.ajax({
         url: '../elements/E_filtroBusca.php',
         type: 'GET',
@@ -142,11 +148,4 @@ $(document).ready(() => {
             $("#btnSelecionarTodas").addClass('btn btn-outline-primary col-md-auto');
         }
     });
-
-    // $("#pesquisar").on("keyup", function() {
-    //     var value = $(this).val().toLowerCase();
-    //     $("#mytable tr").filter(function() {
-    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //     });
-    // });
 });

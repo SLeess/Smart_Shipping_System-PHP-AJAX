@@ -21,7 +21,7 @@ $(document).ready(() => {
                 $("#table").html("<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>");
             } else {
                 dados = JSON.parse(result);
-                var confirm = "<table id='tabelaNotas' class='table table-bordered table-hover table-sm'><caption>Lista de notas sem monitoramento ativo</caption><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th></tr></thead><tbody id='mytable'>";
+                var confirm = "<table id='tabelaNotas' class='table table-bordered table-hover table-sm'><caption>Lista de notas sem monitoramento ativo</caption><thead><tr><th scope='col'>#</th><th scope='col'>N° Nota</th><th scope='col'>Cliente</th><th scope='col'>Município</th><th scope='col'>Fornecedor</th><th scope='col'>Peso_Bruto</th><th scope='col'>Rota</th></tr></thead><tbody id='mytable'>";
                 for (var i = 0; i < dados.length; i++) {
                     var idNota = dados[i]['n_nota'];
 
@@ -32,11 +32,13 @@ $(document).ready(() => {
                     confirm += ("<td>" + dados[i]['municipio'] + "</td>");
                     confirm += ("<td>" + dados[i]['fornecedor'] + "</td>");
                     confirm += ("<td>" + dados[i]['peso_bruto'] + "</td>");
+                    confirm += ("<td>" + dados[i]['rota'] + "</td>");
+
                     confirm += "</tr>";
                 }
 
                 confirm += "</tbody></table>";
-                $("#table").html(confirm);
+                // $("#table").html(confirm);
                 
                 // Css para elementos do html a partir de ID com Ajax
                 $("#tabelaNotas").css({
