@@ -50,27 +50,37 @@ function selecionarTodasLinhasVisiveis() {
 }
 
 // Função para enviar IDs das linhas selecionadas para outro arquivo PHP
+// ...
+
+// ...
+
 function enviarIdsSelecionados() {
     if (linhasSelecionadas.length > 0) {
-        // Aqui você pode fazer uma requisição AJAX para enviar os IDs para outro arquivo PHP
-        // Exemplo:
-        // $.ajax({
-        //     url: 'outroArquivo.php',
-        //     type: 'POST',
-        //     data: {
-        //         ids: linhasSelecionadas.join(',')
-        //     },
-        //     success: function(response) {
-        //         console.log(response);
-        //     }
-        // });
+        $.ajax({
+            url: 'gerarMonitoramento.php',
+            type: 'POST',
+            data: {
+                linhasSelecionadas: linhasSelecionadas
+            },
+            success: function(response) {
+                var jsonResponse = JSON.parse(response);
+                if (jsonResponse.success) {
+                    // Após a resposta bem-sucedida, redirecionar para a view_gerar_monitoramento.php com o id_monitoramento
+                    window.location.href = 'view_gerar_monitoramento.php?id_monitoramento=' + jsonResponse.id_monitoramento;
+                } else {
+                    console.log("Erro ao gerar monitoramento");
+                }
+            }
+        });
 
-        // Para este exemplo, mostraremos os IDs no console
         console.log("IDs das linhas selecionadas: " + linhasSelecionadas.join(','));
     } else {
         console.log("Nenhuma linha selecionada.");
     }
 }
+
+// ...
+
 
 $(document).ready(() => {
     $.ajax({
@@ -85,11 +95,13 @@ $(document).ready(() => {
     });
 
     $.ajax({
+        
         url: 'consultaNotas.php',
         type: 'POST',
         data: {
             where: "teste"
         },
+        
         success: (result) => {
             if (result === "none") {
                 $("#table").html("<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>");
@@ -127,7 +139,13 @@ $(document).ready(() => {
 
                 $('#tabelaNotas_filter label input').attr('id', 'meuId');
             }
+            $('#btnGerarMonitoramento').on('click', function() {
+                console.log("Botão #btnGerarMonitoramento clicado.");
+                // Chame a função enviarIdsSelecionados() aqui
+                enviarIdsSelecionados();
+            });
         }
+        
     });
 
     $.ajax({
