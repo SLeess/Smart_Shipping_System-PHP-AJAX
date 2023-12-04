@@ -51,7 +51,7 @@
                     if ($result) {
                         foreach ($result as $row) {
                             // Adicionar o ID da URL como um parâmetro na função selecionarCaminhao
-                            echo "<button class='btn btn-outline-primary' onclick='selecionarCaminhao(\"{$row['placa']}\", \"{$row['CPF_motorista']}\" , {$id_monitoramento})'>{$row['placa']}</button>";
+                            echo "<button class='btn btn-outline-primary px-2 mx-3' onclick='selecionarCaminhao(\"{$row['placa']}\", \"{$row['CPF_motorista']}\" , {$id_monitoramento})'>{$row['placa']} - {$row['nome']}</button>";
                         }
                     } else {
                         echo "Nenhum caminhão encontrado.";

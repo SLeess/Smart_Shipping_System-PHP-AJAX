@@ -19,7 +19,7 @@ try {
         LEFT JOIN notas n ON p.nf = n.n_nota
         LEFT JOIN monitoramento m  ON n.id_monitoramento = m.id
         WHERE n.id_monitoramento IS NOT NULL
-        AND n.Data_lancamento = :dataLancamento
+        AND m.largada = :dataLancamento
         GROUP BY p.cod, n.id_monitoramento
         ORDER BY n.id_monitoramento, p.cod";
 
