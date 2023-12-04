@@ -6,6 +6,7 @@ try {
         $dataLancamento = isset($_POST['dataLancamento']) ? $_POST['dataLancamento'] : '';
         $sql = "SELECT
         n.id_monitoramento,
+        m.placa_caminhao,
         p.cod,
         MAX(p.descricao) as descricao,
         MAX(p.nf) as nf,
@@ -16,6 +17,7 @@ try {
         MAX(n.fornecedor) as fornecedor
         FROM produtos p
         LEFT JOIN notas n ON p.nf = n.n_nota
+        LEFT JOIN monitoramento m  ON n.id_monitoramento = m.id
         WHERE n.id_monitoramento IS NOT NULL
         AND n.Data_lancamento = :dataLancamento
         GROUP BY p.cod, n.id_monitoramento

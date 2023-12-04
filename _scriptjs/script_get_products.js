@@ -26,8 +26,9 @@ $(document).ready(() => {
                         confirm = "<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>";
                     } else {
                         for (const id_monitoramento in dados) {
+                            const placa = dados[id_monitoramento][0]['placa_caminhao'];
                             idMonitoramentos.push(id_monitoramento);
-                            confirm += `<h3 class="m-2 mt-3">ID Monitoramento: ${id_monitoramento}</h3>`;
+                            confirm += `<h3 class="m-2 mt-3">Placa: ${placa}</h3>`;
                             confirm += "<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><table id='tabelaMapa" + id_monitoramento + "' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>";
 
                             for (let i = 0; i < dados[id_monitoramento].length; i++) {

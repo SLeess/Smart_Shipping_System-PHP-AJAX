@@ -1,5 +1,34 @@
 var dados;
 var linhasSelecionadas = [];
+var pesoBrutoSelecionado = 0;
+
+
+
+
+function calcularSomaPesoBruto() {
+    pesoBrutoSelecionado = 0;
+
+    for (var i = 0; i < linhasSelecionadas.length; i++) {
+        var idNota = linhasSelecionadas[i];
+
+        // Ajuste na indexação das colunas: 5 para a coluna correta (4 na indexação base 0)
+        var pesoBrutoText = $("#" + idNota).find('td:eq(4)').text().trim();
+
+        // Verificar se a string não está vazia antes de converter para float
+        if (pesoBrutoText !== "") {
+            var pesoBruto = parseFloat(pesoBrutoText);
+            if (!isNaN(pesoBruto)) {
+                pesoBrutoSelecionado += pesoBruto;
+            }
+        }
+    }
+    // Atualizar o valor no input de id "peso"
+    atualizarPeso();
+}
+
+
+
+
 
 function toggleSelecao(idNota) {
     var index = linhasSelecionadas.indexOf(idNota);
@@ -10,6 +39,8 @@ function toggleSelecao(idNota) {
         linhasSelecionadas.splice(index, 1);
     }
     atualizarQtdLinhas();
+    calcularSomaPesoBruto();
+
 }
 
 function handleCliqueLinha(idNota) {
@@ -23,6 +54,12 @@ function handleCliqueLinha(idNota) {
 function atualizarQtdLinhas() {
     var qtdLinhasSelecionadas = linhasSelecionadas.length;
     $('#qtdLinhas').val(qtdLinhasSelecionadas);
+}
+function atualizarPeso() {
+    // Formatando o pesoBrutoSelecionado com duas casas decimais
+    var pesoFormatado = pesoBrutoSelecionado.toFixed(2);
+    // Definindo o valor no input de id "peso"
+    $('#peso').val(pesoFormatado);
 }
 
 function selecionarTodasLinhasVisiveis() {
@@ -46,13 +83,11 @@ function selecionarTodasLinhasVisiveis() {
             handleCliqueLinha(idNota);
         });
     }
+    calcularSomaPesoBruto();
+
     // console.log(qtd + " linhas atualizadas\n");
 }
 
-// Função para enviar IDs das linhas selecionadas para outro arquivo PHP
-// ...
-
-// ...
 
 function enviarIdsSelecionados() {
     if (linhasSelecionadas.length > 0) {
@@ -60,7 +95,7 @@ function enviarIdsSelecionados() {
             url: 'gerarMonitoramento.php',
             type: 'POST',
             data: {
-                linhasSelecionadas: linhasSelecionadas
+                linhasSelecionadas: linhasSelecionadas,
             },
             success: function(response) {
                 var jsonResponse = JSON.parse(response);
