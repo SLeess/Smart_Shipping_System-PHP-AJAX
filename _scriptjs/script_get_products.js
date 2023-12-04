@@ -20,6 +20,8 @@ $(document).ready(() => {
             success: (dados) => {
                 try {
                     var idMonitoramentos = []; // Array para armazenar os id_monitoramento
+                    var pesoTotal = 0; // Variável para rastrear o peso total
+                    var volumeTotal = 0; // Variável para rastrear o volume total
 
                     var confirm;
                     if (dados['message'] === "none") {
@@ -28,8 +30,15 @@ $(document).ready(() => {
                         for (const id_monitoramento in dados) {
                             const placa = dados[id_monitoramento][0]['placa_caminhao'];
                             idMonitoramentos.push(id_monitoramento);
+
+                            // Calcula e atualiza o peso total e o volume total
+                            const pesoTabela = dados[id_monitoramento].reduce((total, item) => total + parseFloat(item['Peso']), 0);
+                            const volumeTabela = dados[id_monitoramento].reduce((total, item) => total + parseFloat(item['quantidade']), 0);
+                            pesoTotal += pesoTabela;
+                            volumeTotal += volumeTabela;
+
                             confirm += `<h3 class="m-2 mt-3">Placa: ${placa}</h3>`;
-                            confirm += "<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><table id='tabelaMapa" + id_monitoramento + "' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>";
+                            confirm += `<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><span>Peso Total: ${pesoTabela.toFixed(2)}</span><span> | Volume Total: ${volumeTabela.toFixed(2)}</span><table id='tabelaMapa${id_monitoramento}' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>`;
 
                             for (let i = 0; i < dados[id_monitoramento].length; i++) {
                                 confirm += "<tr>";
@@ -48,6 +57,10 @@ $(document).ready(() => {
                         }
                     }
                     $("#dash").toggleClass("inicial");
+
+                    // Atualiza o peso total e o volume total gerais
+                    $('#peso').val(pesoTotal.toFixed(2));
+                    $('#volume').val(volumeTotal.toFixed(2));
 
                     $("#resultado").html(confirm.replace("undefined", ""));
                     idMonitoramentos.forEach(id => {
