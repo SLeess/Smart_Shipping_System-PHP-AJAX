@@ -2,7 +2,8 @@
     require_once("conexao.php");
     // $placa = $_POST['inscricaoPlaca']; 
 
-    $sql = "SELECT * FROM `usuarios`";
+    $sql = "SELECT `id`, `nome`, `email`, `usuario`, `tipo`, `data` FROM `usuarios`";
+    $conn = PDO_Criar();
     $stmt = $conn->prepare($sql);
     
     try{
@@ -20,7 +21,6 @@
                     unset($perfil['id']); // Remova o id do item individual
                     $perfisAgrupados[$id][] = $perfil;
                 }
-
                 echo json_encode($perfis);
             } else {
                 echo json_encode(["message" => "none"]);

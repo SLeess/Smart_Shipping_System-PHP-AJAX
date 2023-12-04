@@ -37,8 +37,6 @@ body{
 }
 
 .dash{
-    /* max-width: 880px; */
-    /* min-height: 90vh; */
     margin: auto;
     margin-top: 10px;
     margin-bottom: 40px;
@@ -62,10 +60,6 @@ nav li a{
     display: inline-block;
     transition: all 0.5s;
 }
-
-/* nav li a:hover{
-    background-color: red;
-} */
 
 .dropdown-menu{
     position: absolute;

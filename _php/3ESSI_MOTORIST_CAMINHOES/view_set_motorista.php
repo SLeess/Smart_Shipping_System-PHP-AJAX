@@ -17,7 +17,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="../../_scriptjs/script.js"></script>
     <script src="../../_scriptjs/script_format_forms.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> -->
     <style>
         .btns{
             display: block;
@@ -27,13 +26,8 @@
         }
         
         .dash{
-            /* width: 60vw; */
-            /* height: 100%; */
-            /* margin: 10px auto; */
             max-width: 920px;
             max-height: 5200px;
-            /* border-radius: 3px;
-            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
         }
         
         @media (max-width: 780px) {
@@ -41,44 +35,8 @@
                 margin-top: 40px;
             }
         }
-        .nav-pills .nav-link.active{
-            background-color: #042ba3;
-        }
-        <?php echo "nav{
-            background-color: #333;
-            margin-bottom: 2em;
-        }
-
-        nav li{
-            display: inline-block;
-        }
-
-        nav li a{
-            color: #fff;
-            text-decoration: none;
-            padding: 15px;
-            display: inline-block;
-            transition: all 0.5s;
-        }
-
-        nav li a:hover{
-            background-color: red;
-        }
-
-        .dropdown-menu{
-            position: absolute;
-            display: none;
-        }
-
-        .dropdown-menu a{
-            display: block;
-        }
-
-        .dropdown:hover .dropdown-menu{
-            display: block;
-            margin-top: 2px;
-        }";
-        
+        <?php 
+            require("../elements/cssNavbar.php");
         ?>
     </style>
 </head>
@@ -128,8 +86,8 @@
                                 <div class="col-md-12 mt-3">
                                     <label for="inputModelo" class="form-label">Modelo de Veículo</label>
                                     <select id="inputModelo" name="Modelo" class="form-select" value="Modelo" required="">
-                                        <option>Selecione o Modelo</option>
-                                        <option selected="" value="T">Toco</option>
+                                        <option selected>Selecione o Modelo</option>
+                                        <option value="T">Toco</option>
                                         <option value="B">Truco</option>
                                         <option value="L">Leve</option>
                                         <option value="3">3x4</option>
@@ -137,8 +95,8 @@
                                 </div>
                                 
                                 <div class="col-md-5 mt-3">
-                                    <label for="inputZip" class="form-label">Senha do Adm</label>
-                                    <input type="password" class="form-control" id="inputSenha" required="">
+                                    <label for="inputZip" class="form-label">Senha da conta</label>
+                                    <input type="password" class="form-control" id="inputSenha" name='inputSenha' required="">
                                 </div>
 
                                 <div class="col-12 mt-3">

@@ -3,7 +3,7 @@
     $usuario = $_SESSION['usuario'];
     $senha = $_SESSION['senha'];
     include("conexao.php");
-    
+    $conn = mysqli_criar();
     $sqlBusca = "SELECT * FROM usuarios WHERE usuario = '{$usuario}' AND senha = '{$senha}'";
     $res = mysqli_query($conn, $sqlBusca);
     $row = $res->fetch_object();

@@ -5,7 +5,7 @@
         print("<script>location.href='../../index.html';</script>");
     }
     include("conexao.php");
-
+    $conn = mysqli_criar();
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 

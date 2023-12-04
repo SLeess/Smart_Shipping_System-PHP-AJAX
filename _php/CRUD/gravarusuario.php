@@ -2,6 +2,7 @@
     $usuario = $_POST["usuario"];
 
     include("conexao.php");
+    $conn = mysqli_criar();
     $consulta = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
     $resposta = $conn->query($consulta);
     if ($resposta->num_rows > 0) {

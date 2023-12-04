@@ -77,7 +77,6 @@ function selecionarTodasLinhasVisiveis() {
     });
 
     if (qtd === 0) {
-        // Todas as linhas já estão selecionadas - desselecione todas
         ArrayLinhas.forEach(element => {
             var idNota = $(element).find('td:eq(0)').text();
             handleCliqueLinha(idNota);
@@ -107,15 +106,11 @@ function enviarIdsSelecionados() {
                 }
             }
         });
-
         console.log("IDs das linhas selecionadas: " + linhasSelecionadas.join(','));
     } else {
         console.log("Nenhuma linha selecionada.");
     }
 }
-
-// ...
-
 
 $(document).ready(() => {
     $.ajax({
@@ -130,13 +125,11 @@ $(document).ready(() => {
     });
 
     $.ajax({
-        
         url: 'consultaNotas.php',
         type: 'POST',
         data: {
             where: "teste"
         },
-        
         success: (result) => {
             if (result === "none") {
                 $("#table").html("<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>");
@@ -174,13 +167,12 @@ $(document).ready(() => {
 
                 $('#tabelaNotas_filter label input').attr('id', 'meuId');
             }
-            $('#btnGerarMonitoramento').on('click', function() {
-                console.log("Botão #btnGerarMonitoramento clicado.");
-                // Chame a função enviarIdsSelecionados() aqui
-                enviarIdsSelecionados();
-            });
         }
-        
+    });
+
+    $('#btnGerarMonitoramento').on('click', function() {
+        console.log("Botão #btnGerarMonitoramento clicado.");
+        enviarIdsSelecionados();
     });
 
     $.ajax({
@@ -196,11 +188,4 @@ $(document).ready(() => {
             $("#btnSelecionarTodas").addClass('btn btn-outline-primary col-md-auto');
         }
     });
-
-    // $("#pesquisar").on("keyup", function() {
-    //     var value = $(this).val().toLowerCase();
-    //     $("#mytable tr").filter(function() {
-    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //     });
-    // });
 });

@@ -19,6 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="../../_scriptjs/script.js"></script>
+    <script src="../../_scriptjs/script_format_forms.js"></script>
     <script src="../../_scriptjs/script_set_notas.js"></script>
     <script src="../../_scriptjs/script_format_forms.js"></script>
     <style>
@@ -44,7 +45,7 @@
             min-height: 87vh;
             margin: auto;
             max-width: 920px;
-            min-width: 400px;
+            min-width: 330px;
             max-height: 1200px;
         }
         
@@ -55,44 +56,9 @@
                 margin-bottom: 35px;
             }
         }
-        .nav-pills .nav-link.active,
-        .dropdown-menu .active{
-            background-color: #042ba3;
-        }
-        nav{
-            background-color: #333;
-            margin-bottom: 2em;
-        }
-
-        nav li{
-            display: inline-block;
-        }
-
-        nav li a{
-            color: #fff;
-            text-decoration: none;
-            padding: 15px;
-            display: inline-block;
-            transition: all 0.5s;
-        }
-
-        nav li a:hover{
-            background-color: red;
-        }
-
-        .dropdown-menu{
-            position: absolute;
-            display: none;
-        }
-
-        .dropdown-menu a{
-            display: block;
-        }
-
-        .dropdown:hover .dropdown-menu{
-            display: block;
-            margin-top: 2px;
-        }
+        <?php 
+            require("../elements/cssNavbar.php");
+        ?>
     </style>
 </head>
 <body>

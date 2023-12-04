@@ -1,5 +1,6 @@
 <?php
     include("conexao.php");
+    $conn = mysqli_criar();
     if (isset($_POST['usuario'])) {
         $usuario = $_POST['usuario'];
         $consulta = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
