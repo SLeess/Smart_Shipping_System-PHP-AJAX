@@ -2,9 +2,6 @@ var dados;
 var linhasSelecionadas = [];
 var pesoBrutoSelecionado = 0;
 
-
-
-
 function calcularSomaPesoBruto() {
     pesoBrutoSelecionado = 0;
 
@@ -25,10 +22,6 @@ function calcularSomaPesoBruto() {
     // Atualizar o valor no input de id "peso"
     atualizarPeso();
 }
-
-
-
-
 
 function toggleSelecao(idNota) {
     var index = linhasSelecionadas.indexOf(idNota);
@@ -55,6 +48,7 @@ function atualizarQtdLinhas() {
     var qtdLinhasSelecionadas = linhasSelecionadas.length;
     $('#qtdLinhas').val(qtdLinhasSelecionadas);
 }
+
 function atualizarPeso() {
     // Formatando o pesoBrutoSelecionado com duas casas decimais
     var pesoFormatado = pesoBrutoSelecionado.toFixed(2);
@@ -83,8 +77,6 @@ function selecionarTodasLinhasVisiveis() {
         });
     }
     calcularSomaPesoBruto();
-
-    // console.log(qtd + " linhas atualizadas\n");
 }
 
 
@@ -183,8 +175,10 @@ $(document).ready(() => {
         },
         success: (result) => {
             $("#filtro").html(result);
-            $("#linh1").addClass('col-sm-5 col-md-5 col-lg-4 col-5 col-xl-3');
-            $("#linh2").addClass('col-sm-6 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-5 offset-lg-3 col-xl-3 offset-xl-6');
+            $("#linh1").addClass('col-sm-7 col-md-5 col-lg-4 col-5 col-xl-3');
+            $("#linh2").addClass('col-sm-4 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-5 offset-lg-3 col-xl-3 offset-xl-6');
+            $("#linh3").addClass('col-sm-3 col-lg-2 col-3 col-xl-3 col-md-2 me-0 mx-3');
+            $("#pesoTotalSpan").addClass('col-sm-2 col-lg-2 col-3 col-xl-3 col-md-2 me-0 mx-2');
             $("#btnSelecionarTodas").addClass('btn btn-outline-primary col-md-auto');
         }
     });

@@ -66,17 +66,23 @@ $(document).ready(() => {
     $(document).on('change', '.type_user', function () {
         var id = $(this).data('id');
         var tipo = $(this).val();
+        var referencia = $(".type_usuario").val();
 
         $.ajax({
             url: 'CRUD/update_account.php',
             type: 'POST',
             data: {
                 tipo: tipo,
+                referencia: referencia,
                 id: id
             },
             success: (result) => {
-                if(message == "index.html")
+                // console.log(result);
+                // debugger;
+                if(result.message == "uppSessão"){
+                    location.reload();
                     location.href='CRUD/logout.php';
+                }
             }
         });
     });

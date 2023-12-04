@@ -28,6 +28,9 @@
 
     } else if(isset($_POST['tipo']) ){
         $sql .= " `tipo`='". $_POST['tipo'] . "'";
+        if($_POST['referencia'] == $_SESSION['usuario']){
+            echo json_encode(["message" => "uppSessão", $_POST['referencia'] => $_POST['usuario']]);
+        }
     } else if(isset($_POST['nome'])){
         $sql .= " `nome`='". $_POST['nome'] . "'";
     } else if(isset($_POST['email'])){
