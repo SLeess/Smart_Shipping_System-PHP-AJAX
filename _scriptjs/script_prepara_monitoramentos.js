@@ -175,8 +175,8 @@ $(document).ready(() => {
         },
         success: (result) => {
             $("#filtro").html(result);
-            $("#linh1").addClass('col-sm-7 col-md-5 col-lg-4 col-5 col-xl-3');
-            $("#linh2").addClass('col-sm-4 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-5 offset-lg-3 col-xl-3 offset-xl-6');
+            $("#linh1").addClass('col-sm-7 col-md-5 col-lg-4 col-5 col-xl-4');
+            $("#linh2").addClass('col-sm-4 offset-sm-1 col-md-5 offset-md-2 col-5 offset-2 col-lg-4 offset-lg-4 col-xl-3 offset-xl-5');
             $("#linh3").addClass('col-sm-3 col-lg-2 col-3 col-xl-3 col-md-2 me-0 mx-3');
             $("#pesoTotalSpan").addClass('col-sm-2 col-lg-2 col-3 col-xl-3 col-md-2 me-0 mx-2');
             $("#btnSelecionarTodas").addClass('btn btn-outline-primary col-md-auto');

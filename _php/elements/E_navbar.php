@@ -28,7 +28,7 @@ $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
       <a class="nav-link dropdown-toggle" style="padding-bottom: 13px;" id="notas-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Motoristas</a>
       <div class="dropdown-menu" style="background-color: white; padding: 5px 0;">
         <a class="dropdown-item" id="motoristas-tab" href="'.$relative.'3ESSI_MOTORIST_CAMINHOES/view_set_motorista.php" role="tab" aria-controls="Inserir" aria-selected="false">Cadastrar</a>
-        <a class="dropdown-item" id="motoristas-view-tab" href="'.$relative.'">Visualizar</a>
+        <a class="dropdown-item" id="motoristas-view-tab" href="'.$relative.'3ESSI_MOTORIST_CAMINHOES/view_get_motorista.php">Visualizar</a>
       </div>
     </li>';
   } else{

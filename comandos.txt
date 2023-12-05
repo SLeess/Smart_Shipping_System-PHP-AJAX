@@ -5,6 +5,18 @@
 
 ### Views:
 
+0. **View 0 - Visao_MotoristasCaminhoes:**
+    - Descrição: Fornece a visualização completa de informações a cerca dos motoristas e caminhões cadastrados
+    ```sql
+    DROP VIEW IF EXISTS Visao_MotoristasCaminhoes;
+    CREATE VIEW Visao_MotoristasCaminhoes AS
+    SELECT c.placa AS placa_caminhao, c.modelo AS modelo_caminhao, mt.nome AS nome_motorista, mt.cpf_motorista AS cpf_motorista, mt.num_habilitacao AS num_habilitacao, mt.venci_habilitacao AS venci_habilitacao
+    FROM motorista_caminhoes m, caminhoes c, motorista mt 
+    WHERE m.fk_placa = c.placa AND
+    m.fk_cpf_motorista = mt.CPF_motorista;
+    ```
+
+
 1. **View 1 - Visao_Monitoramento:**
    - Descrição: Fornece informações detalhadas sobre o monitoramento.
    ```sql
