@@ -55,7 +55,7 @@
                             <button id= 'btnGerarMonitoramento' class='col-auto btn btn-outline-primary mt-3 mb-3'>Gerar monitoramento</button>
                             </div>
                         </div>
-                        <div id='filtro'>
+                        <div id='filtro' class='row'>
                         </div>";
                     }
                 ?>
