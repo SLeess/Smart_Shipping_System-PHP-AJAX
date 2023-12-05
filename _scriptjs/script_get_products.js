@@ -38,6 +38,7 @@ $(document).ready(() => {
                             volumeTotal += volumeTabela;
 
                             confirm += `<h3 class="m-2 mt-3">Placa: ${placa}</h3>`;
+                            confirm += `<button class='btn btn-primary' onclick='exibirEspecificas(${id_monitoramento})'>Específicas</button>`;
                             confirm += `<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><span>Peso Total: ${pesoTabela.toFixed(2)}</span><span> | Volume Total: ${volumeTabela.toFixed(2)}</span><table id='tabelaMapa${id_monitoramento}' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>`;
 
                             for (let i = 0; i < dados[id_monitoramento].length; i++) {
@@ -71,7 +72,6 @@ $(document).ready(() => {
                             "pageLength": 5,
                             // Outras opções se necessário
                         });
-                        // $("#tabelaMapa"+id).addClass("row");
                     });
                 } catch (e) {
                     console.error("Erro ao analisar JSON:", e);
@@ -83,3 +83,9 @@ $(document).ready(() => {
         });
     });
 });
+
+// Função para ser chamada ao clicar no botão "Específicas"
+function exibirEspecificas(id_monitoramento) {
+    // Adicione aqui o código para exibir informações específicas para o id_monitoramento
+    alert(`Botão "Específicas" clicado para o monitoramento ${id_monitoramento}`);
+}

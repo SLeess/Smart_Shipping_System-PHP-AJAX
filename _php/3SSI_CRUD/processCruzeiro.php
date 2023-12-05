@@ -18,6 +18,7 @@ if (!empty($_FILES['xmlCruzeiroFilesInput']['tmp_name'])) {
             $pBruto = (string) $xml->NFe->infNFe->transp->vol->pesoB;
             $pLiq = (string) $xml->NFe->infNFe->transp->vol->pesoL;
             $vnota = (string) $xml->NFe->infNFe->total->ICMSTot->vProd;
+            $vol = (string) $xml->NFe->infNFe->transp->vol->qVol;
             $infCpl = (string) $xml->NFe->infNFe->infAdic->infCpl;
 
             // Use uma expressão regular para encontrar o número da carga
@@ -47,10 +48,11 @@ if (!empty($_FILES['xmlCruzeiroFilesInput']['tmp_name'])) {
 
             $stmtCliente->execute();
             // Inserir o número da carga no banco de dados
-            $sqlcarga = "INSERT INTO cruzeiro_notas(fk_notas_n_nota, peso_liquido, sequencia, Carga) VALUES (:nf, :peso, :seq, :carga )";
+            $sqlcarga = "INSERT INTO cruzeiro_notas(fk_notas_n_nota, peso_liquido,n_caixas, sequencia, Carga) VALUES (:nf, :peso,:vol ,:seq, :carga )";
             $stmtcarga = $pdo->prepare($sqlcarga);
             $stmtcarga->bindParam(':nf', $nNF);
             $stmtcarga->bindParam(':peso', $pLiq);
+            $stmtcarga->bindParam(':vol', $vol);
             $stmtcarga->bindParam(':seq', $nSequencia);
             $stmtcarga->bindParam(':carga', $_POST['cargaCruzeiro']);
 

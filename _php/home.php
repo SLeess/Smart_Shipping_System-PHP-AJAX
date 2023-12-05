@@ -46,13 +46,13 @@
                 <div id="carouselExampleAutoplaying" class="row carousel slide col-md-10 offset-md-1 col-lg-12 offset-lg-0 offset-0 col-12 mt-2" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="https://assets-global.website-files.com/5e1cab8214cecfc49d37df0a/5e2f16f45fd72a805f7121af_blog-caminhao-frigorifico-fretefy.jpeg" class="d-block w-100" alt="...">
+                        <img src="https://static.wixstatic.com/media/f016f8_48ed3702c91b48d183f2a9ddeb870c07~mv2.jpg/v1/fill/w_980,h_380,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f016f8_48ed3702c91b48d183f2a9ddeb870c07~mv2.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                        <img src="https://assets-global.website-files.com/5e1cab8214cecfc49d37df0a/5e2f16f45fd72a805f7121af_blog-caminhao-frigorifico-fretefy.jpeg" class="d-block w-100" alt="...">
+                        <img src="https://static.wixstatic.com/media/f016f8_48ed3702c91b48d183f2a9ddeb870c07~mv2.jpg/v1/fill/w_980,h_380,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f016f8_48ed3702c91b48d183f2a9ddeb870c07~mv2.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                        <img src="https://assets-global.website-files.com/5e1cab8214cecfc49d37df0a/5e2f16f45fd72a805f7121af_blog-caminhao-frigorifico-fretefy.jpeg" class="d-block w-100" alt="...">
+                        <img src="https://static.wixstatic.com/media/f016f8_48ed3702c91b48d183f2a9ddeb870c07~mv2.jpg/v1/fill/w_980,h_380,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f016f8_48ed3702c91b48d183f2a9ddeb870c07~mv2.jpg" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
