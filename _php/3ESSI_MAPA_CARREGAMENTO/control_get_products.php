@@ -8,6 +8,7 @@ try {
         n.id_monitoramento,
         m.placa_caminhao,
         p.cod,
+        nc.sequencia,
         MAX(p.descricao) as descricao,
         MAX(p.nf) as nf,
         ROUND(SUM(p.quantidade),2) as Peso,
@@ -18,10 +19,11 @@ try {
         FROM produtos p
         LEFT JOIN notas n ON p.nf = n.n_nota
         LEFT JOIN monitoramento m  ON n.id_monitoramento = m.id
+        LEFT JOIN cruzeiro_notas nc ON n.n_nota = nc.fk_notas_n_nota
         WHERE n.id_monitoramento IS NOT NULL
         AND m.largada = :dataLancamento
-        GROUP BY p.cod, n.id_monitoramento
-        ORDER BY n.id_monitoramento, p.cod";
+        GROUP BY p.cod, n.id_monitoramento  
+        ORDER BY `nf` ASC";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':dataLancamento', $dataLancamento);
