@@ -56,5 +56,8 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="../../_scriptjs/script.js"></script>
     <script src="../../_scriptjs/script_get_motoristas.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js">
+        // $(".cpf_motorista").mask("999.999.999-99");
+    </script> -->
 </body>
 </html>

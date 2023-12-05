@@ -65,7 +65,7 @@
                                 <div class="col-md-10 col-lg-6 mt-3">
                                     <label for="inputText2" class="form-label">CPF</label>
                                     <!-- <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="CPF do Motorista"> -->
-                                    <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required="" pattern="\d{11}\" title="000.000.000-00">
+                                    <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required pattern="\d{11}\" title="000.000.000-00">
                                 </div>
                                 <div class="col-md-9 col-lg-7 mt-4">
                                     <label for="inputText3" class="form-label">N° de Habilitação</label>
