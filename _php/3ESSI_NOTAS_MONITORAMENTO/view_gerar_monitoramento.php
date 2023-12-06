@@ -40,7 +40,7 @@
     <script>
         $(document).ready(()=>{
             $.ajax({
-                url: '../3ESSI_MOTORIST_CAMINHOES/listaMotoristasCaminhoes.php',
+                url: '../3ESSI_MOTORIST_CAMINHOES/control_view_motoristas_caminhoes.php',
                 type: 'POST',
                 data:{
 

@@ -12,7 +12,7 @@ $(document).ready(() => {
         }
     });
     $.ajax({
-        url: 'listaMotoristasCaminhoes.php',
+        url: 'control_view_motoristas_caminhoes.php',
         type: 'POST',
         data: {
             

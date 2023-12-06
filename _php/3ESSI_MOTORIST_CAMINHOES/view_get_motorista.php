@@ -24,7 +24,6 @@
             width: 80vw;
             max-width: 960px;
             min-width: 350px;
-            /* min-height: 70vh; */
         }
         <?php 
             require("../elements/cssNavbar.php");
