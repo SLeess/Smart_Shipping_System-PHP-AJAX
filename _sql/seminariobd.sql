@@ -53,7 +53,8 @@ CREATE TABLE `cruzeiro_notas` (
   `fk_notas_n_nota` varchar(14) NOT NULL,
   `peso_liquido` decimal(9,2) NOT NULL,
   `sequencia` int(4) NOT NULL,
-  `Carga` int(8) DEFAULT NULL
+  `Carga` int(8) DEFAULT NULL,
+  `n_caixas` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

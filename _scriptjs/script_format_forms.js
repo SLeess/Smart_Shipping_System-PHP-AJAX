@@ -89,6 +89,7 @@ function Exibir() {
                 el.classList.add('hide');
             }
         });
+        document.getElementById("hr").classList.add('hide');
         op = document.getElementById('output');
     }
 
@@ -96,5 +97,6 @@ function Exibir() {
     var elementoAtual = document.getElementById(valor);
     if (elementoAtual) {
         elementoAtual.classList.remove('hide');
+        document.getElementById("hr").classList.remove('hide');
     }
 }

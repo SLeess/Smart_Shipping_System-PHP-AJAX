@@ -20,7 +20,6 @@
     <script src="../../_scriptjs/script.js"></script>
     <script src="../../_scriptjs/script_format_forms.js"></script>
     <script src="../../_scriptjs/script_set_notas.js"></script>
-    <script src="../../_scriptjs/script_format_forms.js"></script>
     <style>
         input[type=data], input[type=date]{
             margin: 5px 0;
@@ -37,21 +36,20 @@
 
         h2{
             margin-bottom: 30px;
+            white-space: nowrap;
         }
 
         .dash{
-            width: 60vw;
-            min-height: 87vh;
+            width: 69vw;
+            /* min-height: 87vh; */
             margin: auto;
             max-width: 920px;
             min-width: 330px;
-            max-height: 1200px;
         }
         
         @media (max-width: 995px) {
             .dash {
-                min-height: 720px;
-                height: 900px;
+                /* min-height: 720px; */
                 margin-bottom: 35px;
             }
         }
@@ -71,11 +69,11 @@
                     require_once($relative. "elements/tituloProjetoMainSection.php");
                     require_once($relative. "elements/selecionadorDeFornecedor.php");
                 ?>
-                <hr>
+                <hr id='hr' class='hide'>
                 <div class="Notas">
                     <div id="Aurora" class="hide container px-2 py-2 text-center">
-                        <div class="row g-4 py-2 row-cols-1 row-cols-lg-2">
-                            <div class="col">
+                        <div class="row g-4 p-2 row-cols-1 row-cols-lg-2">
+                            <div class="col-10 col-lg-6 mx-auto">
                                 <h2>Escanear XML Aurora</h2>
                                 <form id="xmlForm">
                                     <div id="inserir" class="scan">
@@ -92,15 +90,16 @@
                                 </div>
                                 <div id="outputAurora" class="mt-1"></div>
                             </div>
-                            <div class="col">
+                            <div class="col-10 col-lg-6 offset-lg-0 mx-auto">
                                 <h2>Escanear Excel Aurora</h2>
-                                <!-- enctype="multipart/form-data" action="uploadAurora.php" method="post" -->
+                                <p style='font-size: 17px; color: gray;margin-bottom: 19.3px;'>Datas de produção e validade</p>
                                 <form id="xlsxFormAurora">
                                     <div class="mb-3">
                                         <input class="form-control" type="file" id="fileInput" name="excel_file" accept=".xlsx" required>
                                         <input type="submit" id="enviarAurora" class="btns btn btn-outline-secondary d-inline-block" value="Escanear XLSXs">
                                     </div>
                                 </form>
+                                <div id="outputAuroraExcel" class="mt-1"></div>
                             </div>
                         </div>
                     </div>
@@ -138,9 +137,6 @@
                                         </div>
                                     </div>
                                 </form>
-                                <!-- <div id="loadingPlena" style="display: none">Carregando...</div>
-                                <progress id="progressBarPlena" value="0" max="100"></progress>
-                                <div id="outputPlena"></div> -->
                             </div>
                             <div id="outputPlena"></div>
                         </div>

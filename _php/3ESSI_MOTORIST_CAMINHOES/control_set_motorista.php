@@ -13,7 +13,7 @@
     $cpf = $_POST['inputCPF'];
     $habilitacao = $_POST['inputNumHabilitacao'];
     $data = $_POST['inputData'];
-    $senha = $_POST['inputSenha'];
+    $senha = md5($_POST['inputSenha']);
 
     if($senha != $_SESSION['senha']){
         $pdo = null;

@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 row[key] = null;
                             }
                         }
-    
                         return row;
                     });
     
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         })
                         .then(response => response.text())
                         .then(data => {
-                            console.log(data); // Mensagem de confirmação ou erro do servidor
+                            document.getElementById('outputAuroraExcel').innerHTML = data;
                         })    
                         .catch(error => {
                             console.error(error);
@@ -286,6 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             .then(response => response.text())
                             .then(data => {
                                 // console.log(data); // Mensagem de confirmação ou erro do servidor
+                                document.getElementById('outputPlena').innerHTML = data;
                             })
                             .catch(error => {
                                 console.error(error);
