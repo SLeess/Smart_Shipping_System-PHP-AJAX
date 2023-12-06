@@ -46,7 +46,7 @@
 <body>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
-        <div id="dash" class="inicial dash bg-white p-4 col-12">
+        <div id="<?php echo "$idMonitoramento"; ?>" class="inicial dash bg-white p-4 col-12">
             <div class="row">
                 <?php
                     $title = "- Monitoramento: {$idMonitoramento}";

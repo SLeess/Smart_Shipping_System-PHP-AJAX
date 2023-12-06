@@ -23,9 +23,9 @@ $(document).ready(() => {
                 confirm += "<tr id='" + id + "' style='max-width: 90%;'>";
                 confirm += ("<td></td>");
                 confirm += ("<td>" + id + "</td>");
-                confirm += ("<td>" + '<input type="text" style="width: 77px;" class="type_usuario form-control" data-id="' + id + '" id="basic-url" value="'+result[i]['usuario']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
-                confirm += ("<td>" + '<input type="text" style="width: 205px;" class="type_nome form-control" data-id="' + id + '" id="basic-url" value="'+result[i]['nome']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
-                confirm += ("<td>" + '<input type="text" style="width: 250px;" class="type_email form-control" data-id="' + id + '" id="basic-url" value="'+result[i]['email']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
+                confirm += ("<td>" + '<input type="text" style="width: 77px;" class="type_usuario form-control" data-id="' + id + '" id="basic-url1" value="'+result[i]['usuario']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
+                confirm += ("<td>" + '<input type="text" style="width: 205px;" class="type_nome form-control" data-id="' + id + '" id="basic-url2" value="'+result[i]['nome']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
+                confirm += ("<td>" + '<input type="text" style="width: 250px;" class="type_email form-control" data-id="' + id + '" id="basic-url3" value="'+result[i]['email']+'" aria-describedby="basic-addon3 basic-addon4"></input>' + "</td>");
     
                 confirm += ("<td><select data-id='" + id + "' name='tipo' class='type_user form-select'>");
                 confirm += result[i]['tipo']==1?"<option selected value='1'>Administrador</option>":"<option value='1'>Administrador</option>";

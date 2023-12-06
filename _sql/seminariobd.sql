@@ -115,6 +115,7 @@ CREATE TABLE `notas` (
   `Data_lancamento` date DEFAULT NULL,
   `Id_monitoramento` smallint(6) DEFAULT NULL,
   `fornecedor` varchar(20) NOT NULL,
+  `rota` varchar(20) DEFAULT NULL,
   `valor_nota` double(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
