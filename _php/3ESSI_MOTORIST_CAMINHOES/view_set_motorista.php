@@ -1,8 +1,7 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }else if($_SESSION["tipo"] != 1){
+    $relative = "../";
+    require_once($relative."CRUD/relog.php");
+    if($_SESSION["tipo"] != 1){
         print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
     }
 ?>
@@ -41,16 +40,13 @@
     </style>
 </head>
 <body>
-    <?php
-        $relative = "";
-    ?>
     <div id="navbarSt"></div>
     <div class="container d-flex justify-content-center align-items-center">
         <div class="dash bg-white">
             <div class="row p-3">
                 <?php
                     $title = "- Cadastro de Motoristas e Caminhões";
-                    require_once("../elements/tituloProjetoMainSection.php");
+                    require_once($relative. "elements/tituloProjetoMainSection.php");
                 ?><div class="row">
             </div>
                 <div class="px-2 py-2" style="margin-bottom: 35px;">
@@ -64,7 +60,6 @@
                                 </div>
                                 <div class="col-md-10 col-lg-6 mt-3">
                                     <label for="inputText2" class="form-label">CPF</label>
-                                    <!-- <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="CPF do Motorista"> -->
                                     <input type="text" name="inputCPF" id="inputCPF" class="form-control" maxlength="14" placeholder="CPF do Motorista" oninput="formatarCPF(this)" required pattern="\d{11}\" title="000.000.000-00">
                                 </div>
                                 <div class="col-md-9 col-lg-7 mt-4">
@@ -126,7 +121,7 @@
                 url: '../elements/E_navbar.php',
                 type: 'POST',
                 data: {
-                    relative: '../' // Passe o ID desejado aqui
+                    relative: '../'
                 },
                 success: (result) => {
                     $("#navbarSt").html(result);

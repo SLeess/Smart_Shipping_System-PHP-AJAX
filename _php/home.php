@@ -1,8 +1,6 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='CRUD/logout.php'</script>");
-    }
+    $relative = "";
+    require_once("CRUD/relog.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,7 +26,6 @@
         <div class="dash bg-white">
             <div class="row p-3">
                 <?php
-                    $relative = "";
                     $title = "- Página Inicial";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>

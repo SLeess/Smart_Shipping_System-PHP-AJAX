@@ -1,8 +1,7 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }else if($_SESSION["tipo"] != 1){
+    $relative = "../";
+    require_once($relative."CRUD/relog.php");
+    if($_SESSION["tipo"] != 1){
         print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
     }
 ?>
@@ -62,9 +61,6 @@
     </style>
 </head>
 <body>
-    <?php
-        $relative = "../";
-    ?>
     <div id="navbarSt"></div>
     
     <div class="container d-flex justify-content-center align-items-center" style="margin-top: 10px;">
@@ -72,8 +68,8 @@
             <div class="row p-3">
                 <?php 
                     $title = "- Escaner de Notas Fiscais";
-                    require_once("../elements/tituloProjetoMainSection.php");
-                    require_once("../elements/selecionadorDeFornecedor.php");
+                    require_once($relative. "elements/tituloProjetoMainSection.php");
+                    require_once($relative. "elements/selecionadorDeFornecedor.php");
                 ?>
                 <hr>
                 <div class="Notas">

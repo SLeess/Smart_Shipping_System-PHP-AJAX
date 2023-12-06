@@ -1,8 +1,7 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }else if($_SESSION["tipo"] != 1){
+    $relative = "../";
+    require_once($relative."CRUD/relog.php");
+    if($_SESSION["tipo"] != 1){
         print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
     }
 ?>

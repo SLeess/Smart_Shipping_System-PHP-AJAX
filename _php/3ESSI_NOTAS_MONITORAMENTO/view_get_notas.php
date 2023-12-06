@@ -1,8 +1,6 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }
+    $relative = "../";
+    require_once($relative."CRUD/relog.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,9 +39,8 @@
         <div class="dash bg-white">
             <div class="row p-3">
                 <?php
-                    $relative = "";
                     $title = "- Tabelas de Notas sem Monitoramento";
-                    require_once("../elements/tituloProjetoMainSection.php");
+                    require_once($relative. "elements/tituloProjetoMainSection.php");
 
                     if($_SESSION['tipo'] == 1){
                         echo "

@@ -1,12 +1,15 @@
 <?php
-// Desabilitar exibição de erros no HTML
-// error_reporting(0);
-// ini_set('display_errors', 0);
-
 $host = 'localhost';
 $user = 'root'; 
 $password = ''; 
 $database = 'seminariobd';
+
+$relative = "../";
+require_once($relative."CRUD/relog.php");
+if($_SESSION["tipo"] != 1){
+    print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
+    exit(-1);
+}
 
 try {
     //Conexão com a porta

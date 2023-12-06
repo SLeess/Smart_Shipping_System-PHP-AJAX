@@ -7,7 +7,7 @@
     include("conexao.php");
     $conn = mysqli_criar();
     $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $senha = md5($_POST['senha']);
 
     $sql = "SELECT * FROM usuarios WHERE usuario = '{$usuario}' AND senha = '{$senha}'";
     $res = mysqli_query($conn, $sql);

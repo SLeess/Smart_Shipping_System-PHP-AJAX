@@ -1,8 +1,6 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }
+    $relative = "../";
+    require_once($relative."CRUD/relog.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -65,7 +63,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <!-- <script src="../../_scriptjs/script_get_products.js"></script> -->
 </body>
 </html>
 

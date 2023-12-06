@@ -1,6 +1,5 @@
 <?php
     require_once("conexao.php");
-    // $placa = $_POST['inscricaoPlaca']; 
 
     $sql = "SELECT `id`, `nome`, `email`, `usuario`, `tipo`, `data` FROM `usuarios`";
     $conn = PDO_Criar();
@@ -11,14 +10,13 @@
             $stmt->execute();
             $perfis = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            header('Content-Type: application/json'); // Defina o cabeçalho para JSON
+            header('Content-Type: application/json');
 
             if (count($perfis) > 0) {
-                // Agrupe os resultados por id
                 $perfisAgrupados = [];
                 foreach ($perfis as $perfil) {
                     $id = $perfil['id'];
-                    unset($perfil['id']); // Remova o id do item individual
+                    unset($perfil['id']);
                     $perfisAgrupados[$id][] = $perfil;
                 }
                 echo json_encode($perfis);

@@ -1,8 +1,7 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../index.html'</script>");
-    }else if($_SESSION["tipo"] != 1){
+    $relative = "";
+    require_once("CRUD/relog.php"); 
+    if($_SESSION["tipo"] != 1){
         print("<script>alert('Acesso não autorizado!');location.href='home.php'</script>");
     }
 ?>
@@ -38,7 +37,6 @@
         <div class="dash bg-white p-3">
             <div class="row">
                 <?php
-                    $relative = "";
                     $title = "- Lista de Perfis";
                     require_once("elements/tituloProjetoMainSection.php");
                 ?>

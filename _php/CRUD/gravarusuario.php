@@ -12,7 +12,7 @@
 
     $nomeCompleto = $_POST["nome"]." ". $_POST["sobrenome"];
     $email = $_POST["email"].$_POST["dominio"];
-    $senha = $_POST["senha"];
+    $senha = md5($_POST["senha"]);
     $confirmaSenha = $_POST["confirmaSenha"];
 
     $sql = "INSERT INTO `usuarios` (`nome`, `email`, `usuario`, `senha`, `tipo`, `data`) VALUES 

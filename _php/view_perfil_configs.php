@@ -1,8 +1,6 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../index.html'</script>");
-    }
+    $relative = "";
+    require_once("CRUD/relog.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,9 +39,6 @@
     </style>
 </head>
 <body>
-    <?php
-        $relative = "";
-    ?>
     <div id="navbarSt"></div>
 
     <div class="container d-flex justify-content-center align-items-center">

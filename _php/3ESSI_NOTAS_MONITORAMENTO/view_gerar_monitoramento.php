@@ -1,8 +1,6 @@
 <?php
-    session_start();
-    if(empty($_SESSION)){
-        print("<script>location.href='../../index.html'</script>");
-    }
+    $relative = "../";
+    require_once($relative."CRUD/relog.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,8 +15,6 @@
     <script src="../../_scriptjs/script_get_products.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
-        /* ... (estilos CSS)*/
-
         <?php 
             require("../elements/cssNavbar.php");
         ?>
@@ -31,45 +27,34 @@
             <div class="row">
                 <?php
                     $title = "- Mapa de carregamento";
-                    require_once("../elements/tituloProjetoMainSection.php");
+                    require_once($relative. "elements/tituloProjetoMainSection.php");
                 ?>
             </div>
-            <div id="resultado"></div>
-
-            <?php
-                // Realizar a consulta no banco para obter modelos e placas
-                require_once("../3SSI_CRUD/conexao.php");
-                $id_monitoramento = isset($_GET['id_monitoramento']) ? $_GET['id_monitoramento'] : null;
-
-                try {
-                    $sql = "SELECT m.*, c.* FROM motorista_caminhoes mc, motorista m, caminhoes c WHERE mc.fk_placa =c.placa AND mc.fk_cpf_motorista = m.CPF_motorista;";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute();
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                    // Exibir os resultados
-                    if ($result) {
-                        foreach ($result as $row) {
-                            // Adicionar o ID da URL como um parâmetro na função selecionarCaminhao
-                            echo "<button class='btn btn-outline-primary px-2 mx-3' onclick='selecionarCaminhao(\"{$row['placa']}\", \"{$row['CPF_motorista']}\" , {$id_monitoramento})'>{$row['placa']} - {$row['nome']}</button>";
-                        }
-                    } else {
-                        echo "Nenhum caminhão encontrado.";
-                    }
-                } catch (PDOException $e) {
-                    echo json_encode(["error" => $e->getMessage()]);
-                }
-
-                $pdo = null;
-            ?>
+            <div id="motorist_caminho"></div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <!-- <script src="../../_scriptjs/script_get_products.js"></script> -->
 
     <script>
+        $(document).ready(()=>{
+            $.ajax({
+                url: '../3ESSI_MOTORIST_CAMINHOES/listaMotoristasCaminhoes.php',
+                type: 'POST',
+                data:{
+
+                },
+                success: (resposts) => {
+                    var confirm ='';
+                    for (const row of resposts) {
+                        confirm += `<button class='btn btn-outline-primary px-2 mx-3' onclick='selecionarCaminhao("${row['placa_caminhao']}", "${row['cpf_motorista']}" , ${id_monitoramento})'>${row['placa_caminhao']} - ${row['nome_motorista']}</button>`;
+                    };
+                    $("#motorist_caminho").html(confirm);
+                }
+            });
+        });
+
         function getUrlParameter(name) {
             name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -93,12 +78,11 @@
                     console.log(response);
 
                     // Após a resposta bem-sucedida, redirecionar para a view_gerar_monitoramento.php
+                    alert("Monitoramento criado com sucesso!");
                     window.location.href = 'view_get_notas.php';
                 }
             });
         }
-
-        // ... (restante do script) ...
     </script>
 </body>
 </html>

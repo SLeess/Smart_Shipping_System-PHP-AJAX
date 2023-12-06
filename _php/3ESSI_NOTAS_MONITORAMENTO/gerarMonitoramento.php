@@ -20,7 +20,6 @@ $costume = isset($_POST['where']) ? $_POST['where'] : null;
             $stmtUpdateNotas->execute();
 
             // Adicione outras operações, se necessário...
-
             echo json_encode(["success" => true, "id_monitoramento" => $id_monitoramento]);
         }
     } catch (PDOException $e) {
