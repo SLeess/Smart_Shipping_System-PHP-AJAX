@@ -23,7 +23,6 @@
                 echo json_encode(["message" => "exist"]);
             exit();
         }
-
         $sql .= " `usuario`='$pesquisa'";
 
     } else if(isset($_POST['tipo']) ){
@@ -44,7 +43,6 @@
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $perfis = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
             header('Content-Type: application/json');
         }
     } catch (PDOException $e) {

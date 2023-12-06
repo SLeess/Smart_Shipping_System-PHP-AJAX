@@ -1,7 +1,7 @@
 <?php
     require_once("conexao.php");
 
-    $sql = "SELECT `id`, `nome`, `email`, `usuario`, `tipo`, `data` FROM `usuarios`";
+    $sql = "SELECT `id`, `nome`, `email`, `usuario`, `tipo`, `data` FROM `usuarios` ORDER BY `id`";
     $conn = PDO_Criar();
     $stmt = $conn->prepare($sql);
     

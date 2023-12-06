@@ -1,4 +1,6 @@
 <?php
+header("Content-type: text/html; charset=utf-8"); 
+
 $host = 'localhost';
 $user = 'root'; 
 $password = ''; 
@@ -12,10 +14,8 @@ if($_SESSION["tipo"] != 1){
 }
 
 try {
-    //Conexão com a porta
-    //$conn = new PDO("mysql:host=$host;port=$port;dbname=" . $dbname, $user, $pass);
-
-    //Conexão sem a porta
+    
+//Conexão sem a porta
     $pdo = new PDO("mysql:host=$host;dbname=$database", $user, $password);
     //echo "Conexão com banco de dados realizado com sucesso.";
 } catch (PDOException $err) {

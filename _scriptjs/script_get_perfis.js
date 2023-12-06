@@ -41,6 +41,8 @@ $(document).ready(() => {
             confirm += "</tbody></table>";
 
             $("#users").html(confirm);
+            $('#1 td input').prop('disabled', true); //DESATIVA A POSSIBILIDADE DE MODIFICAÇÃO DO PERFIL ROOT
+            $('#1 td select').prop('disabled', true);
             $('#lista-users').DataTable({
                 language: {
                     url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
@@ -100,16 +102,16 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: (result) => {
-                if(result.message == "exist"){
-                    alert("Erro! Nome de usuário já cadastrado no sistema!");
-                    location.reload();
-                } else if(result.message == "same"){
-                    alert("Erro! Nome de usuário mudado é o mesmo nome da sessão ativa!");
-                    location.reload();
+                if(result && result.message){
+                    if(result.message == "exist"){
+                        alert("Erro! Nome de usuário já cadastrado no sistema!");
+                        location.reload();
+                    } else if(result.message == "same"){
+                        alert("Erro! Nome de usuário mudado é o mesmo nome da sessão ativa!");
+                        location.reload();
+                    }
                 }
-                
-                if(message == "index.html")
-                    location.href='CRUD/logout.php';
+                if(message && message == "index.html") location.href='CRUD/logout.php';
             }
         });
     });
