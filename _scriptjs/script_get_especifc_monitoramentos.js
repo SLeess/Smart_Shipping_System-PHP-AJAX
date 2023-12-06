@@ -49,7 +49,7 @@ $(document).ready(() => {
 
                 confirm += "</tr>";
             }
-            confirm += "</tbody></table></div><button class='btn btn-outline-alert col-2 profile-button' type='button' onclick='history.back();'>Voltar</button>";
+            confirm += "</tbody></table></div><button class='btn btn-outline-danger col-2 profile-button' type='button' onclick='history.back();'>Voltar</button>";
 
             $("#resultado").html(confirm);
 
