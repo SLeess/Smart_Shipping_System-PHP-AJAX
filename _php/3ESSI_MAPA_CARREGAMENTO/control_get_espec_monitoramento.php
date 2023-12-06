@@ -2,7 +2,6 @@
 require_once("../3SSI_CRUD/conexao.php");
 
 try {
-    // echo "teste";
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $id = isset($_POST['id']) ? $_POST['id'] : '';
 
@@ -26,14 +25,8 @@ try {
         $st->execute();
         $dados_plena = $st->fetchAll(PDO::FETCH_ASSOC);
         header('Content-Type: application/json'); // Defina o cabeçalho para JSON
-        if (count($dados_plena) > 0) {
-            echo json_encode(["plena" => $dados_plena]);
-        }
-        if(count($dados_cruzeiro) > 0) {
-            echo json_encode(["cruzeiro" => $dados_cruzeiro]);
-        } else {
-            echo json_encode(["message" => "none"]); // Se não houver dados, retorne um JSON indicando isso
-        }
+
+        print(json_encode(['cruzeiro'=>$dados_cruzeiro,'plena'=>$dados_plena]));
     }
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]); // Se houver um erro, retorne um JSON com a mensagem de erro

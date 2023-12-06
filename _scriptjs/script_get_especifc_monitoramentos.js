@@ -13,7 +13,6 @@ $(document).ready(() => {
 
 $(document).ready(() => {
     let ids = $('.dash').attr('id');
-    debugger;
     $.ajax({
         url: "control_get_espec_monitoramento.php",
         type: 'POST',
@@ -22,87 +21,57 @@ $(document).ready(() => {
         },
         dataType: 'json',
         success: (dados) => {
-            console.log(dados);
-            console.log("teste");
-            let d = JSON.parse(dados);
-            console.log(d);
-            debugger;
+            // console.log(dados);
+            var confirm = "<table id='tabelaMapa" + ids +"' style='width: 100%;' class='table-hover display nowrap'><caption>Lista de específicos</caption><thead><tr><th scope='col'>#</th><th scope='col'>N° da nota</th><th scope='col'>Fornecedor</th><th scope='col'>N° de caixas</th><th scope='col'>Peso Líquido</th><th scope='col'>N° de sequência</th></tr></thead><tbody id='mytable'>";
+
+            for (let i = 0; i < dados.cruzeiro.length; i++) {
+                confirm += "<tr id='cruzeiro" + i + "'>";
+                confirm += ("<td></td>");
+                // confirm += "<th scope='row'>" + (i + 1) + "</th>";
+                confirm += ("<td>" + dados.cruzeiro[i].fk_notas_n_nota + "</td>");
+                confirm += ("<td>" + dados.cruzeiro[i].fornecedor + "</td>");
+                confirm += ("<td>" + dados.cruzeiro[i].n_caixas + "</td>");
+                confirm += ("<td>" + dados.cruzeiro[i].peso_liquido + "</td>");
+                confirm += ("<td>" + dados.cruzeiro[i].sequencia + "</td>");
+
+                confirm += "</tr>";
+            }
+
+            for (let i = 0; i < dados.plena.length; i++) {
+                confirm += "<tr id='plena" + i + "'>";
+                confirm += ("<td></td>");
+                // confirm += "<th scope='row'>" + (i + 1) + "</th>";
+                confirm += ("<td>" + dados.plena[i].fk_notas_n_nota + "</td>");
+                confirm += ("<td>" + dados.plena[i].fornecedor + "</td>");
+                confirm += ("<td>" + dados.plena[i].n_caixas + "</td>");
+                confirm += ("<td>" + dados.plena[i].peso_bruto + "</td>");
+                confirm += ("<td>" + dados.plena[i].sequencia + "</td>");
+
+                confirm += "</tr>";
+            }
+            confirm += "</tbody></table></div><button class='btn btn-outline-alert col-2 profile-button' type='button' onclick='history.back();'>Voltar</button>";
+
+            $("#resultado").html(confirm);
+
+            $('#tabelaMapa'+ids).DataTable({
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
+                },
+                pageLength: 10,
+                columnDefs: [
+                    {
+                        className: 'dtr-control',
+                        orderable: false,
+                        targets: 0
+                    }
+                ],
+                order: [1, 'asc'],
+                responsive: {
+                    details: {
+                        type: 'column'
+                    }
+                }
+            });
         }
     });
 });
-
-// $(document).on('click', '.teste', function () {
-//     var id = $('.test').attr('id');
-//     alert("here: " + id);
-// });
-
-//     $.ajax({
-//         url: "control_get_products.php",
-//         type: 'POST',
-//         data: {
-//             id: $('.test').attr('id');
-//         },
-//         success: (dados) => {
-//             try {
-//                 var idMonitoramentos = []; // Array para armazenar os id_monitoramento
-//                 var pesoTotal = 0; // Variável para rastrear o peso total
-//                 var volumeTotal = 0; // Variável para rastrear o volume total
-
-//                 var confirm;
-//                 if (dados['message'] === "none") {
-//                     confirm = "<p style='text-align: center;'>O Banco não possui nenhuma nota sem monitoramento ativo</p>";
-//                 } else {
-//                     for (const id_monitoramento in dados) {
-//                         const placa = dados[id_monitoramento][0]['placa_caminhao'];
-//                         idMonitoramentos.push(id_monitoramento);
-
-//                         // Calcula e atualiza o peso total e o volume total
-//                         const pesoTabela = dados[id_monitoramento].reduce((total, item) => total + parseFloat(item['Peso']), 0);
-//                         const volumeTabela = dados[id_monitoramento].reduce((total, item) => total + parseFloat(item['quantidade']), 0);
-//                         pesoTotal += pesoTabela;
-//                         volumeTotal += volumeTabela;
-
-//                         confirm += `<div class='row m-2 mt-3'><h3 class="col-3">Placa: ${placa}</h3>`;
-//                         confirm += `<button style='display: inline-block;' class='btn btn-primary col-2' onclick='exibirEspecificas(${id_monitoramento})'>Específicas</button></div>`;
-//                         confirm += `<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><span>Peso Total: ${pesoTabela.toFixed(2)}</span><span> | Volume Total: ${volumeTabela.toFixed(2)}</span><table id='tabelaMapa${id_monitoramento}' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>`;
-
-//                         for (let i = 0; i < dados[id_monitoramento].length; i++) {
-//                             confirm += "<tr>";
-//                             confirm += "<th scope='row'>" + (i + 1) + "</th>";
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['fornecedor'] + "</td>");
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['cod'] + "</td>");
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['descricao'] + "</td>");
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['Peso'] + "</td>");
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['quantidade'] + "</td>");
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['data_producao'] + "</td>");
-//                             confirm += ("<td>" + dados[id_monitoramento][i]['data_validade'] + "</td>");
-
-//                             confirm += "</tr>";
-//                         }
-//                         confirm += "</tbody></table></div>";
-//                     }
-//                 }
-//                 $("#dash").toggleClass("inicial");
-
-//                 // Atualiza o peso total e o volume total gerais
-//                 $('#peso').val(pesoTotal.toFixed(2));
-//                 $('#volume').val(volumeTotal.toFixed(2));
-
-//                 $("#resultado").html(confirm.replace("undefined", ""));
-//                 idMonitoramentos.forEach(id => {
-//                     $('#tabelaMapa' + id).DataTable({
-//                         "language": {
-//                             "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
-//                         },
-//                         "pageLength": 5,
-//                         // Outras opções se necessário
-//                     });
-//                 });
-//             } catch (e) {
-//                 console.error("Erro ao analisar JSON:", e);
-//             }
-//         },
-//         error: function (xhr, status, error) {
-//             console.error("Erro na requisição Ajax:", status, error);
-//         }
-//     });

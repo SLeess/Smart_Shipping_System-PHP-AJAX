@@ -38,7 +38,7 @@ $(document).ready(() => {
                             volumeTotal += volumeTabela;
 
                             confirm += `<div class='row m-2 mt-3'><h3 class="col-3">Placa: ${placa}</h3>`;
-                            confirm += `<button style='display: inline-block;' class='btn btn-primary col-2' onclick='exibirEspecificas(${id_monitoramento})'>Específicas</button></div>`;
+                            confirm += `<button style='display: inline-block;' class='btn btn-primary col-2' onclick='exibirEspecificas(${id_monitoramento}, "${dados[id_monitoramento][0]['placa_caminhao']}")'>Específicas</button></div>`;
                             confirm += `<div class='table-responsive col-md-12 col-11 offset-1 offset-sm-0 p-2'><span>Peso Total: ${pesoTabela.toFixed(2)}</span><span> | Volume Total: ${volumeTabela.toFixed(2)}</span><table id='tabelaMapa${id_monitoramento}' class='tablemapa table table-bordered table-hover mt-2'><thead><tr><th scope='col'>#</th><th scope='col'>Operação</th><th scope='col'>Codigo</th><th scope='col'>Descricao</th><th scope='col'>Peso</th><th scope='col'>Quantidade</th><th scope='col'>Data Produção</th><th scope='col'>Data Validade</th></tr></thead><tbody>`;
 
                             for (let i = 0; i < dados[id_monitoramento].length; i++) {
@@ -85,7 +85,8 @@ $(document).ready(() => {
 });
 
 // Função para ser chamada ao clicar no botão "Específicas"
-function exibirEspecificas(id_monitoramento) {
-    var endereco = "view_get_espec_monitoramento.php?id=" + id_monitoramento;
+function exibirEspecificas(id_monitoramento, placa) {
+    var endereco = "view_get_espec_monitoramento.php?id=" + id_monitoramento+"&placa=" + placa;
+    console.log(endereco);
     window.location.href = endereco;
 }

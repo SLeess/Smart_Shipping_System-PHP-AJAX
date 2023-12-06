@@ -4,6 +4,7 @@
 
 
     $idMonitoramento = $_GET['id'];
+    $placa = $_GET['placa'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,8 +16,10 @@
     <link rel="stylesheet" href="../../_style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
     <script src="../../_scriptjs/script_get_especifc_monitoramentos.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <style>
         .btns{
             display: block;
@@ -49,7 +52,7 @@
         <div id="<?php echo "$idMonitoramento"; ?>" class="inicial dash bg-white p-4 col-12">
             <div class="row">
                 <?php
-                    $title = "- Monitoramento: {$idMonitoramento}";
+                    $title = "- Placa: {$placa}";
                     require_once("../elements/tituloProjetoMainSection.php");
                 ?>
             </div>
@@ -59,11 +62,14 @@
                     <button class="col-md-5 col-auto btn btn-outline-primary" type="submit" id="btnBuscar">Buscar</button>
                 </div> -->
             </div>
-            <div id="resultado"></div>
+            <div id="resultado" class='row'></div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 </body>
 </html>
