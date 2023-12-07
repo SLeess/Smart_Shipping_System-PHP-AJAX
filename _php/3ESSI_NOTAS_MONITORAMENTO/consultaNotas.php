@@ -1,6 +1,5 @@
 <?php
     require_once("../3SSI_CRUD/conexao.php");
-    $costume = isset($_POST['where']) ? $_POST['where'] : null;
 
     $sql = "SELECT * from notas where id_monitoramento is null";
     $stmt = $pdo->prepare($sql);

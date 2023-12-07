@@ -15,7 +15,8 @@ $(document).ready(() => {
             url: "control_get_products.php",
             type: 'POST',
             data: {
-                dataLancamento: $("#dataLancamento").val()
+                dataLancamento: $("#dataLancamento").val(),
+                permission: 1
             },
             success: (dados) => {
                 try {
@@ -35,7 +36,7 @@ $(document).ready(() => {
                             const pesoTabela = dados[id_monitoramento].reduce((total, item) => total + parseFloat(item['Peso']), 0);
                             const volumeTabela = dados[id_monitoramento].reduce((total, item) => total + parseFloat(item['quantidade']), 0);
                             pesoTotal += pesoTabela;
-                            volumeTotal += volumeTabela;
+                            volumeTotal += volumeTabela; 
 
                             confirm += `<div class='row m-2 mt-3'><h3 class="col-3">Placa: ${placa}</h3>`;
                             confirm += `<button style='display: inline-block;' class='btn btn-primary col-2' onclick='exibirEspecificas(${id_monitoramento}, "${dados[id_monitoramento][0]['placa_caminhao']}")'>Específicas</button></div>`;

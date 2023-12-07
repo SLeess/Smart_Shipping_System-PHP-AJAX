@@ -14,7 +14,7 @@ $(document).ready(() => {
         url: 'consultaNotas.php',
         type: 'POST',
         data: {
-            where: "teste"
+            permission: 1
         },
         success: (result) => {
             if (result === "none") {
@@ -38,7 +38,7 @@ $(document).ready(() => {
                 }
 
                 confirm += "</tbody></table>";
-                // $("#table").html(confirm);
+                $("#table").html(confirm);
                 
                 // Css para elementos do html a partir de ID com Ajax
                 $("#tabelaNotas").css({

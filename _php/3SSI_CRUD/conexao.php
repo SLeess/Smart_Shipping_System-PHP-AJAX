@@ -6,9 +6,11 @@ $user = 'root';
 $password = ''; 
 $database = 'seminariobd';
 
+$permission = isset($_POST['permission'])? $_POST['permission']: 0;
+
 $relative = "../";
 require_once($relative."CRUD/relog.php");
-if($_SESSION["tipo"] != 1){
+if(!($_SESSION["tipo"] == 1 || $permission)){
     print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
     exit(-1);
 }

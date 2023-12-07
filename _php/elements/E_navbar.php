@@ -38,7 +38,7 @@ $relative = isset($_POST['relative']) ? $_POST['relative'] : '';
     </li>';
     echo 
     '<li class="nav-item">'.
-      '<a class="nav-link" id="motoristas-view-tab" data-toggle="tab" href="'.$relative.'" role="tab" aria-controls="home" aria-selected="false" style="height: 100%">Visualizar Motoristas</a>
+      '<a class="nav-link" id="motoristas-view-tab" data-toggle="tab" href="'.$relative.'3ESSI_MOTORIST_CAMINHOES/view_get_motorista.php" role="tab" aria-controls="home" aria-selected="false" style="height: 100%">Visualizar Motoristas</a>
     </li>';
   }
   

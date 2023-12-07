@@ -1,9 +1,6 @@
 <?php
     $relative = "../";
     require_once($relative."CRUD/relog.php");
-    if($_SESSION["tipo"] != 1){
-        print("<script>alert('Acesso não autorizado!');location.href='../home.php'</script>");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -53,6 +50,9 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="../../_scriptjs/script.js"></script>
+    <script>
+        var permission = <?php echo ($_SESSION['tipo']==0)?3:1; ?>;
+    </script>
     <script src="../../_scriptjs/script_get_motoristas.js"></script>
 </body>
 </html>
