@@ -25,7 +25,7 @@
     
     if ($res) {
         $_SESSION['usuario'] = $usuario;
-        print("<script>alert('Dados da conta foram alterados!');location.href='relog.php';
+        print("<script>alert('Dados da conta foram alterados!');history.back(-1);
         </script>");
     } else{
         print("<script>alert('Erro ao alterar dados da conta!');history.back(-1);</script>");
