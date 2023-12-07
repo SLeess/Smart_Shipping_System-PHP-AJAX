@@ -17,7 +17,8 @@ $(document).ready(() => {
         url: "control_get_espec_monitoramento.php",
         type: 'POST',
         data: {
-            id: ids
+            id: ids,
+            permission: 1
         },
         dataType: 'json',
         success: (dados) => {
