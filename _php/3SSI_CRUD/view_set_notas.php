@@ -79,7 +79,7 @@
                                     <div id="inserir" class="scan">
                                         <div class="mb-3">
                                             <input class="form-control" type="file" id="formFile" name="xmlFilesInput[]" accept=".xml" multiple required>
-                                            <input id="dataAurora" class="form-control" type="date" style="margin-top: 5px;" required>
+                                            <input id="dataAurora" class="form-control" type="date" style="margin-top: 5px;" required value="<?php echo date("Y-m-d"); ?>">
                                             <button type="button" id="scanButtonAurora" class='btns btn btn-outline-secondary'>Escanear &nbspXMLs</button>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                         <div id="inserir" class="scan">
                                             <div class="col-md-6 offset-md-3 mb-3">
                                                 <input class="form-control" type="file" id="fileInput" name="xmlCruzeiroFilesInput[]" accept=".xml" multiple required>
-                                                <input id="dataCruzeiro" type="date" class="form-control" required>
+                                                <input id="dataCruzeiro" type="date" class="form-control" required value="<?php echo date("Y-m-d"); ?>">
                                                 <input id="cargaCruzeiro" type="number" class="form-control" placeholder="Digite a Carga:" required>
                                                 <button type="button" id="scanButtonCruzeiro" class="btns btn btn-outline-secondary">Escanear XMLs</button>
                                             </div>
@@ -149,7 +149,7 @@
                                     <div id="inserir" class="scan">
                                         <div class="col-md-6 offset-md-3 mb-3">
                                             <input class="form-control" type="file" id="InputSuinco" name="xmlSuincoFilesInput[]" accept=".xml" multiple required>
-                                            <input id="dataSuinco" type="date" class="form-control" required>
+                                            <input id="dataSuinco" type="date" class="form-control" required value="<?php echo date("Y-m-d"); ?>">
                                             <input id="cargaSuinco" type="number" class="form-control" placeholder="Digite a Carga:" required>
                                             <button type="button" id="scanButtonSuinco" class="btns btn btn-outline-secondary">Escanear XMLs</button>
                                         </div>
