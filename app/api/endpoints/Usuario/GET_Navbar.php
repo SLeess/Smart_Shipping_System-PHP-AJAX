@@ -3,42 +3,42 @@ session_start();
 if ($_SESSION['tipo'] == 1) {
 $navbarHTML = '<nav class="navbar navbar-expand-md bg-body-tertiary">' .
     '<div class="container-fluid" style="margin: -8px 0;">' .
-    '<a class="navbar-brand" href="home.html">3S</a>' .
-    '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">' .
-    '<span class="navbar-toggler-icon"></span>' .
-    '</button>' .
-    '<div class="collapse navbar-collapse mt-0" id="navbarNav">' .
-    '<ul class="navbar-nav" style="width: 100%;">' .
-    '<li class="nav-item dropdown">' .
-    '<a class="nav-link dropdown-toggle" style="padding-bottom: 13px;" id="notas-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notas</a>' .
-    '<div class="dropdown-menu" style="background-color: white; padding: 5px 0; margin-top: -7px;">' .
-    '<a class="dropdown-item" id="notas-nmonit-tab" href="getNotas.html">Buscar</a>' .
-    '<a class="dropdown-item" id="notas-tab" href="setNotas.html">Inserir</a>' .
+        '<a class="navbar-brand" href="home.html">3S</a>' .
+        '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">' .
+            '<span class="navbar-toggler-icon"></span>' .
+        '</button>' .
+        '<div class="collapse navbar-collapse mt-0" id="navbarNav">' .
+            '<ul class="navbar-nav" style="width: 100%;">' .
+                '<li class="nav-item dropdown">' .
+                    '<a class="nav-link dropdown-toggle" style="padding-bottom: 13px;" id="notas-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notas</a>' .
+                    '<div class="dropdown-menu" style="background-color: white; padding: 5px 0; margin-top: -7px;">' .
+                        '<a class="dropdown-item" id="notas-nmonit-tab" href="getNotas.html">Buscar</a>' .
+                        '<a class="dropdown-item" id="notas-tab" href="setNotas.html">Inserir</a>' .
+                    '</div>' .
+                '</li>' .
+                '<li class="nav-item dropdown">' .
+                    '<a class="nav-link dropdown-toggle" style="padding-bottom: 13px;" id="notas-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Motoristas</a>' .
+                    '<div class="dropdown-menu" style="background-color: white; padding: 5px 0; margin-top: -7px;">' .
+                        '<a class="dropdown-item" id="motoristas-view-tab" href="getMotorista.html">Visualizar</a>' .
+                        '</div>' .
+                        '<a class="dropdown-item" id="motoristas-tab" href="setMotorista.html" role="tab" aria-controls="Inserir" aria-selected="false">Cadastrar</a>' .
+                '</li>' .
+                '<li class="nav-item">' .
+                    '<a class="nav-link" id="mapa-tab" href="getProdutos.html" role="tab" aria-controls="Mapa de Carregamentos" aria-selected="false" style="height: 100%">Mapa de Carregamento</a>' .
+                '</li>' .
+                '<li class="nav-item">' .
+                    '<a class="nav-link" id="perfis-tab" href="getPerfis.html" role="tab" aria-controls="home" aria-selected="false" style="height: 100%">Perfis cadastros</a>' .
+                '</li>' .
+                '<li class="nav-item ms-auto">' .
+                    '<a class="nav-link" id="profile-tab" href="perfilConfiguracoes.html" role="tab" aria-controls="Clientes" aria-selected="false" style="height: 100%">' .
+                        '<img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="28" height="28" class="rounded-circle me-2">' .
+                        '<strong style="color: red;">'. $_SESSION['usuario'] . '</strong>' .
+                    '</a>' .
+                '</li>' .
+            '</ul>' .
+        '</div>' .
     '</div>' .
-    '</li>' .
-    '<li class="nav-item dropdown">' .
-    '<a class="nav-link dropdown-toggle" style="padding-bottom: 13px;" id="notas-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Motoristas</a>' .
-    '<div class="dropdown-menu" style="background-color: white; padding: 5px 0; margin-top: -7px;">' .
-    '<a class="dropdown-item" id="motoristas-tab" href="setMotorista.html" role="tab" aria-controls="Inserir" aria-selected="false">Cadastrar</a>' .
-    '<a class="dropdown-item" id="motoristas-view-tab" href="getMotorista.html">Visualizar</a>' .
-    '</div>' .
-    '</li>' .
-    '<li class="nav-item">' .
-    '<a class="nav-link" id="mapa-tab" href="getProdutos.html" role="tab" aria-controls="Mapa de Carregamentos" aria-selected="false" style="height: 100%">Mapa de Carregamento</a>' .
-    '</li>' .
-    '<li class="nav-item">' .
-    '<a class="nav-link" id="perfis-tab" href="getPerfis.html" role="tab" aria-controls="home" aria-selected="false" style="height: 100%">Perfis cadastros</a>' .
-    '</li>' .
-    '<li class="nav-item ms-auto">' .
-    '<a class="nav-link" id="profile-tab" href="perfilConfiguracoes.html" role="tab" aria-controls="Clientes" aria-selected="false" style="height: 100%">' .
-    '<img src="https://cdn-icons-png.flaticon.com/256/6596/6596121.png" alt="" width="28" height="28" class="rounded-circle me-2">' .
-    '<strong style="color: red;">'. $_SESSION['usuario'] . '</strong>' .
-    '</a>' .
-    '</li>' .
-    '</ul>' .
-    '</div>' .
-    '</div>' .
-    '</nav>';
+'</nav>';
 } else {
 $navbarHTML = '<nav class="navbar navbar-expand-md bg-body-tertiary">' .
     '<div class="container-fluid" style="margin: -8px 0;">' .
